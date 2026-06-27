@@ -1,2 +1,667 @@
-My Website
-Hello, World!
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salty Tree Art | Art Therapy by Beverly Chan</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        salty: {
+                            50: '#f4f7f6',
+                            100: '#e5eeec',
+                            200: '#ccdcd9',
+                            300: '#a3c0ba',
+                            400: '#759f97',
+                            500: '#58837b',
+                            600: '#436962',
+                            700: '#385550',
+                            800: '#2f4743',
+                            900: '#2a3d3a',
+                            950: '#152220',
+                        },
+                        sand: {
+                            50: '#faf9f5',
+                            100: '#f5f2e9',
+                            200: '#ebdccb',
+                            300: '#dec3a4',
+                            400: '#cd9f75',
+                        },
+                        ocean: {
+                            100: '#ecf3f5',
+                            200: '#cfe1e6',
+                            500: '#6f9ca8',
+                            800: '#2c4d56',
+                        }
+                    },
+                    fontFamily: {
+                        playfair: ['"Playfair Display"', 'serif'],
+                        inter: ['"Inter"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #faf9f5;
+        }
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+        }
+        .breathing-circle {
+            animation: breathe 8s infinite ease-in-out;
+        }
+        @keyframes breathe {
+            0%, 100% { transform: scale(0.85); background-color: rgba(111, 156, 168, 0.2); }
+            40% { transform: scale(1.15); background-color: rgba(88, 131, 123, 0.4); }
+            60% { transform: scale(1.15); background-color: rgba(88, 131, 123, 0.4); }
+        }
+        .text-glow {
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+        }
+    </style>
+</head>
+<body class="text-slate-800 selection:bg-salty-200 selection:text-salty-900 overflow-x-hidden">
+
+    <!-- Navigation Bar -->
+    <nav class="sticky top-0 z-50 bg-sand-50/90 backdrop-blur-md border-b border-sand-100 transition-all duration-300">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+            <!-- Brand Logo -->
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-full bg-salty-700 flex items-center justify-center text-sand-50 shadow-md group-hover:bg-salty-600 transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v18M12 3a9 9 0 00-9 9m9-9a9 9 0 019 9M12 21a9 9 0 01-9-9m9 9a9 9 0 009-9M12 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                </div>
+                <div>
+                    <span class="text-xl font-bold tracking-tight text-salty-900 block leading-tight">Salty Tree Art</span>
+                    <span class="text-[10px] uppercase tracking-widest text-salty-600 block">Art Therapy & Counseling</span>
+                </div>
+            </a>
+
+            <!-- Desktop Links -->
+            <div class="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-600">
+                <a href="#about-art-therapy" class="hover:text-salty-700 transition">Art Therapy?</a>
+                <a href="#how-it-helps" class="hover:text-salty-700 transition">How It Helps</a>
+                <a href="#about-beverly" class="hover:text-salty-700 transition">About Beverly</a>
+                <a href="#interactive-breathing" class="hover:text-salty-700 transition">Mindful Space</a>
+                <a href="#contact" class="bg-salty-700 text-white px-5 py-2.5 rounded-full hover:bg-salty-800 transition shadow-sm hover:shadow-md">Get In Touch</a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden text-salty-900 focus:outline-none" aria-label="Toggle Menu">
+                <i class="fa-solid fa-bars text-2xl"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Drawer Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-sand-50 border-t border-sand-100 px-6 py-4 space-y-4 shadow-inner">
+            <a href="#about-art-therapy" class="block text-slate-700 font-medium hover:text-salty-700 py-1">What is Art Therapy?</a>
+            <a href="#how-it-helps" class="block text-slate-700 font-medium hover:text-salty-700 py-1">How It Helps</a>
+            <a href="#about-beverly" class="block text-slate-700 font-medium hover:text-salty-700 py-1">About Beverly</a>
+            <a href="#interactive-breathing" class="block text-slate-700 font-medium hover:text-salty-700 py-1">Mindful Space</a>
+            <a href="#contact" class="block text-center bg-salty-700 text-white py-2.5 rounded-xl font-semibold">Contact Me</a>
+        </div>
+    </nav>
+
+    <!-- Hero Header -->
+    <header class="relative py-20 lg:py-28 px-6 overflow-hidden bg-gradient-to-b from-sand-100 to-sand-50">
+        <!-- Floating abstract shapes imitating salty breeze or art mediums -->
+        <div class="absolute -top-12 -left-12 w-64 h-64 rounded-full bg-ocean-100 blur-3xl opacity-60 pointer-events-none"></div>
+        <div class="absolute top-1/2 right-0 w-80 h-80 rounded-full bg-salty-100 blur-3xl opacity-50 pointer-events-none"></div>
+
+        <div class="max-w-6xl mx-auto grid lg:grid-cols-12 gap-12 items-center relative z-10">
+            <div class="lg:col-span-7 space-y-6 text-left">
+                <div class="inline-flex items-center gap-2 bg-salty-100 border border-salty-200 text-salty-800 px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider">
+                    <i class="fa-solid fa-seedling"></i> Salty Tree Art Therapy Practice
+                </div>
+                <h1 class="text-4xl md:text-5xl lg:text-6xl text-slate-900 leading-tight font-bold">
+                    Rooted in Resilience,<br>
+                    <span class="text-salty-700 italic font-normal">Healing through Art</span>
+                </h1>
+                <p class="text-lg text-slate-600 leading-relaxed max-w-xl">
+                    "Small acts of art-making open space to communicate, reflect, and foster resilience." Welcome to Salty Tree Art. I provide a compassionate, strengths-based environment to help you connect with your authentic story.
+                </p>
+                <div class="flex flex-wrap gap-4 pt-2">
+                    <a href="#contact" class="bg-salty-700 text-white px-8 py-4 rounded-full hover:bg-salty-800 transition-all font-semibold shadow-lg hover:shadow-xl inline-flex items-center gap-2">
+                        <span>Book a Consultation</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                    <a href="#about-beverly" class="border border-salty-600 text-salty-800 hover:bg-salty-50 px-8 py-4 rounded-full transition font-semibold inline-flex items-center gap-2">
+                        <span>Meet Beverly</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Beautiful Stylized Resilient Coastal Tree SVG -->
+            <div class="lg:col-span-5 flex justify-center">
+                <div class="relative w-full max-w-md p-4 bg-white/40 border border-white/60 backdrop-blur-sm rounded-3xl shadow-xl">
+                    <svg class="w-full h-auto text-salty-800 drop-shadow-md" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Abstract Soft Sea Background -->
+                        <path d="M20 150 C50 145, 100 155, 180 150 L180 180 L20 180 Z" fill="#e5eeec" opacity="0.8"/>
+                        <!-- Salty Tree trunk: bent but strong, wind-blown coastal styling -->
+                        <path d="M95 155 C90 120, 110 90, 85 55 C82 50, 78 45, 75 42 C74 41, 72 43, 73 45 C77 55, 83 75, 75 95 C71 105, 84 135, 90 155" fill="none" stroke="#58837b" stroke-width="4" stroke-linecap="round"/>
+                        <!-- Secondary branches -->
+                        <path d="M86 85 C65 75, 55 55, 48 45" fill="none" stroke="#58837b" stroke-width="2.5" stroke-linecap="round"/>
+                        <path d="M90 70 C110 65, 125 55, 135 48" fill="none" stroke="#58837b" stroke-width="2.5" stroke-linecap="round"/>
+                        <path d="M83 105 C65 110, 50 100, 38 92" fill="none" stroke="#58837b" stroke-width="2" stroke-linecap="round"/>
+                        <!-- Leaves / Seaweed-like windblown foliage in pastel dots & clusters -->
+                        <circle cx="85" cy="55" r="10" fill="#759f97" opacity="0.85"/>
+                        <circle cx="75" cy="42" r="8" fill="#a3c0ba" opacity="0.9"/>
+                        <circle cx="48" cy="45" r="9" fill="#759f97" opacity="0.8"/>
+                        <circle cx="135" cy="48" r="12" fill="#a3c0ba" opacity="0.75"/>
+                        <circle cx="38" cy="92" r="7" fill="#ccdcd9" opacity="0.9"/>
+                        <circle cx="115" cy="60" r="11" fill="#759f97" opacity="0.8"/>
+                        <circle cx="65" cy="65" r="13" fill="#58837b" opacity="0.65"/>
+                        <!-- Roots anchoring to salty sea shore -->
+                        <path d="M90 155 C80 162, 70 165, 55 163 M95 155 C105 160, 115 163, 130 159" stroke="#58837b" stroke-width="3" stroke-linecap="round"/>
+                    </svg>
+                    <!-- Small subtle caption -->
+                    <div class="absolute bottom-4 left-6 right-6 text-center bg-white/80 py-1.5 rounded-lg border border-sand-100">
+                        <span class="text-[11px] italic text-salty-800 font-medium font-playfair">"Bent but unbroken, growing by the salty breeze"</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Core Concepts Section -->
+    <main class="max-w-6xl mx-auto px-6 py-16 lg:py-24 space-y-28">
+
+        <!-- Section: What is Art Therapy -->
+        <section id="about-art-therapy" class="scroll-mt-24">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6">
+                    <div class="text-salty-600 font-semibold tracking-wider text-xs uppercase inline-flex items-center gap-1">
+                        <span class="w-8 h-[2px] bg-salty-400 block"></span> Discovery & Process
+                    </div>
+                    <h2 class="text-3xl md:text-4xl text-slate-900 font-bold">What is Art Therapy?</h2>
+                    <p class="text-slate-600 leading-relaxed">
+                        Art therapy is a professional, integrative mental health service that uses active art-making, the creative process, and applied psychological theory. It bridges our inner felt-sensations and our outward expression.
+                    </p>
+                    <p class="text-slate-600 leading-relaxed font-medium text-salty-700 bg-salty-50/70 p-4 border-l-4 border-salty-500 rounded-r-xl">
+                        "You do not need to be an 'artist' to benefit. There is no judgment here. The target is never the final aesthetic output, but the therapeutic self-discovery found along the way."
+                    </p>
+                    <p class="text-slate-600 leading-relaxed">
+                        Through tactile materials like paint, clay, collage, or sketching, we can bypass logical speech barriers to directly touch and heal complex, deep-seated emotional states.
+                    </p>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="bg-salty-50 p-6 rounded-2xl border border-salty-100 flex flex-col justify-between h-44 hover:shadow-md transition">
+                        <div class="w-10 h-10 rounded-full bg-salty-100 text-salty-700 flex items-center justify-center text-lg font-bold"><i class="fa-solid fa-palette"></i></div>
+                        <div>
+                            <h4 class="font-bold text-slate-800 mb-1">Non-Verbal Release</h4>
+                            <p class="text-xs text-slate-500">Express trauma or grief that words fail to capture.</p>
+                        </div>
+                    </div>
+                    <div class="bg-sand-50 p-6 rounded-2xl border border-sand-200/50 flex flex-col justify-between h-44 hover:shadow-md transition mt-6">
+                        <div class="w-10 h-10 rounded-full bg-sand-100 text-sand-500 flex items-center justify-center text-lg font-bold"><i class="fa-solid fa-brain"></i></div>
+                        <div>
+                            <h4 class="font-bold text-slate-800 mb-1">Mindful Reflection</h4>
+                            <p class="text-xs text-slate-500">Unpack subliminal thoughts within safe visual metaphors.</p>
+                        </div>
+                    </div>
+                    <div class="bg-ocean-100/50 p-6 rounded-2xl border border-ocean-200/60 flex flex-col justify-between h-44 hover:shadow-md transition -mt-6">
+                        <div class="w-10 h-10 rounded-full bg-ocean-200 text-ocean-800 flex items-center justify-center text-lg font-bold"><i class="fa-solid fa-heart"></i></div>
+                        <div>
+                            <h4 class="font-bold text-slate-800 mb-1">Empowerment</h4>
+                            <p class="text-xs text-slate-500">Harness strength-based practices to restore confidence.</p>
+                        </div>
+                    </div>
+                    <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200/60 flex flex-col justify-between h-44 hover:shadow-md transition">
+                        <div class="w-10 h-10 rounded-full bg-slate-200/70 text-slate-700 flex items-center justify-center text-lg font-bold"><i class="fa-solid fa-hands-holding"></i></div>
+                        <div>
+                            <h4 class="font-bold text-slate-800 mb-1">Resilience</h4>
+                            <p class="text-xs text-slate-500">Grow coping mechanisms in a warm, welcoming space.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Tool: The Mindful Breathing & Art Prompt Space -->
+        <section id="interactive-breathing" class="bg-gradient-to-br from-salty-800 to-ocean-800 text-white rounded-3xl p-8 md:p-12 shadow-xl relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-96 h-96 bg-salty-600 rounded-full opacity-10 blur-3xl pointer-events-none"></div>
+            
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                <!-- Breathing Circle on Left -->
+                <div class="lg:col-span-5 flex flex-col items-center text-center space-y-6">
+                    <h3 class="text-2xl font-bold font-playfair text-sand-100">Your Creative Breathing Space</h3>
+                    <p class="text-sm text-salty-100 max-w-xs leading-relaxed">
+                        Inhale as the circle expands, hold, and exhale as it gently shrinks. Center your mind before creating.
+                    </p>
+                    
+                    <!-- Dynamic Breathing Circle -->
+                    <div class="relative w-48 h-48 flex items-center justify-center">
+                        <div class="breathing-circle absolute w-40 h-40 rounded-full transition-all duration-1000 ease-in-out"></div>
+                        <div class="z-10 text-center">
+                            <span id="breathing-text" class="text-xs uppercase tracking-widest font-bold text-glow text-white">Breathe...</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Prompt Generator on Right -->
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/10">
+                        <h4 class="text-xl font-bold mb-3 font-playfair text-sand-100 inline-flex items-center gap-2">
+                            <i class="fa-regular fa-lightbulb"></i> Inspired Drawing Prompts
+                        </h4>
+                        <p class="text-sm text-salty-100 mb-6 leading-relaxed">
+                            Need a moment to express? Click below to generate a gentle, mindful prompt curated to inspire calm, exploration, or memory connection.
+                        </p>
+                        
+                        <div id="prompt-container" class="bg-white/5 border border-white/10 p-5 rounded-xl min-h-[100px] flex items-center justify-center text-center">
+                            <p id="active-prompt" class="italic text-sand-50 text-base leading-relaxed">
+                                "Draw a tree on coastal sand. Draw its deep roots navigating stones to reach nourishment."
+                            </p>
+                        </div>
+
+                        <div class="mt-6 flex flex-wrap gap-4 items-center justify-between">
+                            <button id="generate-prompt-btn" class="bg-sand-100 text-salty-900 px-5 py-2.5 rounded-full hover:bg-white transition text-xs font-semibold uppercase tracking-wider inline-flex items-center gap-2">
+                                <i class="fa-solid fa-wand-magic-sparkles"></i> New Prompt
+                            </button>
+                            <span class="text-[11px] text-salty-200 italic">Curated based on person-centered themes</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: How It Helps -->
+        <section id="how-it-helps" class="scroll-mt-24">
+            <div class="text-center max-w-2xl mx-auto space-y-4 mb-16">
+                <div class="text-salty-600 font-semibold tracking-wider text-xs uppercase">Transforming Struggles into Growth</div>
+                <h2 class="text-3xl md:text-4xl font-bold">How Salty Tree Art Can Support You</h2>
+                <p class="text-slate-600">
+                    Art therapy adapts dynamically to fit your unique cognitive, physical, and emotional landscape. Here are the core areas where we regularly walk alongside our clients.
+                </p>
+            </div>
+
+            <!-- Focus Cards Grid -->
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Card 1 -->
+                <div class="bg-white p-8 rounded-2xl border border-sand-100 hover:border-salty-200 hover:-translate-y-1 transition duration-300 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-salty-50 text-salty-700 flex items-center justify-center mb-6 text-xl"><i class="fa-solid fa-puzzle-piece"></i></div>
+                        <h3 class="text-lg font-bold text-slate-900 mb-2">Learning Differences</h3>
+                        <p class="text-sm text-slate-500 leading-relaxed">Supporting SEN and neurodiverse individuals to safely find self-advocacy and spatial processing.</p>
+                    </div>
+                    <span class="text-xs font-bold text-salty-600 mt-6 block uppercase tracking-wider">Strengths-Based</span>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-white p-8 rounded-2xl border border-sand-100 hover:border-salty-200 hover:-translate-y-1 transition duration-300 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-ocean-100 text-ocean-800 flex items-center justify-center mb-6 text-xl"><i class="fa-solid fa-heart-pulse"></i></div>
+                        <h3 class="text-lg font-bold text-slate-900 mb-2">Health Challenges</h3>
+                        <p class="text-sm text-slate-500 leading-relaxed">Processing fear, physical symptoms, and ongoing health crises in safe abstract metaphors.</p>
+                    </div>
+                    <span class="text-xs font-bold text-ocean-800 mt-6 block uppercase tracking-wider">Compassionate Holding</span>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-white p-8 rounded-2xl border border-sand-100 hover:border-salty-200 hover:-translate-y-1 transition duration-300 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-sand-100 text-sand-500 flex items-center justify-center mb-6 text-xl"><i class="fa-solid fa-clock-rotate-left"></i></div>
+                        <h3 class="text-lg font-bold text-slate-900 mb-2">Memory & Cognition</h3>
+                        <p class="text-sm text-slate-500 leading-relaxed">Aiding older adults or cognitive transition states in anchoring precious history, feelings, and motor skills.</p>
+                    </div>
+                    <span class="text-xs font-bold text-sand-500 mt-6 block uppercase tracking-wider">Dignity First</span>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="bg-white p-8 rounded-2xl border border-sand-100 hover:border-salty-200 hover:-translate-y-1 transition duration-300 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-slate-100 text-slate-700 flex items-center justify-center mb-6 text-xl"><i class="fa-solid fa-wind"></i></div>
+                        <h3 class="text-lg font-bold text-slate-900 mb-2">Loss & Transition</h3>
+                        <p class="text-sm text-slate-500 leading-relaxed">Navigating grief, massive career switches, or cultural shifts through grounded visual narratives.</p>
+                    </div>
+                    <span class="text-xs font-bold text-slate-600 mt-6 block uppercase tracking-wider">Resilience Focus</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: About Beverly Chan -->
+        <section id="about-beverly" class="scroll-mt-24 bg-white rounded-3xl p-8 md:p-14 border border-sand-100 shadow-sm relative">
+            <div class="grid lg:grid-cols-12 gap-12 items-start">
+                
+                <!-- Profile details -->
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="inline-flex items-center gap-2 bg-salty-100 text-salty-900 px-3 py-1 rounded-full text-xs font-semibold">
+                        <i class="fa-solid fa-graduation-cap"></i> Registered & Certified Professional
+                    </div>
+                    
+                    <h2 class="text-3xl md:text-4xl text-slate-900 font-bold">Chan, Yan Tsz (Beverly)</h2>
+                    <p class="text-salty-700 font-medium italic">Certified Art Therapist (Canada) & Professional HKAAT Member</p>
+                    
+                    <div class="space-y-4 text-slate-600 leading-relaxed">
+                        <p>
+                            Hello, I am Beverly. I am a certified art therapist graduated from the <strong>Vancouver Art Therapy Institute</strong>. I currently practice as a professional member of the <strong>Canadian Art Therapy Association (CATA)</strong> and the <strong>Hong Kong Association of Art Therapists (HKAAT)</strong>. I also hold registered teacher qualifications in British Columbia, Canada, and Hong Kong.
+                        </p>
+                        <p>
+                            My professional journey weaves a deep background in School & Community Psychology, Fine Arts, and Child Care with therapeutic practice. This allows me to foster a holistic, comprehensive approach to mental health.
+                        </p>
+                        <p class="border-l-2 border-salty-300 pl-4 py-1 italic">
+                            Throughout my years supporting diverse individuals—from those facing neurological changes and learning challenges, to those battling acute illnesses or personal grief—I have consistently witnessed how each person's unique story holds a magnificent power to heal, to connect, and to influence others.
+                        </p>
+                    </div>
+
+                    <!-- Languages Spoken -->
+                    <div class="pt-4 space-y-2">
+                        <h4 class="text-xs font-bold uppercase tracking-widest text-slate-400">Languages Offered</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-sand-100 text-slate-800 text-xs px-3.5 py-1.5 rounded-full font-medium"><i class="fa-solid fa-comments text-salty-600 mr-1.5"></i>Cantonese (廣東話)</span>
+                            <span class="bg-sand-100 text-slate-800 text-xs px-3.5 py-1.5 rounded-full font-medium"><i class="fa-solid fa-comments text-salty-600 mr-1.5"></i>English</span>
+                            <span class="bg-sand-100 text-slate-800 text-xs px-3.5 py-1.5 rounded-full font-medium"><i class="fa-solid fa-comments text-salty-600 mr-1.5"></i>Putonghua (普通話)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Professional Qualifications Grid -->
+                <div class="lg:col-span-5 bg-sand-50 p-6 md:p-8 rounded-2xl border border-sand-200 space-y-6">
+                    <h3 class="text-xl font-bold font-playfair border-b border-sand-200 pb-3 text-slate-900 flex items-center gap-2">
+                        <i class="fa-solid fa-award text-salty-600"></i> Qualifications
+                    </h3>
+                    
+                    <div class="space-y-4">
+                        <div class="flex gap-3">
+                            <i class="fa-solid fa-circle-check text-salty-600 mt-1 flex-shrink-0"></i>
+                            <div>
+                                <h5 class="text-sm font-bold text-slate-800">Certified Art Therapist</h5>
+                                <p class="text-xs text-slate-500">Vancouver Art Therapy Institute (Canada)</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-3">
+                            <i class="fa-solid fa-circle-check text-salty-600 mt-1 flex-shrink-0"></i>
+                            <div>
+                                <h5 class="text-sm font-bold text-slate-800">MA in School and Community Psychology</h5>
+                                <p class="text-xs text-slate-500">Master of Arts Program</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-3">
+                            <i class="fa-solid fa-circle-check text-salty-600 mt-1 flex-shrink-0"></i>
+                            <div>
+                                <h5 class="text-sm font-bold text-slate-800">BA in Graphic Design</h5>
+                                <p class="text-xs text-slate-500">Fine Arts & Professional Visual Communication</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-3">
+                            <i class="fa-solid fa-circle-check text-salty-600 mt-1 flex-shrink-0"></i>
+                            <div>
+                                <h5 class="text-sm font-bold text-slate-800">Registered Teacher</h5>
+                                <p class="text-xs text-slate-500">British Columbia (Canada) & Hong Kong (PGDE)</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-3">
+                            <i class="fa-solid fa-circle-check text-salty-600 mt-1 flex-shrink-0"></i>
+                            <div>
+                                <h5 class="text-sm font-bold text-slate-800">Registered Child Care Professional</h5>
+                                <p class="text-xs text-slate-500">Child Care Worker (CCW) & Child Care Supervisor (CCS)</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-3">
+                            <i class="fa-solid fa-circle-check text-salty-600 mt-1 flex-shrink-0"></i>
+                            <div>
+                                <h5 class="text-sm font-bold text-slate-800">Professional Memberships</h5>
+                                <p class="text-xs text-slate-500">HKAAT & Canadian Art Therapy Association (CATA)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="scroll-mt-24 max-w-4xl mx-auto">
+            <div class="bg-salty-50 border border-salty-200/60 rounded-3xl p-8 md:p-12 shadow-sm grid md:grid-cols-12 gap-8 items-start">
+                
+                <!-- Contact info column -->
+                <div class="md:col-span-5 space-y-6">
+                    <div>
+                        <span class="text-salty-700 font-semibold uppercase tracking-wider text-xs block mb-2">Connect</span>
+                        <h2 class="text-3xl font-bold text-slate-900">Get in Touch</h2>
+                    </div>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Let's explore how small, gentle acts of art-making can create a supportive space for your growth. Send an inquiry or write me directly.
+                    </p>
+
+                    <div class="space-y-4 pt-4 text-sm">
+                        <!-- Direct Email Card -->
+                        <div class="bg-white p-4 rounded-xl border border-sand-200 flex flex-col justify-between space-y-3 shadow-xs">
+                            <span class="text-xs font-bold text-slate-400 block uppercase tracking-wider"><i class="fa-regular fa-envelope text-salty-600 mr-1.5"></i> Direct Email</span>
+                            <div class="flex items-center justify-between">
+                                <span class="font-semibold text-salty-900 select-all" id="email-text">Beverly.vati@gmail.com</span>
+                                <button onclick="copyEmailToClipboard()" class="text-salty-600 hover:text-salty-800 p-1.5 hover:bg-salty-50 rounded-lg transition" title="Copy Email">
+                                    <i id="copy-icon" class="fa-regular fa-copy"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Response guarantee -->
+                        <div class="flex gap-3 text-slate-500 italic text-xs">
+                            <i class="fa-solid fa-clock text-salty-500 mt-0.5"></i>
+                            <span>I typically reply to all direct emails and form requests within 48 business hours.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form column -->
+                <div class="md:col-span-7 bg-white p-6 md:p-8 rounded-2xl border border-sand-100 shadow-sm">
+                    <!-- Inline Success/Error Messages instead of alerts -->
+                    <div id="form-feedback" class="hidden mb-6 p-4 rounded-xl text-sm font-semibold transition-all"></div>
+                    
+                    <form id="contact-form" class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2" for="name">Your Name</label>
+                            <input type="text" id="name" required class="w-full p-3.5 rounded-xl border border-slate-200 focus:ring-2 focus:ring-salty-500 outline-none transition text-sm text-slate-800" placeholder="e.g. Robin Doe">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2" for="email">Email Address</label>
+                            <input type="email" id="email" required class="w-full p-3.5 rounded-xl border border-slate-200 focus:ring-2 focus:ring-salty-500 outline-none transition text-sm text-slate-800" placeholder="e.g. robin@example.com">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2" for="message">Your Message or Inquiry</label>
+                            <textarea id="message" rows="4" required class="w-full p-3.5 rounded-xl border border-slate-200 focus:ring-2 focus:ring-salty-500 outline-none transition text-sm text-slate-800" placeholder="What area are you looking to explore? (Learning differences, loss, life change, etc.)"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-salty-900 text-white font-semibold py-4 rounded-xl hover:bg-salty-800 transition shadow-sm hover:shadow-md flex items-center justify-center gap-2">
+                            <span>Send Message</span>
+                            <i class="fa-solid fa-paper-plane text-xs"></i>
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-salty-950 text-sand-50/70 border-t border-salty-900/60 mt-16">
+        <div class="max-w-6xl mx-auto px-6 py-16 grid md:grid-cols-12 gap-8 text-sm">
+            <div class="md:col-span-5 space-y-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-full bg-salty-700 flex items-center justify-center text-white">
+                        <i class="fa-solid fa-wind text-xs"></i>
+                    </div>
+                    <span class="text-lg font-bold tracking-tight text-white font-playfair">Salty Tree Art</span>
+                </div>
+                <p class="max-w-xs text-xs text-salty-300 leading-relaxed">
+                    A professional clinical art therapy safehouse guiding and anchoring stories through customized, strengths-based visual expression.
+                </p>
+            </div>
+
+            <div class="md:col-span-4 space-y-3">
+                <h4 class="font-bold text-white text-xs uppercase tracking-wider">Quick Navigation</h4>
+                <div class="grid grid-cols-2 gap-2 text-xs text-salty-300">
+                    <a href="#about-art-therapy" class="hover:text-white transition">About Therapy</a>
+                    <a href="#how-it-helps" class="hover:text-white transition">Support Areas</a>
+                    <a href="#about-beverly" class="hover:text-white transition">About Beverly</a>
+                    <a href="#interactive-breathing" class="hover:text-white transition">Mindful Space</a>
+                </div>
+            </div>
+
+            <div class="md:col-span-3 space-y-3">
+                <h4 class="font-bold text-white text-xs uppercase tracking-wider">HKAAT Professional Directory</h4>
+                <p class="text-xs text-salty-300">
+                    Registered with HKAAT and CATA (Canada) guaranteeing adherence to highest ethical guidelines and codes of care.
+                </p>
+                <a href="https://www.hkaat.com/zh/find-an-art-therapist/chan%2C-yan-tsz-(beverly)" target="_blank" rel="noopener noreferrer" class="text-xs text-sand-400 hover:underline inline-flex items-center gap-1.5 pt-1">
+                    <span>HKAAT Directory Profile</span>
+                    <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="border-t border-salty-900/80 max-w-6xl mx-auto px-6 py-8 flex flex-col sm:flex-row justify-between items-center text-xs text-salty-400 gap-4">
+            <span>&copy; 2026 Salty Tree Art. All rights reserved.</span>
+            <span>Art Therapy Practice by Beverly Chan (Chan, Yan Tsz)</span>
+        </div>
+    </footer>
+
+    <!-- Javascript Program Logic -->
+    <script>
+        // Interactive Elements Configuration
+        const prompts = [
+            "Draw a tree on coastal sand. Draw its deep roots navigating stones to reach nourishment.",
+            "Using soft lines, sketch a bridge connecting a storm on one side to a quiet shore on the other.",
+            "Represent how your breathing feels right now with a single repeating stroke or color wave.",
+            "Recall a comfortable sensory memory. Draw only the colors, shapes, or textures of that space.",
+            "Think of a recent obstacle. Draw it as a physical material (e.g., stone, cloud, thread). How do you shape it?",
+            "Draw a shelter or vessel of safety. What resides inside it? What stands guard outside?",
+            "Illustrate a quiet conversation between a leaf and a droplet of salt water."
+        ];
+
+        let currentPromptIndex = 0;
+
+        // Dynamic Prompt Selector
+        const activePromptEl = document.getElementById('active-prompt');
+        const generatePromptBtn = document.getElementById('generate-prompt-btn');
+
+        generatePromptBtn.addEventListener('click', () => {
+            let nextIndex;
+            do {
+                nextIndex = Math.floor(Math.random() * prompts.length);
+            } while (nextIndex === currentPromptIndex); // Avoid repeating the same immediately
+            
+            currentPromptIndex = nextIndex;
+            activePromptEl.classList.add('opacity-0');
+            
+            setTimeout(() => {
+                activePromptEl.textContent = `"${prompts[currentPromptIndex]}"`;
+                activePromptEl.classList.remove('opacity-0');
+                activePromptEl.classList.add('transition-opacity', 'duration-300', 'opacity-100');
+            }, 200);
+        });
+
+        // Breathing Circle Text Loop
+        const breathingText = document.getElementById('breathing-text');
+        const breathePhrases = ["Inhale deeply...", "Hold...", "Exhale slowly...", "Pause..."];
+        let phraseIdx = 0;
+
+        function runBreathingGuide() {
+            // Cycle texts synchronized roughly with the css 8s breathing animation (8s total)
+            breathingText.textContent = breathePhrases[0]; // Inhale: 0s to 3s
+            
+            setTimeout(() => {
+                breathingText.textContent = breathePhrases[1]; // Hold: 3s to 4s
+            }, 3200);
+
+            setTimeout(() => {
+                breathingText.textContent = breathePhrases[2]; // Exhale: 4.8s to 7s
+            }, 4800);
+
+            setTimeout(() => {
+                breathingText.textContent = breathePhrases[3]; // Pause: 7.2s to 8s
+            }, 7200);
+        }
+
+        setInterval(runBreathingGuide, 8000);
+        runBreathingGuide(); // Run instantly on start
+
+        // Clipboard Copy Action for official email
+        function copyEmailToClipboard() {
+            const emailText = document.getElementById('email-text').innerText;
+            const copyIcon = document.getElementById('copy-icon');
+
+            // Creating a temporary textarea for copying (safest across older browsers/iframes)
+            const tempInput = document.createElement("textarea");
+            tempInput.value = emailText;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand("copy");
+            document.body.removeChild(tempInput);
+
+            // Toggle visual success icon
+            copyIcon.classList.remove('fa-copy');
+            copyIcon.classList.add('fa-check', 'text-green-600');
+
+            setTimeout(() => {
+                copyIcon.classList.remove('fa-check', 'text-green-600');
+                copyIcon.classList.add('fa-copy');
+            }, 2000);
+        }
+
+        // Custom Safe Form Submissions Handling
+        const contactForm = document.getElementById('contact-form');
+        const formFeedback = document.getElementById('form-feedback');
+
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const message = document.getElementById('message').value.trim();
+
+            if (!name || !email || !message) {
+                formFeedback.classList.remove('hidden', 'bg-green-50', 'text-green-800');
+                formFeedback.classList.add('bg-red-50', 'text-red-800', 'border', 'border-red-200');
+                formFeedback.innerHTML = `<i class="fa-solid fa-circle-exclamation mr-1.5"></i> Please fill out all fields before submitting.`;
+                return;
+            }
+
+            // Display success status without using forbidden alert() popups
+            formFeedback.classList.remove('hidden', 'bg-red-50', 'text-red-800', 'border-red-200');
+            formFeedback.classList.add('bg-emerald-50', 'text-emerald-800', 'border', 'border-emerald-200');
+            formFeedback.innerHTML = `
+                <div class="flex gap-2">
+                    <i class="fa-solid fa-circle-check text-emerald-600 mt-0.5"></i>
+                    <div>
+                        <p class="font-bold">Thank you, ${name}!</p>
+                        <p class="text-xs text-emerald-700 mt-1">Your inquiry has been successfully queued. Beverly will connect with you via ${email} shortly.</p>
+                    </div>
+                </div>
+            `;
+
+            // Reset form input values
+            contactForm.reset();
+        });
+
+        // Mobile drawer toggling logic
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Auto collapse mobile menu upon hitting a link
+        const navLinks = mobileMenu.querySelectorAll('a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+    </script>
+</body>
+</html>
