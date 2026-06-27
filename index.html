@@ -756,22 +756,12 @@
         // Interactive Elements Configuration - Bilingual drawing prompts (Breathing Space)
         const promptsEn = [
             "Draw a tree on coastal sand. Draw its deep roots navigating stones to reach nourishment.",
-            "Using soft lines, sketch a bridge connecting a storm on one side to a quiet shore on the other.",
-            "Represent how your breathing feels right now with a single repeating stroke or color wave.",
-            "Recall a comfortable sensory memory. Draw only the colors, shapes, or textures of that space.",
-            "Think of a recent obstacle. Draw it as a physical material (e.g., stone, cloud, thread). How do you shape it?",
-            "Draw a shelter or vessel of safety. What resides inside it? What stands guard outside?",
-            "Illustrate a quiet conversation between a leaf and a droplet of salt water."
+            "Recall a comfortable sensory memory. Draw only the colors, shapes, or textures of that space."
         ];
 
         const promptsZh = [
             "在海岸沙灘上畫一棵樹。描繪它深扎的根系如何穿過頑石汲取養分。",
-            "用柔和的線條，勾勒一座連接一側風暴與另一側寧靜海岸的橋樑。",
-            "用單一重複的筆觸或色彩波動，呈現你此時此刻的呼吸感受。",
-            "回想一段舒適的感官記憶。僅畫出那個空間的色彩、形狀或紋理。",
-            "思考最近遇到的障礙。將它描繪成一種實體材質（如石頭、雲朵、絲線）。你會如何塑造它？",
-            "畫一個安全的避難所或容器。裡面住著什麼？外面有什麼在守護？",
-            "描繪一片葉子與一滴海水之間安靜的對話。"
+            "回想一段舒適的感官記憶。僅畫出那個空間的色彩、形狀或紋理。"
         ];
 
         let currentPromptIndex = 0;
@@ -793,13 +783,8 @@
         }
 
         generatePromptBtn.addEventListener('click', () => {
-            const activeList = currentLang === 'en' ? promptsEn : promptsZh;
-            let nextIndex;
-            do {
-                nextIndex = Math.floor(Math.random() * activeList.length);
-            } while (nextIndex === currentPromptIndex); // Avoid repeating the same immediately
-            
-            currentPromptIndex = nextIndex;
+            // Toggles directly between the only 2 prompts
+            currentPromptIndex = currentPromptIndex === 0 ? 1 : 0;
             updatePromptDisplay();
         });
 
