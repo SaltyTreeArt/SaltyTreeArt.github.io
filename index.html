@@ -15,7 +15,12 @@
       gtag('config', 'G-7SC9BL7BYT');
     </script>
 
-    <!-- Tailwind CSS with customized color scale -->
+    <!-- Google Fonts: Import LXGW WenKai (霞鶩文楷), LXGW WenKai TC (霞鶩文楷 繁體), and Open Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=LXGW+WenKai&family=LXGW+WenKai+TC:wght@300;400;700&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS with customized color scale utilizing exact requested Pantone colors -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -23,17 +28,15 @@
                 extend: {
                     colors: {
                         salty: {
-                            50: '#FAF8F5',   /* Elegant Alabaster Paper Base background */
-                            100: '#E8F1EC',  /* Calm Sage Green (Cards/Frames) */
-                            200: '#D1E3D9',  /* Medium Moss Highlight border */
-                            500: '#20B2AA',  /* Quiet Ocean Sea Green */
-                            800: '#324538',  /* Deep Forest Sage (Primary Text) */
-                            900: '#006400',  /* Deep Forest Green (Primary Brand & Headings) */
-                            950: '#032c03',  /* Deep Pine */
-                        },
-                        spark: {
-                            500: '#FFA500',  /* Sunny Warm Orange */
-                            400: '#FFD700',  /* Radiant Gold Highlight */
+                            50: '#FFFFFF',      /* Crisp Pure White Base background */
+                            100: '#F5F9F7',     /* Extremely soft hint of Green Alabaster */
+                            200: '#E8F3EF',     /* Sage Green overlay */
+                            teal: '#1EC1CB',    /* Requested: RGB 1EC1CB - Coastal Water Teal */
+                            green: '#4D8B31',   /* Requested: RGB 4D8B31 - Vibrant Leaf Green */
+                            yellow: '#FFC800',  /* Requested: RGB FFC800 - Warm Sun Gold */
+                            orange: '#FF8427',  /* Requested: RGB FF8427 - Vibrant Spark Orange */
+                            darkgreen: '#2A521B', /* Deep readable contrast variant of leaf green */
+                            slate: '#2C3A31',   /* Dark Slate Forest for rich body contrast */
                         }
                     }
                 }
@@ -42,13 +45,21 @@
     </script>
     
     <style>
-        body, h1, h2, h3, h4, p, span, button, a, label, textarea, input {
-            font-family: 'Calibri', 'Arial', sans-serif !important;
-            font-weight: 300 !important; /* Globally setting "light fonts" */
+        /* Headings utilize Optima for luxurious elegant character, with LXGW WenKai for elegant Chinese calligraphy fallback */
+        h1, h2, h3, h4, h5, .font-optima {
+            font-family: 'Optima', 'LXGW WenKai TC', 'LXGW WenKai', 'Segoe UI', 'URW Classico', 'Cinzel', sans-serif !important;
+            font-weight: 400 !important;
+            letter-spacing: -0.01em;
         }
         
-        .font-bold, strong, h1, h2, h3, h4, h5 {
-            font-weight: 400 !important; /* Soft semibold weight for headings and emphasis */
+        /* Body copy utilizes Open Sans for highly readable typography with LXGW WenKai fallback for Chinese text */
+        body, p, span, button, a, label, textarea, input, .font-sans {
+            font-family: 'Open Sans', 'LXGW WenKai TC', 'LXGW WenKai', 'Helvetica Neue', 'Arial', sans-serif !important;
+            font-weight: 300 !important;
+        }
+        
+        .font-bold, strong {
+            font-weight: 600 !important;
         }
 
         /* Custom Bilingual Display Toggle */
@@ -58,7 +69,7 @@
         /* Scroll-driven Reveal Animation */
         .reveal-on-scroll {
             opacity: 0;
-            transform: translateY(20px);
+            transform: translateY(15px);
             transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
         }
         .reveal-on-scroll.active {
@@ -75,8 +86,8 @@
             animation-delay: 2.5s;
         }
         @keyframes breatheSoftly {
-            0%, 100% { transform: scale(0.88); opacity: 0.15; }
-            45%, 55% { transform: scale(1.12); opacity: 0.5; }
+            0%, 100% { transform: scale(0.88); opacity: 0.25; }
+            45%, 55% { transform: scale(1.12); opacity: 0.6; }
         }
         
         /* Interactive tree leaf hover & bloom effects */
@@ -86,14 +97,14 @@
             transform-box: fill-box;
         }
         .interactive-leaf:hover {
-            transform: scale(1.25);
+            transform: scale(1.35);
             opacity: 1 !important;
         }
 
         /* Natural, gentle swaying animation for the SaltyTree */
         @keyframes swayTree {
             0%, 100% { transform: rotate(0deg); }
-            50% { transform: rotate(1deg); }
+            50% { transform: rotate(1.2deg); }
         }
         .swaying-tree {
             transform-origin: bottom center;
@@ -103,11 +114,21 @@
         /* Drifting storm lines for abstract emotional visualization */
         @keyframes stormDrift {
             0%, 100% { transform: translate(0px, 0px) rotate(0deg); }
-            33% { transform: translate(3px, -2px) rotate(0.4deg); }
-            66% { transform: translate(-1px, 1px) rotate(-0.4deg); }
+            33% { transform: translate(4px, -3px) rotate(0.6deg); }
+            66% { transform: translate(-2px, 2px) rotate(-0.6deg); }
         }
         .drifting-storm {
-            animation: stormDrift 12s infinite ease-in-out;
+            animation: stormDrift 14s infinite ease-in-out;
+        }
+
+        /* Gentle drifting animation for background organic blobs */
+        @keyframes driftBlob {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -40px) scale(1.15); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+        }
+        .organic-blob-active {
+            animation: driftBlob 25s infinite ease-in-out;
         }
 
         /* Editorial border transitions */
@@ -119,10 +140,10 @@
             position: absolute;
             width: 100%;
             transform: scaleX(0);
-            height: 1px;
+            height: 1.5px;
             bottom: -2px;
             left: 0;
-            background-color: #20B2AA;
+            background-color: #1EC1CB;
             transform-origin: bottom right;
             transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
@@ -132,44 +153,56 @@
         }
     </style>
 </head>
-<body class="lang-en-active text-salty-800 selection:bg-salty-200 selection:text-salty-950 overflow-x-hidden antialiased bg-salty-50">
+<body class="lang-en-active text-salty-slate selection:bg-salty-teal/20 selection:text-salty-darkgreen overflow-x-hidden antialiased bg-white relative">
 
-    <nav class="sticky top-0 z-50 bg-salty-50/95 backdrop-blur-md border-b border-salty-500/10 transition-all duration-300">
-        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+    <!-- Beautiful, organic background element overlays utilizing saturated Pantone metrics -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none z-0">
+        <div class="organic-blob-active absolute top-[10%] left-[-5%] w-[45vw] h-[45vw] rounded-full bg-salty-teal/15 filter blur-[80px] mix-blend-multiply"></div>
+        <div class="organic-blob-active absolute top-[35%] right-[-10%] w-[50vw] h-[50vw] rounded-full bg-salty-yellow/15 filter blur-[100px] mix-blend-multiply" style="animation-delay: -5s;"></div>
+        <div class="organic-blob-active absolute bottom-[20%] left-[-10%] w-[55vw] h-[55vw] rounded-full bg-salty-green/10 filter blur-[110px] mix-blend-multiply" style="animation-delay: -10s;"></div>
+        <div class="organic-blob-active absolute bottom-[5%] right-[-5%] w-[40vw] h-[40vw] rounded-full bg-salty-orange/10 filter blur-[90px] mix-blend-multiply" style="animation-delay: -15s;"></div>
+    </div>
+
+    <!-- Realistic Cold-Press Paper Texture overlay to tie everything together -->
+    <div class="absolute inset-0 opacity-[0.05] pointer-events-none mix-blend-overlay z-40 bg-repeat" style="background-image: url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.85%22 numOctaves=%224%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E');"></div>
+
+    <!-- Expanded spacing guarantees clean brand-to-link distance on desktop -->
+    <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-salty-green/10 transition-all duration-300">
+        <div class="max-w-6xl mx-auto px-6 py-5 flex justify-between items-center">
             <!-- Brand Text Label -->
             <a href="#" class="flex flex-col group shrink-0">
-                <span class="text-xl md:text-2xl font-bold tracking-tight text-salty-900 leading-tight">
+                <span class="text-xl md:text-2xl font-bold tracking-tight text-salty-darkgreen leading-tight font-optima transition-colors duration-300 hover:text-salty-teal">
                     <span class="lang-en">SaltyTree Art Therapy</span>
                     <span class="lang-zh">鹽樹藝術治療</span>
                 </span>
             </a>
 
-            <!-- Desktop Links (Asymmetric Staggered spacing with ml-auto to guarantee distance) -->
-            <div class="hidden lg:flex items-center ml-auto lg:space-x-6 xl:space-x-10 text-xs uppercase tracking-widest text-salty-800">
-                <a href="#about-philosophy" class="border-grow hover:text-salty-900 transition duration-300">
+            <!-- Desktop Links (Staggered spacing with ml-auto to guarantee elegant separation) -->
+            <div class="hidden lg:flex items-center ml-auto lg:space-x-8 xl:space-x-12 text-xs uppercase tracking-widest text-salty-slate font-optima">
+                <a href="#about-philosophy" class="border-grow hover:text-salty-teal transition duration-300">
                     <span class="lang-en">ABOUT</span>
                     <span class="lang-zh">關於</span>
                 </a>
-                <a href="#services-heal" class="border-grow hover:text-salty-900 transition duration-300">
+                <a href="#services-heal" class="border-grow hover:text-salty-teal transition duration-300">
                     <span class="lang-en">Creativity and Arts</span>
                     <span class="lang-zh">創造力與藝術</span>
                 </a>
-                <a href="#about-beverly" class="border-grow hover:text-salty-900 transition duration-300">
+                <a href="#about-beverly" class="border-grow hover:text-salty-teal transition duration-300">
                     <span class="lang-en">Art Therapist</span>
                     <span class="lang-zh">藝術治療師</span>
                 </a>
-                <a href="#breathing-space" class="border-grow hover:text-salty-900 transition duration-300">
+                <a href="#breathing-space" class="border-grow hover:text-salty-teal transition duration-300">
                     <span class="lang-en">Breathing Space</span>
                     <span class="lang-zh">呼吸空間</span>
                 </a>
                 
                 <!-- Language Toggle Button -->
-                <button id="lang-toggle-btn" class="px-3 py-1 rounded-tl-md rounded-br-md border border-salty-500/20 hover:border-salty-500 hover:bg-salty-100 transition duration-300 text-[10px] tracking-wider text-salty-900 font-bold">
+                <button id="lang-toggle-btn" class="px-3.5 py-1.5 rounded-full border border-salty-green/20 hover:border-salty-teal hover:bg-salty-100 transition duration-300 text-[10px] tracking-wider text-salty-darkgreen font-bold">
                     <span class="lang-en">繁體中文</span>
                     <span class="lang-zh">English</span>
                 </button>
 
-                <a href="#contact" class="bg-salty-900 text-salty-50 px-5 py-2 rounded-tl-md rounded-br-md hover:bg-salty-950 transition-all duration-300 tracking-wider shrink-0">
+                <a href="#contact" class="bg-salty-green text-white px-5 py-2.5 rounded-full hover:bg-salty-darkgreen transition-all duration-300 tracking-wider shrink-0 shadow-sm hover:shadow-md">
                     <span class="lang-en">Connect</span>
                     <span class="lang-zh">聯絡</span>
                 </a>
@@ -177,65 +210,66 @@
 
             <!-- Mobile Actions -->
             <div class="flex items-center gap-4 lg:hidden">
-                <button id="lang-toggle-btn-mobile" class="px-2.5 py-1 rounded-tl-md rounded-br-md border border-salty-500/20 text-[10px] text-salty-900 font-bold">
+                <button id="lang-toggle-btn-mobile" class="px-3 py-1 rounded-full border border-salty-green/20 text-[10px] text-salty-darkgreen font-bold">
                     <span class="lang-en">繁</span>
                     <span class="lang-zh">EN</span>
                 </button>
-                <button id="mobile-menu-btn" class="text-salty-900 focus:outline-none text-xs uppercase tracking-widest font-bold" aria-label="Toggle Menu">
+                <button id="mobile-menu-btn" class="text-salty-darkgreen focus:outline-none text-xs uppercase tracking-widest font-bold" aria-label="Toggle Menu">
                     Menu
                 </button>
             </div>
         </div>
 
         <!-- Mobile Drawer Menu -->
-        <div id="mobile-menu" class="hidden lg:hidden bg-salty-50 border-t border-salty-500/10 px-6 py-6 space-y-4 shadow-inner text-xs uppercase tracking-widest">
-            <a href="#about-philosophy" class="block text-salty-800 hover:text-salty-900 py-1">
+        <div id="mobile-menu" class="hidden lg:hidden bg-white/95 border-t border-salty-green/10 px-6 py-6 space-y-4 shadow-inner text-xs uppercase tracking-widest">
+            <a href="#about-philosophy" class="block text-salty-slate hover:text-salty-teal py-1">
                 <span class="lang-en">ABOUT</span>
                 <span class="lang-zh">關於</span>
             </a>
-            <a href="#services-heal" class="block text-salty-800 hover:text-salty-900 py-1">
+            <a href="#services-heal" class="block text-salty-slate hover:text-salty-teal py-1">
                 <span class="lang-en">Creativity and Arts</span>
                 <span class="lang-zh">創造力與藝術</span>
             </a>
-            <a href="#about-beverly" class="block text-salty-800 hover:text-salty-900 py-1">
+            <a href="#about-beverly" class="block text-salty-slate hover:text-salty-teal py-1">
                 <span class="lang-en">Art Therapist</span>
                 <span class="lang-zh">藝術治療師</span>
             </a>
-            <a href="#breathing-space" class="block text-salty-800 hover:text-salty-900 py-1">
+            <a href="#breathing-space" class="block text-salty-slate hover:text-salty-teal py-1">
                 <span class="lang-en">Breathing Space</span>
                 <span class="lang-zh">呼吸空間</span>
             </a>
-            <a href="#contact" class="block text-center bg-salty-900 text-salty-50 py-3 rounded-tl-xl rounded-br-xl">
+            <a href="#contact" class="block text-center bg-salty-green text-white py-3 rounded-full shadow">
                 <span class="lang-en">Connect</span>
                 <span class="lang-zh">聯絡</span>
             </a>
         </div>
     </nav>
 
-    <!-- Header / Hero (Beautifully Asymmetric with standardized paragraph colors) -->
-    <header class="relative pt-8 pb-16 lg:pt-16 lg:pb-28 px-6 bg-salty-50 border-b border-salty-500/10">
-        <div class="max-w-6xl mx-auto grid lg:grid-cols-12 gap-12 items-center relative z-10">
+    <!-- Asymmetric, broken alignment, fluidly overlapping structures instead of box grids -->
+    <header class="relative pt-12 pb-20 lg:pt-20 lg:pb-32 px-6 z-10">
+        <div class="max-w-6xl mx-auto grid lg:grid-cols-12 gap-12 items-center">
             
+            <!-- Left Side: Editorial Typography Block -->
             <div class="lg:col-span-7 space-y-8 text-left reveal-on-scroll">
                 <div class="space-y-4">
-                    <h1 class="text-4xl md:text-5xl lg:text-6xl text-salty-900 font-bold tracking-tight leading-none">
+                    <h1 class="text-4xl md:text-5xl lg:text-7xl text-salty-green font-optima tracking-tight leading-tight">
                         SaltyTree
                     </h1>
-                    <p class="text-2xl md:text-3xl text-salty-500 italic tracking-wide">
+                    <p class="text-2xl md:text-3xl text-salty-teal italic tracking-wide font-optima">
                         <span class="lang-en">Finding Stability in Any Weather</span>
                         <span class="lang-zh">在任何天氣中，尋得一份安定</span>
                     </p>
                 </div>
                 
                 <!-- Main Header Paragraphs with strict text updates and uniform color palette -->
-                <div class="text-base md:text-lg text-salty-800 leading-relaxed space-y-6 max-w-xl font-light">
+                <div class="text-base md:text-lg text-salty-slate leading-relaxed space-y-6 max-w-xl font-light">
                     <p>
                         <span class="lang-en">"SaltyTree" is a tree that knows how to stand firmly in any climate. This space is inspired by those trees that strive to survive amidst storms by anchoring their roots deep into the soil and breathing deeply, with resilience, through the changing of each season.</span>
                         <span class="lang-zh">「鹽樹」是一棵懂得在任何氣候中，依然穩穩佇立的樹。這個空間的靈感源自那些在風暴中仍奮力生存的樹木，它們將根深深扎進土壤，在每個季節的變幻中，堅定地呼吸。</span>
                     </p>
                     <p>
-                        <span class="lang-en">The storms we face are often unpredictable and relentless. Sometimes, out of a natural instinct for self-protection, we may choose to close off, or need a bit of space to temporarily distance ourselves from the outside world. We honor these moments of longing for stillness; they are not signs of weakness, but your mind and body utilizing their deepest wisdom to gently protect you.</span>
-                        <span class="lang-zh">我們所面對的風暴，往往不可預測且連綿不斷。有時候，出於自我保護的本能，我們會選擇封閉，或是需要一點空間，暫時與外界保持距離。我們敬重這些渴望沉靜的時刻，那並非軟弱，而是你的身心正運用深層的智慧，溫柔地守護著你。</span>
+                        <span class="lang-en">The storms we face are often unpredictable and relentless. Sometimes, out of a natural instinct for self-protection, we may choose to close off, feel numb (numbness), or need a bit of space to temporarily distance ourselves from the outside world. We honor these moments of longing for stillness, they are not signs of weakness, but your mind and body utilizing their deepest wisdom to gently protect you.</span>
+                        <span class="lang-zh">我們所面對的風暴，往往不可預測且連綿不斷。有時候，出於自我保護的本能，我們會選擇封閉、變得麻木 (numbness) 或需要一點空間，暫時與外界保持距離。我們敬重這些渴望沉靜的時刻，那並非軟弱，而是你的身心正運用深層的智慧，溫柔地守護著你。</span>
                     </p>
                     <p>
                         <span class="lang-en">Here, there is no so-called "right" way to express yourself. We are partners co-creating this creative space with you, and you are the most profound expert on your own life. We view your expertise as the compass guiding this journey, allowing you to unfold naturally at your own pace.</span>
@@ -243,50 +277,53 @@
                     </p>
                 </div>
 
-                <div class="pt-2 flex flex-wrap gap-4 text-xs font-bold uppercase tracking-widest">
-                    <a href="#contact" class="bg-salty-900 text-salty-50 px-8 py-4 rounded-tl-2xl rounded-br-2xl hover:bg-salty-950 transition-all duration-300">
+                <div class="pt-4 flex flex-wrap gap-4 text-xs font-bold uppercase tracking-widest font-optima">
+                    <a href="#contact" class="bg-salty-green text-white px-8 py-4 rounded-full hover:bg-salty-darkgreen hover:shadow-lg transition-all duration-300">
                         <span class="lang-en">Connect With Us</span>
                         <span class="lang-zh">與我們聯絡</span>
                     </a>
                 </div>
             </div>
 
-            <!-- Beautiful interactive SVG drawing canvas (Light greenish theme) -->
-            <div class="lg:col-span-5 flex flex-col items-center reveal-on-scroll lg:mt-0 mt-8">
-                <div class="w-full max-w-md p-6 bg-salty-100 border border-salty-200 rounded-tl-[100px] rounded-br-[100px] rounded-tr-[30px] rounded-bl-[10px] shadow-sm hover:shadow-md transition duration-500 relative select-none">
+            <!-- Right Side: Unstructured overlapping drawing canvas -->
+            <div class="lg:col-span-5 flex flex-col items-center reveal-on-scroll lg:mt-0 mt-8 relative">
+                <!-- Decorative background organic frame shape in green/teal -->
+                <div class="absolute -inset-4 bg-gradient-to-tr from-salty-teal/20 to-salty-green/10 rounded-tl-[130px] rounded-br-[110px] rounded-tr-[50px] rounded-bl-[20px] transform rotate-[-1.5deg] -z-10"></div>
+                
+                <div class="w-full max-w-md p-6 bg-white border border-salty-green/10 rounded-tl-[100px] rounded-br-[100px] rounded-tr-[30px] rounded-bl-[10px] shadow-sm hover:shadow-md transition duration-500 relative select-none">
                     
-                    <div class="absolute top-6 right-8 text-[9px] uppercase tracking-widest text-salty-800/60 font-bold pointer-events-none">
+                    <div class="absolute top-6 right-8 text-[9px] uppercase tracking-widest text-salty-slate/60 font-bold pointer-events-none font-optima">
                         <span class="lang-en">Tap to bloom leaves</span>
                         <span class="lang-zh">輕觸讓葉子綻放</span>
                     </div>
 
                     <!-- Beautiful Interactive SVG Tree -->
-                    <div id="interactive-tree-container" class="relative w-full aspect-square bg-salty-50/70 rounded-tl-[80px] rounded-br-[80px] rounded-tr-[20px] rounded-bl-[10px] border border-salty-200 overflow-hidden cursor-crosshair mt-4">
+                    <div id="interactive-tree-container" class="relative w-full aspect-square bg-salty-100/50 rounded-tl-[80px] rounded-br-[80px] rounded-tr-[20px] rounded-bl-[10px] border border-salty-green/10 overflow-hidden cursor-crosshair mt-4">
                         <svg id="salty-tree-svg" class="w-full h-full" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
                             <!-- Background Tide/Sand Lines -->
-                            <path d="M 20,165 C 60,160 140,170 180,165" fill="none" stroke="#20B2AA" stroke-width="1.5" stroke-linecap="round" opacity="0.3" />
-                            <path d="M 10,172 C 50,169 130,175 190,171" fill="none" stroke="#20B2AA" stroke-width="1" stroke-dasharray="2,2" opacity="0.2" />
+                            <path d="M 20,165 C 60,160 140,170 180,165" fill="none" stroke="#1EC1CB" stroke-width="1.5" stroke-linecap="round" opacity="0.3" />
+                            <path d="M 10,172 C 50,169 130,175 190,171" fill="none" stroke="#1EC1CB" stroke-width="1" stroke-dasharray="2,2" opacity="0.2" />
                             
                             <!-- Overall swaying group -->
                             <g class="swaying-tree">
                                 <!-- Base roots -->
-                                <path d="M 92,165 C 80,172 65,175 50,173" fill="none" stroke="#006400" stroke-width="2.5" stroke-linecap="round"/>
-                                <path d="M 102,165 C 115,170 130,174 148,171" fill="none" stroke="#006400" stroke-width="2.5" stroke-linecap="round"/>
+                                <path d="M 92,165 C 80,172 65,175 50,173" fill="none" stroke="#4D8B31" stroke-width="2.5" stroke-linecap="round"/>
+                                <path d="M 102,165 C 115,170 130,174 148,171" fill="none" stroke="#4D8B31" stroke-width="2.5" stroke-linecap="round"/>
 
                                 <!-- Main Trunks wind-swept style -->
-                                <path d="M 97,165 C 93,130 108,100 86,65 C 83,60 79,55 76,52" fill="none" stroke="#006400" stroke-width="3" stroke-linecap="round"/>
+                                <path d="M 97,165 C 93,130 108,100 86,65 C 83,60 79,55 76,52" fill="none" stroke="#4D8B31" stroke-width="3" stroke-linecap="round"/>
                                 
                                 <!-- Supporting Branches -->
-                                <path d="M 88,95 C 68,85 58,68 51,58" fill="none" stroke="#006400" stroke-width="2" stroke-linecap="round"/>
-                                <path d="M 92,80 C 112,75 127,65 137,58" fill="none" stroke="#006400" stroke-width="2" stroke-linecap="round"/>
-                                <path d="M 85,115 C 68,120 53,110 41,102" fill="none" stroke="#006400" stroke-width="1.5" stroke-linecap="round"/>
+                                <path d="M 88,95 C 68,85 58,68 51,58" fill="none" stroke="#4D8B31" stroke-width="2" stroke-linecap="round"/>
+                                <path d="M 92,80 C 112,75 127,65 137,58" fill="none" stroke="#4D8B31" stroke-width="2" stroke-linecap="round"/>
+                                <path d="M 85,115 C 68,120 53,110 41,102" fill="none" stroke="#4D8B31" stroke-width="1.5" stroke-linecap="round"/>
 
-                                <!-- Pre-seeded initial leaves mapping the brand palette -->
-                                <circle class="interactive-leaf" cx="76" cy="52" r="7" fill="#FFD700" opacity="0.85" />
-                                <circle class="interactive-leaf" cx="51" cy="58" r="6" fill="#20B2AA" opacity="0.8" />
-                                <circle class="interactive-leaf" cx="137" cy="58" r="8" fill="#006400" opacity="0.75" />
-                                <circle class="interactive-leaf" cx="41" cy="102" r="5.5" fill="#20B2AA" opacity="0.8" />
-                                <circle class="interactive-leaf" cx="110" cy="75" r="6.5" fill="#FFA500" opacity="0.8" />
+                                <!-- Pre-seeded initial leaves mapping requested Pantone colors -->
+                                <circle class="interactive-leaf" cx="76" cy="52" r="7" fill="#FFC800" opacity="0.85" />
+                                <circle class="interactive-leaf" cx="51" cy="58" r="6" fill="#1EC1CB" opacity="0.8" />
+                                <circle class="interactive-leaf" cx="137" cy="58" r="8" fill="#4D8B31" opacity="0.75" />
+                                <circle class="interactive-leaf" cx="41" cy="102" r="5.5" fill="#1EC1CB" opacity="0.8" />
+                                <circle class="interactive-leaf" cx="110" cy="75" r="6.5" fill="#FF8427" opacity="0.8" />
                                 
                                 <!-- Container for dynamic inserts -->
                                 <g id="dynamic-leaves-group"></g>
@@ -297,11 +334,11 @@
                     <!-- Caption & Download Action Tools -->
                     <div class="mt-4 flex flex-col sm:flex-row justify-end items-center px-2 gap-3">
                         <div class="flex gap-2 w-full sm:w-auto justify-end">
-                            <button id="download-tree-btn" onclick="downloadArtwork()" class="text-[9px] uppercase tracking-[0.15em] text-salty-900 hover:text-white hover:bg-salty-500 hover:border-salty-500 font-bold transition-all duration-300 border border-salty-200 rounded-tl-md rounded-br-md px-2.5 py-1.5 bg-white flex items-center gap-1 shadow-sm">
+                            <button id="download-tree-btn" onclick="downloadArtwork()" class="text-[9px] uppercase tracking-[0.15em] text-salty-darkgreen hover:text-white hover:bg-salty-teal hover:border-salty-teal font-bold transition-all duration-300 border border-salty-green/10 rounded-full px-4 py-2 bg-white flex items-center gap-1 shadow-sm font-optima">
                                 <span class="lang-en">Save</span>
                                 <span class="lang-zh">儲存</span>
                             </button>
-                            <button id="reset-tree-btn" class="text-[9px] uppercase tracking-[0.15em] text-salty-800/60 hover:text-salty-900 hover:border-salty-800 font-bold transition-all duration-300 border border-salty-200 rounded-tl-md rounded-br-md px-2.5 py-1.5 bg-white">
+                            <button id="reset-tree-btn" class="text-[9px] uppercase tracking-[0.15em] text-salty-slate/60 hover:text-salty-darkgreen hover:border-salty-green font-bold transition-all duration-300 border border-salty-green/10 rounded-full px-4 py-2 bg-white font-optima">
                                 <span class="lang-en">Clear</span>
                                 <span class="lang-zh">重設</span>
                             </button>
@@ -313,23 +350,24 @@
         </div>
     </header>
 
-    <main class="max-w-6xl mx-auto px-6 py-16 lg:py-24 space-y-24">
+    <main class="max-w-6xl mx-auto px-6 py-12 lg:py-20 space-y-28 relative z-10">
 
-        <!-- Philosophy Section (Your SaltyTree Story) -->
-        <section id="about-philosophy" class="scroll-mt-24 max-w-4xl mx-auto border-b border-salty-500/10 pb-20 reveal-on-scroll">
-            <div class="space-y-12">
-                <div class="text-salty-500 font-bold tracking-[0.2em] text-[10px] uppercase">
+        <!-- Story section using beautiful offset, hand-made manuscript flow -->
+        <section id="about-philosophy" class="scroll-mt-24 max-w-4xl mx-auto pb-16 reveal-on-scroll relative">
+            <div class="absolute top-0 right-0 w-32 h-32 bg-salty-teal/10 rounded-full filter blur-xl -z-10"></div>
+            <div class="space-y-8">
+                <div class="text-salty-teal font-bold tracking-[0.2em] text-[10px] uppercase font-optima">
                     <span class="lang-en">The SaltyTree Story</span>
                     <span class="lang-zh">鹽樹的故事</span>
                 </div>
                 
-                <div class="space-y-8 text-salty-800 leading-relaxed font-light text-base md:text-lg">
+                <div class="space-y-8 text-salty-slate leading-relaxed font-light text-base md:text-lg">
                     <p>
                         <span class="lang-en">At SaltyTree, we explore, discover, and reconnect with that sense of wonder, creativity, and resilience together. The name SaltyTree speaks of a tree that finds its way within a specific landscape, transforming a harsh, salt-laden ground into a unique expression of life.</span>
-                        <span class="lang-zh">在鹽樹，我們一同探索、發掘並重新連結那份驚奇感、創造力與韌性。鹽樹的名字，訴說著一棵在特定地景中尋得出口的樹，它將嚴酷且充滿鹽分的土地，轉化為獨一無二的生命展現。</span>
+                        <span class="lang-zh">在鹽樹，我們一同探索、發掘並重新連結那份驚奇感、創造力與韌性。鹽樹的名字，訴說著一棵在特定地景中尋得出口的樹，它將嚴酷且充滿鹽分土地，轉化為獨一無二的生命展現。</span>
                     </p>
                     
-                    <p class="italic text-salty-900 border-l border-salty-500/30 pl-6 py-1 text-lg md:text-xl my-8 transition-all duration-300 hover:border-salty-500 font-light">
+                    <p class="italic text-salty-darkgreen border-l-2 border-salty-teal pl-6 py-1 text-lg md:text-xl my-8 transition-all duration-300 hover:border-salty-green font-light">
                         <span class="lang-en">Yet, we also deeply know that no tree can grow isolated from the ecosystem; our growth is always shaped by the environment and soil we inhabit. But please remember, you are never the burdens you carry. In art therapy, we do not view ourselves or each other as the weight itself.</span>
                         <span class="lang-zh">然而，我們也深知沒有一棵樹能孤立於生態之外；我們的成長總受到所處環境與土壤的形塑。但請記得，你永遠不等於你所背負的重擔。在藝術治療中，我們不將自己或彼此視為重量本身。</span>
                     </p>
@@ -343,35 +381,38 @@
         </section>
 
         <!-- Services Section (Creativity and Arts) -->
-        <section id="services-heal" class="scroll-mt-24 space-y-16 reveal-on-scroll">
+        <section id="services-heal" class="scroll-mt-24 space-y-12 reveal-on-scroll">
             <div class="max-w-3xl">
-                <div class="text-salty-500 font-bold tracking-[0.2em] text-[10px] uppercase mb-4">
+                <div class="text-salty-teal font-bold tracking-[0.2em] text-[10px] uppercase mb-4 font-optima">
                     <span class="lang-en">Creativity and Arts</span>
                     <span class="lang-zh">創造力與藝術</span>
                 </div>
-                <h2 class="text-3xl md:text-4xl text-salty-900 font-bold mb-6">
+                <h2 class="text-3xl md:text-5xl text-salty-darkgreen font-optima leading-tight mb-6">
                     <span class="lang-en">Creativity Heals</span>
                     <span class="lang-zh">創造力帶來療癒</span>
                 </h2>
-                <p class="text-salty-800 font-light text-base md:text-lg leading-relaxed">
+                <p class="text-salty-slate font-light text-base md:text-lg leading-relaxed">
                     <span class="lang-en">Even when environments are restrictive or spaces are shared, art therapy can still carve out a world of your own. We welcome you exactly as you are, no artistic background required.</span>
                     <span class="lang-zh">即便環境受限或空間共享，藝術治療依然能為你開闢一片天地。我們歡迎最真實的你，無需任何藝術背景。</span>
                 </p>
             </div>
 
-            <!-- Client Example Visualizer Panel -->
-            <div class="border-t border-b border-salty-500/10 py-12 my-12 bg-salty-100/40 px-6 md:px-12 rounded-tl-[100px] rounded-br-[100px] rounded-tr-[30px] rounded-bl-[10px] transition-colors duration-500 hover:bg-salty-100/60">
-                <div class="max-w-5xl mx-auto grid lg:grid-cols-12 gap-12 items-center">
+            <!-- Client Example Visualizer Panel (Overlapping, organic card deck aesthetic with saturated accents) -->
+            <div class="relative py-8 my-8">
+                <!-- Asymmetric outline frame with saturated Pantone gradients -->
+                <div class="absolute inset-0 bg-gradient-to-br from-salty-teal/15 via-salty-yellow/5 to-salty-orange/10 rounded-tl-[110px] rounded-br-[120px] rounded-tr-[20px] rounded-bl-[40px] transform rotate-[0.5deg] -z-10"></div>
+                
+                <div class="max-w-6xl mx-auto grid lg:grid-cols-12 gap-12 items-center px-6 py-12">
                     
-                    <!-- Left Side: Interactive Explanatory Text with seamless alignment and no dashes -->
+                    <!-- Left Side: Interactive Explanatory Text with seamless alignment -->
                     <div class="lg:col-span-6 space-y-6">
-                        <span class="text-[9px] uppercase tracking-[0.2em] font-bold text-salty-800/60 block">
+                        <span class="text-[9px] uppercase tracking-[0.2em] font-bold text-salty-slate/60 block font-optima">
                             <span class="lang-en">The Healing Process / Experiencing Art Therapy</span>
                             <span class="lang-zh">治療歷程 / 親歷藝術治療</span>
                         </span>
                         
-                        <div class="text-salty-800 leading-relaxed font-light text-sm md:text-base space-y-4">
-                            <p class="text-salty-900 font-bold">
+                        <div class="text-salty-slate leading-relaxed font-light text-sm md:text-base space-y-4">
+                            <p class="text-salty-darkgreen font-bold">
                                 <span class="lang-en">We offer diverse and flexible channels of expression, walking with you as you externalize and reshape your inner landscape. We respect the reality of your circumstances, ensuring that you can create with privacy and a sense of safety under any environment, allowing your every feeling and expression to receive the fullest respect and validation.</span>
                                 <span class="lang-zh">我們提供多元且彈性的表達管道，陪伴你將內在風景具象化並重新形塑。我們尊重你所處的現實，確保你在任何環境下，都能在隱私與安全感中創作，讓你的每一份感受與表達，得到最充分的尊重與肯定。</span>
                             </p>
@@ -380,66 +421,68 @@
                                 <span class="lang-zh">透過色彩、線條、形狀與質地，我們將那些難以言喻的複雜感受賦予可見的形狀。我們會一同將你內在的天氣，以及你與外在世界的連結，帶入媒材的對話中。無論創作最終是被構築、堆疊、拆解，或是僅僅是單純的感官抒發，你都能透過這個歷程，讓這份創造去承載那些重量。</span>
                             </p>
                             
-                            <!-- Custom Polished Strengths-based translation without dashes -->
-                            <p class="text-salty-900 font-light font-bold">
+                            <p class="text-salty-darkgreen font-bold">
                                 <span class="lang-en">This journey centers on your inner strengths, deeply anchored in honoring and accepting your unique pace of expression. We are your partners, willing to support you through those heavy and reflective moments, assisting you to reconnect with your inherent power, and helping you find the state you need most in your current season, whether that is a space to regain tranquility, a permission to fully rest, or a newfound sense of vitality, voice, and internal power.</span>
                                 <span class="lang-zh">這趟旅程以你的內在優勢為核心，深深錨定於敬重並接納你個人的表達步調。我們是你的夥伴，願意與你共度那些沉重與沉思的時刻，協助你重新連結與生俱來的力量，找回你在當前季節最需要的狀態，無論是重獲平靜的空間、全然休息的允許，或是重拾活力、發聲與內在力量的契機。</span>
                             </p>
                         </div>
 
-                        <!-- Step controls to drive the visualizer graphic -->
-                        <div class="pt-4 flex flex-wrap gap-2.5">
-                            <button id="btn-step-1" onclick="setVisualizerState('storm')" class="px-4 py-2 text-[10px] font-bold uppercase tracking-wider rounded-tl-md rounded-br-md border transition duration-300 bg-salty-900 text-salty-50 border-salty-900 hover:shadow-sm">
+                        <!-- Unstructured Step controls (No rigid margins, pill style buttons in saturated colors) -->
+                        <div class="pt-4 flex flex-wrap gap-3">
+                            <button id="btn-step-1" onclick="setVisualizerState('storm')" class="px-5 py-2.5 text-[10px] font-bold uppercase tracking-wider rounded-full border transition duration-300 bg-salty-green text-white border-salty-green hover:shadow-md font-optima">
                                 <span class="lang-en">1. The Storm</span>
                                 <span class="lang-zh">1. 內心風暴</span>
                             </button>
-                            <button id="btn-step-2" onclick="setVisualizerState('table')" class="px-4 py-2 text-[10px] font-bold uppercase tracking-wider rounded-tl-md rounded-br-md border transition duration-300 bg-white text-salty-800 border-salty-200 hover:border-salty-500 hover:bg-salty-50">
+                            <button id="btn-step-2" onclick="setVisualizerState('table')" class="px-5 py-2.5 text-[10px] font-bold uppercase tracking-wider rounded-full border transition duration-300 bg-white text-salty-slate border-salty-green/20 hover:border-salty-teal hover:bg-salty-100 font-optima">
                                 <span class="lang-en">2. On the Table</span>
                                 <span class="lang-zh">2. 藝術具象化</span>
                             </button>
-                            <button id="btn-step-3" onclick="setVisualizerState('sunbeams')" class="px-4 py-2 text-[10px] font-bold uppercase tracking-wider rounded-tl-md rounded-br-md border transition duration-300 bg-white text-salty-800 border-salty-200 hover:border-salty-500 hover:bg-salty-50">
+                            <button id="btn-step-3" onclick="setVisualizerState('sunbeams')" class="px-5 py-2.5 text-[10px] font-bold uppercase tracking-wider rounded-full border transition duration-300 bg-white text-salty-slate border-salty-green/20 hover:border-salty-teal hover:bg-salty-100 font-optima">
                                 <span class="lang-en">3. Sunbeams</span>
                                 <span class="lang-zh">3. 陽光與樹</span>
                             </button>
                         </div>
                     </div>
 
-                    <!-- Right Side: Interactive Journeys Vector Graphic Panel -->
-                    <div class="lg:col-span-6 flex flex-col items-center">
-                        <div class="w-full bg-white p-6 rounded-tl-[80px] rounded-br-[80px] rounded-tr-[20px] rounded-bl-[10px] border border-salty-200 shadow-sm relative overflow-hidden transition-all duration-500 hover:shadow-md">
+                    <!-- Right Side: Interactive Journeys Vector Graphic Panel (Overlapping floating card) -->
+                    <div class="lg:col-span-6 flex flex-col items-center relative">
+                        <!-- Decorative shadow outline box with saturated border and soft shadow -->
+                        <div class="absolute inset-0 bg-white border border-salty-green/20 rounded-tl-[70px] rounded-br-[70px] rounded-tr-[15px] rounded-bl-[15px] transform rotate-[-1deg] -z-10 shadow-[0_8px_30px_rgb(30,193,203,0.12)]"></div>
+                        
+                        <div class="w-full bg-white/40 p-6 rounded-tl-[70px] rounded-br-[70px] rounded-tr-[15px] rounded-bl-[15px] relative overflow-hidden">
                             
-                            <!-- Styled Visual Canvas Area -->
-                            <div class="w-full aspect-[4/3] bg-salty-100 rounded-tl-[60px] rounded-br-[60px] rounded-tr-[15px] rounded-bl-[10px] border border-salty-200 overflow-hidden relative mt-4">
+                            <!-- Styled Visual Canvas Area with exact Pantone stroke references -->
+                            <div class="w-full aspect-[4/3] bg-gradient-to-tr from-salty-100 to-white rounded-tl-[60px] rounded-br-[60px] rounded-tr-[15px] rounded-bl-[10px] border border-salty-green/10 overflow-hidden relative">
                                 <svg id="journey-svg" class="w-full h-full" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
                                     
-                                    <!-- Dynamic Storm Lines (Chaotic Curves representing turbulent weather) -->
+                                    <!-- Dynamic Storm Lines (representing turbulent weather) with saturated teal/green -->
                                     <g id="journey-storm-lines" class="transition-opacity duration-1000 ease-in-out drifting-storm" opacity="0.95">
-                                        <path d="M 30,150 Q 80,40 150,160 T 250,80 T 370,180" fill="none" stroke="#20B2AA" stroke-width="2.5" stroke-dasharray="4,4" opacity="0.4" />
-                                        <path d="M 50,180 Q 120,250 200,120 T 350,150" fill="none" stroke="#006400" stroke-width="1.5" opacity="0.5" />
-                                        <path d="M 20,80 Q 150,160 180,260 T 380,100" fill="none" stroke="#032c03" stroke-width="1" opacity="0.3" />
+                                        <path d="M 30,150 Q 80,40 150,160 T 250,80 T 370,180" fill="none" stroke="#1EC1CB" stroke-width="2.5" stroke-dasharray="4,4" opacity="0.4" />
+                                        <path d="M 50,180 Q 120,250 200,120 T 350,150" fill="none" stroke="#4D8B31" stroke-width="1.5" opacity="0.5" />
+                                        <path d="M 20,80 Q 150,160 180,260 T 380,100" fill="none" stroke="#2A521B" stroke-width="1" opacity="0.3" />
                                     </g>
 
                                     <!-- Dynamic Table Canvas Frame (Workspace border) -->
                                     <g id="journey-table-frame" class="transition-opacity duration-1000 ease-in-out" opacity="0.0">
-                                        <line x1="10" y1="210" x2="390" y2="210" stroke="#20B2AA" stroke-width="2" stroke-linecap="round" />
-                                        <rect x="70" y="50" width="260" height="135" rx="8" fill="#fcfbf9" stroke="#006400" stroke-width="1.5" stroke-dasharray="4,2" />
+                                        <line x1="10" y1="210" x2="390" y2="210" stroke="#1EC1CB" stroke-width="2" stroke-linecap="round" />
+                                        <rect x="70" y="50" width="260" height="135" rx="8" fill="#FFFFFF" stroke="#4D8B31" stroke-width="1.5" stroke-dasharray="4,2" />
                                     </g>
 
-                                    <!-- Dynamic Graceful Tree & Sunbeam Lines (Growing strength) -->
+                                    <!-- Dynamic Graceful Tree & Sunbeam Lines with highly saturated gold/orange -->
                                     <g id="journey-sunbeam-lines" class="transition-opacity duration-1000 ease-in-out" opacity="0.0">
-                                        <!-- Radiant Sunbeam Lines -->
-                                        <line x1="200" y1="50" x2="60" y2="180" stroke="#FFD700" stroke-width="1.5" opacity="0.4" />
-                                        <line x1="200" y1="50" x2="120" y2="240" stroke="#FFA500" stroke-width="1.5" opacity="0.4" />
-                                        <line x1="200" y1="50" x2="280" y2="240" stroke="#FFA500" stroke-width="1.5" opacity="0.4" />
-                                        <line x1="200" y1="50" x2="340" y2="180" stroke="#FFD700" stroke-width="1.5" opacity="0.4" />
+                                        <!-- Radiant Sunbeam Lines matching Yellow and Orange highlights -->
+                                        <line x1="200" y1="50" x2="60" y2="180" stroke="#FFC800" stroke-width="1.5" opacity="0.4" />
+                                        <line x1="200" y1="50" x2="120" y2="240" stroke="#FF8427" stroke-width="1.5" opacity="0.4" />
+                                        <line x1="200" y1="50" x2="280" y2="240" stroke="#FF8427" stroke-width="1.5" opacity="0.4" />
+                                        <line x1="200" y1="50" x2="340" y2="180" stroke="#FFC800" stroke-width="1.5" opacity="0.4" />
                                         
                                         <!-- Minimalist Tree Base & Branch paths -->
-                                        <path d="M 200,210 Q 198,140 195,100" fill="none" stroke="#006400" stroke-width="3" stroke-linecap="round" />
-                                        <path d="M 197,160 Q 165,140 145,120" fill="none" stroke="#006400" stroke-width="2" stroke-linecap="round" />
-                                        <path d="M 198,140 Q 235,125 255,105" fill="none" stroke="#006400" stroke-width="2" stroke-linecap="round" />
+                                        <path d="M 200,210 Q 198,140 195,100" fill="none" stroke="#4D8B31" stroke-width="3" stroke-linecap="round" />
+                                        <path d="M 197,160 Q 165,140 145,120" fill="none" stroke="#4D8B31" stroke-width="2" stroke-linecap="round" />
+                                        <path d="M 198,140 Q 235,125 255,105" fill="none" stroke="#4D8B31" stroke-width="2" stroke-linecap="round" />
                                     </g>
 
-                                    <!-- Standardized transitioning circles representing elements of the storm, table frame, or tree leaves -->
+                                    <!-- Standardized transitioning circles representing elements -->
                                     <circle id="jc-0" class="journey-element" />
                                     <circle id="jc-1" class="journey-element" />
                                     <circle id="jc-2" class="journey-element" />
@@ -459,58 +502,58 @@
                 </div>
             </div>
 
-            <!-- Staggered Asymmetrical Services List -->
+            <!-- Staggered, overlapping cards for a loose aesthetic -->
             <div class="max-w-5xl mx-auto space-y-12 pt-6">
                 
                 <!-- Service 1 -->
-                <div class="grid md:grid-cols-12 gap-6 md:gap-12 pb-10 border-b border-salty-500/10 transition-colors duration-300 hover:bg-salty-100/40 p-6 rounded-tl-[80px] rounded-br-[80px] rounded-tr-[15px] rounded-bl-[10px]">
+                <div class="grid md:grid-cols-12 gap-6 md:gap-12 pb-10 border-b border-salty-green/10 transition-transform duration-300 hover:translate-y-[-2px] hover:bg-salty-100 p-6 rounded-tl-[80px] rounded-br-[80px] rounded-tr-[15px] rounded-bl-[10px] rotate-[-0.5deg]">
                     <div class="md:col-span-4">
-                        <h3 class="text-xl font-bold text-salty-900">
+                        <h3 class="text-xl font-bold text-salty-darkgreen font-optima">
                             <span class="lang-en">Individual Support</span>
                             <span class="lang-zh">個人支援</span>
                         </h3>
-                        <p class="text-[10px] text-salty-500 font-bold uppercase tracking-widest mt-1">
+                        <p class="text-[10px] text-salty-teal font-bold uppercase tracking-widest mt-1 font-optima">
                             <span class="lang-en">In-Person / Online</span>
                             <span class="lang-zh">實體 / 線上</span>
                         </p>
                     </div>
-                    <div class="md:col-span-8 text-salty-800 font-light text-sm md:text-base leading-relaxed">
+                    <div class="md:col-span-8 text-salty-slate font-light text-sm md:text-base leading-relaxed">
                         <span class="lang-en">A private space to explore your unique inner landscape, whether you are weathering a heavy season of life or looking to nourish your roots and expand your potential.</span>
                         <span class="lang-zh">一個探索您獨特內在風景的私人空間，不論您正經歷生命中沉重的季節，抑或希望滋養根基並開展自身潛能。</span>
                     </div>
                 </div>
 
                 <!-- Service 2 -->
-                <div class="grid md:grid-cols-12 gap-6 md:gap-12 pb-10 border-b border-salty-500/10 transition-colors duration-300 hover:bg-salty-100/40 p-6 rounded-tl-[80px] rounded-br-[80px] rounded-tr-[15px] rounded-bl-[10px]">
+                <div class="grid md:grid-cols-12 gap-6 md:gap-12 pb-10 border-b border-salty-green/10 transition-transform duration-300 hover:translate-y-[-2px] hover:bg-salty-100 p-6 rounded-tl-[80px] rounded-br-[80px] rounded-tr-[15px] rounded-bl-[10px] rotate-[0.5deg]">
                     <div class="md:col-span-4">
-                        <h3 class="text-xl font-bold text-salty-900">
+                        <h3 class="text-xl font-bold text-salty-darkgreen font-optima">
                             <span class="lang-en">Workshops and Groups</span>
                             <span class="lang-zh">工作坊及小組</span>
                         </h3>
-                        <p class="text-[10px] text-salty-500 font-bold uppercase tracking-widest mt-1">
+                        <p class="text-[10px] text-salty-teal font-bold uppercase tracking-widest mt-1 font-optima">
                             <span class="lang-en">In-Person / Online</span>
                             <span class="lang-zh">實體 / 線上</span>
                         </p>
                     </div>
-                    <div class="md:col-span-8 text-salty-800 font-light text-sm md:text-base leading-relaxed">
+                    <div class="md:col-span-8 text-salty-slate font-light text-sm md:text-base leading-relaxed">
                         <span class="lang-en">A themed support circle to move softly through the clouds at your own pace, sharing the weather and catching the light alongside other trees.</span>
                         <span class="lang-zh">一個主題式支持圈，讓您按自己的步伐在雲霧中柔和前行，與其他樹木一同分享陰晴、捕捉光芒。</span>
                     </div>
                 </div>
 
                 <!-- Service 3 -->
-                <div class="grid md:grid-cols-12 gap-6 md:gap-12 pb-4 transition-colors duration-300 hover:bg-salty-100/40 p-6 rounded-tl-[80px] rounded-br-[80px] rounded-tr-[15px] rounded-bl-[10px]">
+                <div class="grid md:grid-cols-12 gap-6 md:gap-12 pb-4 transition-transform duration-300 hover:translate-y-[-2px] hover:bg-salty-100 p-6 rounded-tl-[80px] rounded-br-[80px] rounded-tr-[15px] rounded-bl-[10px] rotate-[-0.3deg]">
                     <div class="md:col-span-4">
-                        <h3 class="text-xl font-bold text-salty-900">
+                        <h3 class="text-xl font-bold text-salty-darkgreen font-optima">
                             <span class="lang-en">Open Studio</span>
                             <span class="lang-zh">開放工作室</span>
                         </h3>
-                        <p class="text-[10px] text-salty-500 font-bold uppercase tracking-widest mt-1">
+                        <p class="text-[10px] text-salty-teal font-bold uppercase tracking-widest mt-1 font-optima">
                             <span class="lang-en">In-Person</span>
                             <span class="lang-zh">實體</span>
                         </p>
                     </div>
-                    <div class="md:col-span-8 text-salty-800 font-light text-sm md:text-base leading-relaxed">
+                    <div class="md:col-span-8 text-salty-slate font-light text-sm md:text-base leading-relaxed">
                         <span class="lang-en">A calm clearing to shake off the heavy weather, create freely and let your wonder bloom either in a quiet circle or on your own.</span>
                         <span class="lang-zh">一個安靜的空間，讓你卸下沉重的天氣、自由創作，不論是獨自一人還是與大家一起，讓你的好奇心在這裡重新綻放。</span>
                     </div>
@@ -519,26 +562,27 @@
             </div>
         </section>
 
-        <!-- Breathing Space Section -->
-        <section id="breathing-space" class="bg-salty-100 rounded-tl-[100px] rounded-br-[100px] rounded-tr-[30px] rounded-bl-[10px] border border-salty-200 p-8 md:p-12 relative overflow-hidden reveal-on-scroll">
-            <div class="grid lg:grid-cols-12 gap-12 items-center">
+        <!-- Breathing Space Section with overlapping, wavy manuscript outline -->
+        <section id="breathing-space" class="bg-gradient-to-tr from-salty-teal/15 via-salty-100 to-salty-yellow/10 rounded-tl-[100px] rounded-br-[100px] rounded-tr-[30px] rounded-bl-[10px] border border-salty-green/10 p-8 md:p-12 relative overflow-hidden reveal-on-scroll">
+            <div class="absolute top-0 left-0 w-32 h-32 bg-salty-yellow/15 rounded-full filter blur-xl"></div>
+            <div class="grid lg:grid-cols-12 gap-12 items-center relative z-10">
                 
                 <!-- Breathing Circle Widget -->
                 <div class="lg:col-span-5 flex flex-col items-center text-center space-y-6">
-                    <h3 class="text-2xl font-bold text-salty-900">
+                    <h3 class="text-2xl font-bold text-salty-darkgreen font-optima">
                         <span class="lang-en">Your Creative Breathing Space</span>
                         <span class="lang-zh">您的創意呼吸空間</span>
                     </h3>
-                    <p class="text-xs text-salty-800/80 max-w-xs leading-relaxed font-light">
+                    <p class="text-xs text-salty-slate/80 max-w-xs leading-relaxed font-light">
                         <span class="lang-en">Inhale as the circle expands, hold, and exhale as it gently shrinks. Center your mind before creating.</span>
                         <span class="lang-zh">隨著圓圈擴大時吸氣，屏住呼吸，並在圓圈縮小時緩緩呼氣。在開始創作前先沉澱心靈。</span>
                     </p>
                     
                     <div class="relative w-40 h-40 flex items-center justify-center">
-                        <div class="breathing-element-1 absolute w-32 h-32 rounded-full bg-salty-500/20"></div>
-                        <div class="breathing-element-2 absolute w-32 h-32 rounded-full bg-salty-500/10"></div>
+                        <div class="breathing-element-1 absolute w-32 h-32 rounded-full bg-salty-teal/20"></div>
+                        <div class="breathing-element-2 absolute w-32 h-32 rounded-full bg-salty-green/15"></div>
                         <div class="z-10 text-center">
-                            <span id="breathing-text" class="text-[10px] uppercase tracking-widest font-bold text-salty-800 transition-all duration-500">
+                            <span id="breathing-text" class="text-[10px] uppercase tracking-widest font-bold text-salty-darkgreen font-optima transition-all duration-500">
                                 <span class="lang-en">Breathe...</span>
                                 <span class="lang-zh">深呼吸...</span>
                             </span>
@@ -546,27 +590,27 @@
                     </div>
                 </div>
 
-                <!-- Drawing Prompt Generator (Clean, light layout) -->
+                <!-- Drawing Prompt Generator (Clean, offset layout) -->
                 <div class="lg:col-span-7 space-y-6">
-                    <div class="bg-white rounded-tl-[60px] rounded-br-[60px] rounded-tr-[20px] rounded-bl-[10px] p-8 border border-salty-200 shadow-sm transition-all duration-300 hover:shadow-md">
-                        <h4 class="text-xl font-bold text-salty-900 mb-2">
+                    <div class="bg-white rounded-tl-[60px] rounded-br-[60px] rounded-tr-[20px] rounded-bl-[10px] p-8 border border-salty-green/10 shadow-sm hover:shadow-md transition duration-300">
+                        <h4 class="text-xl font-bold text-salty-darkgreen mb-2 font-optima">
                             <span class="lang-en">Inspired Drawing Prompts</span>
                             <span class="lang-zh">啟發心靈的繪畫提案</span>
                         </h4>
-                        <p class="text-xs text-salty-800/60 mb-6 leading-relaxed font-light">
+                        <p class="text-xs text-salty-slate/60 mb-6 leading-relaxed font-light">
                             <span class="lang-en">Need a moment to express? Click below to toggle between these breathing-focused prompts curated to inspire calm, exploration, or memory connection.</span>
                             <span class="lang-zh">需要一個抒發的契機嗎？點擊下方按鈕以切換溫和的呼吸畫題，旨在引導平靜、自我探索或記憶連結。</span>
                         </p>
                         
-                        <div id="prompt-container" class="bg-salty-50 border border-salty-200 p-6 rounded-tl-[30px] rounded-br-[30px] rounded-tr-[10px] rounded-bl-[5px] min-h-[90px] flex items-center justify-center text-center transition-all duration-300">
-                            <p id="active-prompt" class="italic text-salty-800 text-sm md:text-base leading-relaxed font-light transition-opacity duration-300">
+                        <div id="prompt-container" class="bg-gradient-to-r from-salty-teal/5 to-salty-yellow/5 border border-salty-green/5 p-6 rounded-tl-[30px] rounded-br-[30px] rounded-tr-[10px] rounded-bl-[5px] min-h-[90px] flex items-center justify-center text-center transition-all duration-300">
+                            <p id="active-prompt" class="italic text-salty-slate text-sm md:text-base leading-relaxed font-light transition-opacity duration-300 font-optima">
                                 <span class="lang-en">Draw a tree on coastal sand. Draw its deep roots navigating stones to reach nourishment.</span>
                                 <span class="lang-zh">在海岸沙灘上畫一棵樹。描繪它深扎的根系如何穿過頑石汲取養分。</span>
                             </p>
                         </div>
 
                         <div class="mt-6 flex flex-wrap gap-4 items-center justify-between">
-                            <button id="generate-prompt-btn" class="bg-salty-900 text-salty-50 px-5 py-2.5 rounded-tl-md rounded-br-md hover:bg-salty-950 transition duration-300 text-[10px] font-bold uppercase tracking-wider">
+                            <button id="generate-prompt-btn" class="bg-salty-green text-white px-6 py-3 rounded-full hover:bg-salty-darkgreen transition duration-300 text-[10px] font-bold uppercase tracking-wider font-optima shadow-sm">
                                 <span class="lang-en">New Prompt</span>
                                 <span class="lang-zh">切換畫題</span>
                             </button>
@@ -578,22 +622,22 @@
         </section>
 
         <!-- Art Therapist Bio / Qualifications -->
-        <section id="about-beverly" class="scroll-mt-24 max-w-5xl mx-auto py-6 border-t border-salty-800/10 reveal-on-scroll">
+        <section id="about-beverly" class="scroll-mt-24 max-w-5xl mx-auto py-6 border-t border-salty-green/10 reveal-on-scroll">
             <div class="grid lg:grid-cols-12 gap-12 items-start">
                 
                 <div class="lg:col-span-7 space-y-6">
-                    <div class="text-salty-500 font-bold tracking-[0.2em] text-[10px] uppercase">
+                    <div class="text-salty-teal font-bold tracking-[0.2em] text-[10px] uppercase font-optima">
                         <span class="lang-en">Art Therapist</span>
                         <span class="lang-zh">藝術治療師</span>
                     </div>
                     
-                    <h2 class="text-3xl md:text-4xl text-salty-900 font-bold">
+                    <h2 class="text-3xl md:text-4xl text-salty-darkgreen font-optima leading-tight">
                         <span class="lang-en">Chan, Yan Tsz (Beverly)</span>
                         <span class="lang-zh">陳欣慈 (Beverly)</span>
                     </h2>
                     
-                    <div class="space-y-6 text-salty-800 leading-relaxed font-light text-base md:text-lg">
-                        <p class="italic text-salty-900 text-lg font-light">
+                    <div class="space-y-6 text-salty-slate leading-relaxed font-light text-base md:text-lg">
+                        <p class="italic text-salty-darkgreen text-lg font-light">
                             <span class="lang-en">Beverly is an art therapist and an artist. She is a graduate of the Vancouver Art Therapy Institute.</span>
                             <span class="lang-zh">Beverly 是一位藝術治療師和藝術家。她畢業於溫哥華藝術治療學校。</span>
                         </p>
@@ -609,12 +653,12 @@
 
                     <!-- Languages Offered Section -->
                     <div class="pt-4 space-y-2">
-                        <h4 class="text-[9px] font-bold uppercase tracking-widest text-salty-800/60">
+                        <h4 class="text-[9px] font-bold uppercase tracking-widest text-salty-slate/60 font-optima">
                             <span class="lang-en">Languages Offered</span>
                             <span class="lang-zh">提供服務語言</span>
                         </h4>
-                        <div class="flex flex-wrap gap-2 text-xs text-salty-800 font-light">
-                            <span class="bg-salty-100 hover:bg-salty-200 transition duration-300 px-3.5 py-1.5 rounded-tl-md rounded-br-md">
+                        <div class="flex flex-wrap gap-2 text-xs text-salty-slate font-light">
+                            <span class="bg-salty-100 hover:bg-salty-200 transition duration-300 px-4 py-2 rounded-full border border-salty-green/5">
                                 <span class="lang-en">Cantonese, English, Putonghua</span>
                                 <span class="lang-zh">廣東話, 英語, 普通話</span>
                             </span>
@@ -622,41 +666,41 @@
                     </div>
                 </div>
 
-                <!-- Professional Credentials Card Frame -->
-                <div class="lg:col-span-5 bg-salty-100 p-8 rounded-tr-[60px] rounded-bl-[60px] rounded-tl-[15px] rounded-br-[10px] border border-salty-200 space-y-6">
-                    <div class="space-y-4 text-xs leading-relaxed text-salty-800">
-                        <div class="p-1.5 hover:bg-white/50 rounded transition duration-200">
-                            <h5 class="font-bold text-salty-900">
+                <!-- Professional Credentials Card (Staggered offset list with rich border) -->
+                <div class="lg:col-span-5 bg-gradient-to-tr from-salty-100 to-white p-8 rounded-tr-[60px] rounded-bl-[60px] rounded-tl-[15px] rounded-br-[10px] border border-salty-teal/20 space-y-6 transform rotate-[0.5deg]">
+                    <div class="space-y-4 text-xs leading-relaxed text-salty-slate">
+                        <div class="p-2.5 hover:bg-white rounded-xl transition duration-200">
+                            <h5 class="font-bold text-salty-darkgreen font-optima text-sm">
                                 <span class="lang-en">Registered Arts Therapist (AThR)</span>
                                 <span class="lang-zh">註冊藝術治療師 (AThR)</span>
                             </h5>
-                            <p class="text-salty-500 font-bold">ANZACATA Professional Directory</p>
+                            <p class="text-salty-teal font-bold font-optima mt-0.5">ANZACATA Professional Directory</p>
                         </div>
-                        <div class="p-1.5 hover:bg-white/50 rounded transition duration-200">
-                            <h5 class="font-bold text-salty-900">
+                        <div class="p-2.5 hover:bg-white rounded-xl transition duration-200">
+                            <h5 class="font-bold text-salty-darkgreen font-optima text-sm">
                                 <span class="lang-en">Art Therapist (DVATI)</span>
                                 <span class="lang-zh">藝術治療師 (DVATI)</span>
                             </h5>
-                            <p class="text-salty-500">Vancouver Art Therapy Institute</p>
+                            <p class="text-salty-teal font-optima mt-0.5">Vancouver Art Therapy Institute</p>
                         </div>
-                        <div class="p-1.5 hover:bg-white/50 rounded transition duration-200">
-                            <h5 class="font-bold text-salty-900">
+                        <div class="p-2.5 hover:bg-white rounded-xl transition duration-200">
+                            <h5 class="font-bold text-salty-darkgreen font-optima text-sm">
                                 <span class="lang-en">MA in School and Community Psychology</span>
                                 <span class="lang-zh">學校與社區心理學碩士</span>
                             </h5>
                         </div>
-                        <div class="p-1.5 hover:bg-white/50 rounded transition duration-200">
-                            <h5 class="font-bold text-salty-900">
+                        <div class="p-2.5 hover:bg-white rounded-xl transition duration-200">
+                            <h5 class="font-bold text-salty-darkgreen font-optima text-sm">
                                 <span class="lang-en">BA in Graphic Design (Hons)</span>
                                 <span class="lang-zh">平面設計文學士 (榮譽)</span>
                             </h5>
                         </div>
-                        <div class="p-1.5 hover:bg-white/50 rounded transition duration-200">
-                            <h5 class="font-bold text-salty-900">
+                        <div class="p-2.5 hover:bg-white rounded-xl transition duration-200">
+                            <h5 class="font-bold text-salty-darkgreen font-optima text-sm">
                                 <span class="lang-en">Registered Teacher, Child Care Worker & Supervisor</span>
                                 <span class="lang-zh">註冊教師資格, 幼兒工作員及幼兒中心主管</span>
                             </h5>
-                            <p class="text-salty-500 font-bold">Hong Kong (PDGE, CCW, CCS)</p>
+                            <p class="text-salty-teal font-bold font-optima mt-0.5">Hong Kong (PDGE, CCW, CCS)</p>
                         </div>
                     </div>
                 </div>
@@ -664,188 +708,189 @@
             </div>
         </section>
 
-        <!-- LEGAL / SCOPE / POLICIES CONTAINER (Ordered Top to Bottom exactly as requested) -->
-        <section id="legal-center" class="scroll-mt-24 space-y-12 border-t border-b border-salty-500/10 py-16 reveal-on-scroll">
+        <!-- LEGAL / SCOPE / POLICIES CONTAINER (Ordered precisely as requested: 1. Privacy, 2. Practice Notice, 3. Complete policies) -->
+        <section id="legal-center" class="scroll-mt-24 space-y-12 border-t border-b border-salty-green/10 py-16 reveal-on-scroll relative">
+            <div class="absolute bottom-0 right-10 w-40 h-40 bg-salty-orange/10 rounded-full filter blur-xl"></div>
             
             <!-- SECTION 1: Standalone Data Collection & Privacy Policy -->
-            <div class="space-y-6">
-                <div class="text-salty-500 font-bold tracking-[0.2em] text-[10px] uppercase flex justify-between items-center">
+            <div class="space-y-6 relative z-10">
+                <div class="text-salty-teal font-bold tracking-[0.2em] text-[10px] uppercase flex justify-between items-center font-optima">
                     <span>
                         <span class="lang-en">Data Collection & Privacy Policy</span>
                         <span class="lang-zh">資料收集與隱私政策</span>
                     </span>
-                    <button id="privacy-expand-btn" class="text-xs text-salty-900 underline font-bold uppercase tracking-wider">
+                    <button id="privacy-expand-btn" class="text-xs text-salty-darkgreen underline font-bold uppercase tracking-wider hover:text-salty-teal transition duration-300">
                         <span class="lang-en">Show Privacy Policy</span>
                         <span class="lang-zh">顯示隱私政策</span>
                     </button>
                 </div>
 
-                <div id="privacy-expanded-content" class="hidden space-y-6 bg-salty-100/30 border border-salty-200 p-8 rounded-tl-[60px] rounded-br-[60px] shadow-sm text-xs transition-all duration-500">
+                <div id="privacy-expanded-content" class="hidden space-y-6 bg-gradient-to-br from-salty-100 to-white border border-salty-teal/20 p-8 rounded-tl-[60px] rounded-br-[60px] shadow-sm text-xs transition-all duration-500">
                     <div class="grid md:grid-cols-2 gap-8">
                         
                         <!-- English Policy -->
-                        <div class="space-y-4 text-salty-800">
-                            <h4 class="font-bold text-salty-900 text-sm">Data Collection & Privacy Policy</h4>
-                            <p>SaltyTree collects personal information, clinical intake data, and digital artwork solely for the purpose of providing professional art therapy and wellness services. In compliance with international data privacy frameworks—including the Australian Privacy Act, Hong Kong Personal Data (Privacy) Ordinance (PDPO), and Canadian Personal Information Protection and Electronic Documents Act (PIPEDA)—all sensitive health data is processed and stored using healthcare-compliant, encrypted practice management software. We do not store clinical records or intake assessments on public web servers or standard email servers. You retain the right to access, correct, or request the deletion of your personal data at any time, subject to statutory healthcare record retention laws in your local jurisdiction.</p>
+                        <div class="space-y-4 text-salty-slate leading-relaxed">
+                            <h4 class="font-bold text-salty-darkgreen text-sm font-optima">Data Collection & Privacy Policy</h4>
+                            <p>SaltyTree collects personal information, clinical intake data, and digital artwork solely for the purpose of providing professional art therapy and wellness services. In compliance with international data privacy frameworks, including the Australian Privacy Act, Hong Kong Personal Data (Privacy) Ordinance (PDPO), and Canadian Personal Information Protection and Electronic Documents Act (PIPEDA), all sensitive health data is processed and stored using healthcare-compliant, encrypted practice management software. We do not store clinical records or intake assessments on public web servers or standard email servers. You retain the right to access, correct, or request the deletion of your personal data at any time, subject to statutory healthcare record retention laws in your local jurisdiction.</p>
                         </div>
 
                         <!-- Chinese Policy -->
-                        <div class="space-y-4 text-salty-800">
-                            <h4 class="font-bold text-salty-900 text-sm">資料收集與隱私政策</h4>
-                            <p>鹽樹（SaltyTree）收集個人資料、臨床評估數據及數位藝術作品，純粹用於提供專業藝術治療與身心療癒服務。為了符合國際數據隱私框架，包括澳洲《隱私法》、香港《個人資料（私隱）條例》（PDPO）以及加拿大《個人資訊保護與電子文件法》（PIPEDA），所有敏感性健康數據均使用符合醫療合規性且經過加密的執業管理軟體進行處理與儲存。我們不會在公開的網頁伺服器 or 標準電子郵件伺服器上儲存臨床紀錄或個案評估資料。在符合您當地法定醫療紀錄保存期限的規範下，您有權隨時查閱、更正或要求刪除您的個人資料。</p>
+                        <div class="space-y-4 text-salty-slate leading-relaxed">
+                            <h4 class="font-bold text-salty-darkgreen text-sm font-optima">資料收集與隱私政策</h4>
+                            <p>鹽樹（SaltyTree）收集個人資料、臨床評估數據及數位藝術作品，純粹用於提供專業藝術治療與身心療癒服務。為了符合國際數據隱私框架，包括澳洲《隱私法》、香港《個人資料（私隱）條例》（PDPO）以及加拿大《個人資訊保護與電子文件法》（PIPEDA），所有敏感性健康數據均使用符合醫療合規性且經過加密的執業管理軟體進行處理與儲存。我們不會在公開的網頁伺服器或標準電子郵件伺服器上儲存臨床紀錄或個案評估資料。在符合您當地法定醫療紀錄保存期限的規範下，您有權隨時查閱、更正或要求刪除您的個人資料。</p>
                         </div>
 
                     </div>
                 </div>
             </div>
 
-            <!-- SECTION 2: Practice Notice / 執業須知與服務範圍 -->
-            <div class="space-y-6 pt-6">
+            <!-- SECTION 2: Practice Notice & Scope of Care (Bilingual display aligned based on active toggled state) -->
+            <div class="space-y-6 pt-6 relative z-10">
                 <!-- English Version ONLY -->
                 <div class="lang-en space-y-4">
-                    <div class="text-salty-500 font-bold tracking-[0.2em] text-[10px] uppercase">
+                    <div class="text-salty-teal font-bold tracking-[0.2em] text-[10px] uppercase font-optima">
                         Practice Notice
                     </div>
-                    <div class="bg-salty-100/50 p-6 md:p-8 rounded-tl-[40px] rounded-br-[40px] border border-salty-200 text-sm leading-relaxed text-salty-800 space-y-4">
+                    <div class="bg-gradient-to-r from-salty-teal/10 via-salty-100 to-white p-6 md:p-8 rounded-tl-[40px] rounded-br-[40px] border border-salty-teal/20 text-sm leading-relaxed text-salty-slate space-y-4">
                         <p>SaltyTree is an arts therapy and wellness practice currently undergoing formal corporate registration. All clinical art therapy services are delivered exclusively by a Registered Arts Therapist (AThR). Due to professional registration boundaries and international telehealth regulations, formal clinical sessions are strictly restricted to residents of Australia, New Zealand, Singapore, Hong Kong SAR, and select Canadian provinces (British Columbia, Alberta, Saskatchewan, and Manitoba).</p>
-                        <p class="font-bold text-amber-800">SaltyTree is not a crisis center. If you are experiencing a mental health emergency, please immediately contact your local emergency response team or regional crisis helpline.</p>
+                        <p class="font-bold text-salty-orange font-optima">SaltyTree is not a crisis center. If you are experiencing a mental health emergency, please immediately contact your local emergency response team or regional crisis helpline.</p>
                     </div>
                 </div>
                 
                 <!-- Chinese Version ONLY -->
                 <div class="lang-zh space-y-4">
-                    <div class="text-salty-500 font-bold tracking-[0.2em] text-[10px] uppercase">
+                    <div class="text-salty-teal font-bold tracking-[0.2em] text-[10px] uppercase font-optima">
                         執業須知與服務範圍
                     </div>
-                    <div class="bg-salty-100/50 p-6 md:p-8 rounded-tr-[40px] rounded-bl-[40px] border border-salty-200 text-sm leading-relaxed text-salty-800 space-y-4">
+                    <div class="bg-gradient-to-r from-salty-teal/10 via-salty-100 to-white p-6 md:p-8 rounded-tr-[40px] rounded-bl-[40px] border border-salty-teal/20 text-sm leading-relaxed text-salty-slate space-y-4">
                         <p>鹽樹（SaltyTree）為目前正在辦理正式公司註冊程序之藝術治療與身心療癒工作室。本工作室所有臨床藝術治療服務均由註冊藝術治療師（AThR）親自提供。受限於專業註冊邊界及國際遠距醫療法規，正式的臨床會談服務僅限於居住在澳洲、紐西蘭、新加坡、香港特別行政區，以及加拿大指定省份（不列顛哥倫比亞省、亞伯達省、薩斯喀徹溫省和曼尼托巴省）的居民。</p>
-                        <p class="font-bold text-amber-800">鹽樹並非緊急求助或危機干預中心。若您正經歷急性心理健康危機，請立即聯絡您當地的緊急救援團隊或區域危機求助熱線。</p>
+                        <p class="font-bold text-salty-orange font-optima">鹽樹並非緊急求助或危機干預中心。若您正經歷急性心理健康危機，請立即聯絡您當地的緊急救援團隊或區域危機求助熱線。</p>
                     </div>
                 </div>
             </div>
 
             <!-- SECTION 3: Complete Policy & Disclaimer -->
-            <div class="space-y-6 pt-6">
-                <div class="text-salty-500 font-bold tracking-[0.2em] text-[10px] uppercase flex justify-between items-center">
+            <div class="space-y-6 pt-6 relative z-10">
+                <div class="text-salty-teal font-bold tracking-[0.2em] text-[10px] uppercase flex justify-between items-center font-optima">
                     <span>
                         <span class="lang-en">SaltyTree Art Therapy – Complete Policy & Disclaimer</span>
                         <span class="lang-zh">鹽樹藝術治療 – 完整條款與免責聲明</span>
                     </span>
-                    <button id="legal-expand-btn" class="text-xs text-salty-900 underline font-bold uppercase tracking-wider">
+                    <button id="legal-expand-btn" class="text-xs text-salty-darkgreen underline font-bold uppercase tracking-wider hover:text-salty-teal transition duration-300">
                         <span class="lang-en">Show Complete Terms</span>
                         <span class="lang-zh">顯示完整條款</span>
                     </button>
                 </div>
 
-                <div id="legal-expanded-content" class="hidden space-y-8 bg-white border border-salty-200 p-8 rounded-tl-[60px] rounded-br-[60px] shadow-inner text-xs transition-all duration-500">
+                <div id="legal-expanded-content" class="hidden space-y-8 bg-white border border-salty-green/10 p-8 rounded-tl-[60px] rounded-br-[60px] shadow-inner text-xs transition-all duration-500">
                     <div class="grid md:grid-cols-2 gap-8 h-[500px] overflow-y-auto pr-2 space-y-4 md:space-y-0">
                         
                         <!-- English 10 Points -->
-                        <div class="space-y-6 text-salty-800 pr-4 border-r border-salty-200/50">
-                            <h4 class="font-bold text-salty-900 text-sm pb-2 border-b border-salty-200">Complete Policies & General Disclaimer</h4>
+                        <div class="space-y-6 text-salty-slate pr-4 border-r border-salty-green/10 leading-relaxed">
+                            <h4 class="font-bold text-salty-darkgreen text-sm pb-2 border-b border-salty-green/10 font-optima">Complete Policies & General Disclaimer</h4>
                             
                             <div>
-                                <h5 class="font-bold text-salty-950 mb-1">1. Informational and Educational Purposes Only</h5>
-                                <p>The public content provided on this Site, including text, graphics, public art prompts, images, exercises, and blog posts, is for general informational and educational purposes only. All website content is the intellectual property of SaltyTree and is protected under Hong Kong copyright laws; it may not be reproduced, redistributed, or used commercially without express written consent. This content is intended to introduce the concepts of therapeutic art and creative expression and should not be used as a self-diagnosis tool or a clinical intervention.</p>
+                                <h5 class="font-bold text-salty-darkgreen mb-1 font-optima">1. Informational and Educational Purposes Only</h5>
+                                <p>The public content provided on this Site, including text, graphics, public art prompts, images, exercises, and blog posts, is for general informational and educational purposes only. All website content is the intellectual property of SaltyTree and is protected under Hong Kong copyright laws; it may not be reproduced, redistributed, or used commercially without express written consent.</p>
                             </div>
 
                             <div>
-                                <h5 class="font-bold text-salty-950 mb-1">2. No Therapist-Client Relationship</h5>
+                                <h5 class="font-bold text-salty-darkgreen mb-1 font-optima">2. No Therapist-Client Relationship</h5>
                                 <p>Your access to or use of this Site—including downloading materials, interacting with public prompts, or communicating with SaltyTree or its practitioners via website contact forms, emails, or social media—does not establish a formal therapist-client relationship. A formal clinical relationship protected by professional AThR ethical frameworks is only established after an initial intake assessment is completed, location and eligibility under regional regulations are verified, and a formal clinical service agreement is mutually signed.</p>
                             </div>
 
                             <div>
-                                <h5 class="font-bold text-salty-950 mb-1">3. Not a Substitute for Mental Health Treatment</h5>
+                                <h5 class="font-bold text-salty-darkgreen mb-1 font-optima">3. Not a Substitute for Mental Health Treatment</h5>
                                 <p>The public resources on this Site are not a substitute for professional clinical advice, individualized psychotherapy, medical counseling, or psychiatric treatment. Always seek the advice of a qualified, locally licensed mental health provider or physician regarding any severe psychological symptoms or medical conditions.</p>
                             </div>
 
                             <div>
-                                <h5 class="font-bold text-salty-950 mb-1">4. Assumption of Risk and Personal Responsibility</h5>
+                                <h5 class="font-bold text-salty-darkgreen mb-1 font-optima">4. Assumption of Risk and Personal Responsibility</h5>
                                 <p>Engaging with creative arts and emotional topics can sometimes bring up intense feelings or memories. By using the art prompts or exercises on this Site, you voluntarily assume all risks associated with such activities. SaltyTree is not responsible or liable for any emotional distress resulting from your independent use of our digital content.</p>
                             </div>
 
                             <div>
-                                <h5 class="font-bold text-salty-950 mb-1">5. Telehealth Technology & Connection Failures (IT Legal Safeguard)</h5>
+                                <h5 class="font-bold text-salty-darkgreen mb-1 font-optima">5. Telehealth Technology & Connection Failures (IT Legal Safeguard)</h5>
                                 <p>SaltyTree utilizes digital third-party video software, booking engines, and internet infrastructure to deliver online services. The client acknowledges that digital transmissions are subject to connection drops, software latency, server downtime, and technical interruptions beyond our control. SaltyTree is not liable for any logistical delays, session disruptions, or secondary distress resulting from sudden software or network failures.</p>
                             </div>
 
                             <div>
-                                <h5 class="font-bold text-salty-950 mb-1">6. Cybersecurity & Data Breach Inherent Risk (IT Legal Safeguard)</h5>
+                                <h5 class="font-bold text-salty-darkgreen mb-1 font-optima">6. Cybersecurity & Data Breach Inherent Risk (IT Legal Safeguard)</h5>
                                 <p>While SaltyTree coordinates with healthcare-compliant practice management systems to safeguard your records, no digital transmission over the internet or cloud storage network can be guaranteed 100% secure. By completing forms, uploading files, or transmitting data through this platform or email channels, you voluntarily acknowledge the inherent security risks of web-based communications and agree that SaltyTree cannot be held liable for unauthorized third-party interceptions or cyber breaches that occur outside our immediate local systems.</p>
                             </div>
 
                             <div>
-                                <h5 class="font-bold text-salty-950 mb-1">7. Anti-Bypassing of Geo-Blocking Mechanics (IT Legal Safeguard)</h5>
+                                <h5 class="font-bold text-salty-darkgreen mb-1 font-optima">7. Anti-Bypassing of Geo-Blocking Mechanics (IT Legal Safeguard)</h5>
                                 <p>SaltyTree enforces geo-blocking systems to comply with structural cross-border telehealth boundaries. Accessing our booking systems or sessions through a Virtual Private Network (VPN), proxy server, or falsified address declaration to bypass these automated geographical limits constitutes a direct breach of contract. Clients who intentionally mask their true physical location during services agree to indemnify and hold SaltyTree harmless from any ensuing regulatory actions or legal non-compliance penalties.</p>
                             </div>
 
                             <div>
-                                <h5 class="font-bold text-salty-950 mb-1">8. Website Analytics and Tracking (Cookies & IP Addresses)</h5>
+                                <h5 class="font-bold text-salty-darkgreen mb-1 font-optima">8. Website Analytics and Tracking (Cookies & IP Addresses)</h5>
                                 <p>This Site automatically collects standard, non-identifiable technical data (such as your IP address, browser type, and cookies) purely for website optimization and traffic analytics. We do not use these technical data to identify individual visitors, nor do we share it with third parties for marketing purposes.</p>
                             </div>
 
                             <div>
-                                <h5 class="font-bold text-salty-950 mb-1">9. Governing Law & Jurisdiction</h5>
+                                <h5 class="font-bold text-salty-darkgreen mb-1 font-optima">9. Governing Law & Jurisdiction</h5>
                                 <p>These Terms and your use of this Site shall be governed by and construed in accordance with the laws of the Hong Kong Special Administrative Region (HKSAR), without regard to its conflict of law principles. Any legal action or proceeding related to this Site or our services shall be brought exclusively in a court of competent jurisdiction in Hong Kong.</p>
                             </div>
 
                             <div>
-                                <h5 class="font-bold text-salty-950 mb-1">10. Compliance with Local Laws & Severability</h5>
+                                <h5 class="font-bold text-salty-darkgreen mb-1 font-optima">10. Compliance with Local Laws & Severability</h5>
                                 <p>SaltyTree operates internationally but does not warrant that its services comply with the local statutory requirements of every global jurisdiction. If local telehealth, counseling, or corporate laws change in your region rendering our services non-compliant, SaltyTree reserves the right to immediately modify, restrict, or terminate your access to our services without liability. If any provision of these terms is found to be unlawful or unenforceable under local law, that specific provision shall be severed, and the remaining terms shall continue in full force and effect.</p>
                             </div>
                         </div>
 
                         <!-- Chinese 10 Points -->
-                        <div class="space-y-6 text-salty-800 pr-2">
-                            <h4 class="font-bold text-salty-900 text-sm pb-2 border-b border-salty-200">完整條款與免責聲明</h4>
+                        <div class="space-y-6 text-salty-slate pr-2 leading-relaxed">
+                            <h4 class="font-bold text-salty-darkgreen text-sm pb-2 border-b border-salty-green/10 font-optima">完整條款與免責聲明</h4>
                             
                             <div>
-                                <h5 class="font-bold text-salty-950 mb-1">1. 僅供資訊與教育目的</h5>
-                                <p>本網站提供之所有公開內容，包括文字、圖表、公開藝術提示、圖片、練習及部落格文章，僅供一般資訊與教育目的使用。本網站之所有內容均屬鹽樹之知識產權，並受香港版權法保護；未經明確書面許可，不得進行複製、重新分發 or 用於商業用途。此內容旨在介紹治療性藝術與創意表達的概念，不應被用作自我診斷工具或臨床干預。</p>
+                                <h5 class="font-bold text-salty-darkgreen mb-1 font-optima">1. 僅供資訊與教育目的</h5>
+                                <p>本網站提供之所有公開內容，包括文字、圖表、公開藝術提示、圖片、練習及部落格文章，僅供一般資訊與教育目的使用。本網站之所有內容均屬鹽樹之知識產權，並受香港版權法保護；未經明確書面許可，不得進行複製、重新分發或用於商業用途。</p>
                             </div>
 
                             <div>
-                                <h5 class="font-bold text-salty-950 mb-1">2. 無治療師與個案關係</h5>
+                                <h5 class="font-bold text-salty-darkgreen mb-1 font-optima">2. 無治療師與個案關係</h5>
                                 <p>您對本網站的瀏覽、下載資料、使用公開提示，或透過網站聯絡表單、電子郵件、社交媒體與鹽樹（SaltyTree）及其執業者進行任何溝通，均不構成正式的治療師與客戶（個案）關係。正式且受保護的臨床服務關係（受 AThR 專業倫理框架規範），僅在完成初始諮詢評估、確認所在地地點與符合區域法規資格，並由雙方共同簽署正式的臨床服務協議後，方始建立。</p>
                             </div>
 
                             <div>
-                                <h5 class="font-bold text-salty-950 mb-1">3. 不可替代心理健康治療</h5>
+                                <h5 class="font-bold text-salty-darkgreen mb-1 font-optima">3. 不可替代心理健康治療</h5>
                                 <p>本網站之公開資源不可替代專業的臨床建議、個別化心理治療、醫療諮商或精神科治療。若有任何嚴重的心理症狀或醫療狀況，請務必尋求合格且具備當地執照的心理健康照護人員或醫生的建議。</p>
                             </div>
 
                             <div>
-                                <h5 class="font-bold text-salty-950 mb-1">4. 風險承擔與個人責任</h5>
+                                <h5 class="font-bold text-salty-darkgreen mb-1 font-optima">4. 風險承擔與個人責任</h5>
                                 <p>參與創意藝術與情感探索有時可能會引發強烈的情緒或記憶。當您使用本網站的藝術提示或練習時，即代表您自願承擔與此類活動相關的所有風險。對於您獨立使用本網站數位內容所導致的任何情緒困擾，鹽樹不承擔任何法律責任。</p>
                             </div>
 
                             <div>
-                                <h5 class="font-bold text-salty-950 mb-1">5. 遠距傳輸技術與連線中斷免責 (IT 安全條款)</h5>
+                                <h5 class="font-bold text-salty-darkgreen mb-1 font-optima">5. 遠距傳輸技術與連線中斷免責 (IT 安全條款)</h5>
                                 <p>鹽樹利用數位第三方視訊軟體、預約引擎及網路基礎設施來提供線上服務。個案理解並同意，數位傳輸可能會遇到連線中斷、軟體延遲、伺服器停機以及超出控制範圍的技術干擾。鹽樹對於因突發軟體或網路故障而導致的任何行程延誤、會談中斷或衍生之情緒困擾，概不承擔任何法律責任。</p>
                             </div>
 
                             <div>
-                                <h5 class="font-bold text-salty-950 mb-1">6. 網路安全與資料洩漏之固有風險 (IT 安全條款)</h5>
+                                <h5 class="font-bold text-salty-darkgreen mb-1 font-optima">6. 網路安全與資料洩漏之固有風險 (IT 安全條款)</h5>
                                 <p>儘管鹽樹與符合醫療合規性的執業管理系統合作以保護您的紀錄，但沒有任何透過網際網路或雲端儲存網路的數位傳輸能被保證百分之百安全。透過本平台或電子郵件管道填寫表格、上傳檔案或傳輸資料，即代表您自願承認網路通訊的固有安全風險，並同意鹽樹對於在我們直接本地系統之外發生的未經授權之第三方攔截或網路入侵，概不承擔任何法律責任。</p>
                             </div>
 
                             <div>
-                                <h5 class="font-bold text-salty-950 mb-1">7. 禁止繞過地理阻擋機制 (IT 安全條款)</h5>
+                                <h5 class="font-bold text-salty-darkgreen mb-1 font-optima">7. 禁止繞過地理阻擋機制 (IT 安全條款)</h5>
                                 <p>鹽樹實施地理阻擋系統以符合跨境遠距服務邊界之規定。凡透過虛擬私人網路（VPN）、代理伺服器或虛假地址宣告來繞過這些自動化地理限制以存取我們的預約系統或參與會談，皆構成直接違約。若個案在接受服務期間故意隱瞞其真實物理位置，即同意使鹽樹免受任何隨之而來的法規行動或法律不合規處罰，並承擔相關賠償責任。</p>
                             </div>
 
                             <div>
-                                <h5 class="font-bold text-salty-950 mb-1">8. 網站數據分析與追蹤（Cookies 與 IP 地址）</h5>
+                                <h5 class="font-bold text-salty-darkgreen mb-1 font-optima">8. 網站數據分析與追蹤（Cookies 與 IP 地址）</h5>
                                 <p>本網站會自動收集標準的、非識別性的技術數據（例如您的 IP 地址、瀏覽器類型和 Cookies），此行為純粹用於網站優化與流量統計分析。我們不會使用這些技術數據來識別個人訪客，亦不會將其分享給第三方用於行銷目的。</p>
                             </div>
 
                             <div>
-                                <h5 class="font-bold text-salty-950 mb-1">9. 準據法與管轄權</h5>
+                                <h5 class="font-bold text-salty-darkgreen mb-1 font-optima">9. 準據法與管轄權</h5>
                                 <p>本條款及您對本網站的使用，均以中華人民共和國香港特別行政區（香港特區）之法律為準據法，並依其解釋，不適用其法律衝突原則。任何與本網站或我們服務相關的法律訴訟或程序，均應專屬管轄於香港特別行政區具有管轄權之法院。</p>
                             </div>
 
                             <div>
-                                <h5 class="font-bold text-salty-950 mb-1">10. 符合當地法律與條款可分性</h5>
+                                <h5 class="font-bold text-salty-darkgreen mb-1 font-optima">10. 符合當地法律與條款可分性</h5>
                                 <p>鹽樹（SaltyTree）於國際間運營，但並不保證其服務完全符合全球所有司法管轄區的當地法定要求。若您所在地區的遠距醫療、諮商或公司法規發生變更，導致我們的服務不再合規，鹽樹保留立即修改、限制或終止您使用我們服務的權利，且不承擔任何法律責任。若本條款之任何規定在當地法律下被認定為違法或不可執行，該特定規定應予割裂，其餘條款仍應具有完全之效力。</p>
                             </div>
                         </div>
@@ -856,40 +901,42 @@
 
         </section>
 
-        <!-- Contact Section -->
-        <section id="contact" class="scroll-mt-24 max-w-4xl mx-auto reveal-on-scroll">
-            <div class="bg-salty-100 border border-salty-200 rounded-tl-[80px] rounded-br-[80px] rounded-tr-[25px] rounded-bl-[10px] p-8 md:p-12 grid md:grid-cols-12 gap-12 items-start">
+        <!-- Contact Section with offset layout frames -->
+        <section id="contact" class="scroll-mt-24 max-w-4xl mx-auto reveal-on-scroll relative">
+            <div class="absolute -inset-2 bg-gradient-to-tr from-salty-teal/10 via-salty-yellow/5 to-salty-orange/10 rounded-tl-[80px] rounded-br-[80px] rounded-tr-[25px] rounded-bl-[10px] transform rotate-[-0.5deg] -z-10"></div>
+            
+            <div class="bg-white/40 border border-salty-green/10 rounded-tl-[80px] rounded-br-[80px] rounded-tr-[25px] rounded-bl-[10px] p-8 md:p-12 grid md:grid-cols-12 gap-12 items-start">
                 
                 <!-- Contact info -->
                 <div class="md:col-span-5 space-y-6">
                     <div>
-                        <span class="text-salty-500 font-bold uppercase tracking-[0.2em] text-[10px] block mb-2">
+                        <span class="text-salty-teal font-bold uppercase tracking-[0.2em] text-[10px] block mb-2 font-optima">
                             <span class="lang-en">Connect</span>
                             <span class="lang-zh">建立連結</span>
                         </span>
-                        <h2 class="text-3xl font-bold text-salty-900">
+                        <h2 class="text-3xl font-bold text-salty-darkgreen font-optima">
                             <span class="lang-en">Get in Touch</span>
                             <span class="lang-zh">聯絡我們</span>
                         </h2>
                     </div>
-                    <p class="text-salty-800 text-sm leading-relaxed font-light">
+                    <p class="text-salty-slate text-sm leading-relaxed font-light">
                         <span class="lang-en">Let's explore how artmaking can create a supportive space for your growth.</span>
                         <span class="lang-zh">讓我們一同探索藝術創作如何為您的成長建立支持性空間。</span>
                     </p>
 
                     <div class="space-y-4 pt-4 text-xs">
                         <!-- Direct Email Block Hidden/Modified During Maintenance -->
-                        <div class="bg-white p-4 rounded-tl-2xl rounded-br-2xl rounded-tr-md rounded-bl-sm border border-salty-200 flex flex-col justify-between space-y-2 hover:border-salty-500 transition duration-300 shadow-sm">
-                            <span class="text-[9px] font-bold text-amber-800 block uppercase tracking-wider">
+                        <div class="bg-white p-5 rounded-tl-2xl rounded-br-2xl rounded-tr-md rounded-bl-sm border border-salty-green/10 flex flex-col justify-between space-y-2 hover:border-salty-teal transition duration-300 shadow-sm">
+                            <span class="text-[9px] font-bold text-salty-orange block uppercase tracking-wider font-optima">
                                 <span class="lang-en">System Channels</span>
                                 <span class="lang-zh">系統渠道</span>
                             </span>
                             <div class="flex flex-col space-y-1">
-                                <span class="font-bold text-salty-900">
+                                <span class="font-bold text-salty-darkgreen font-optima">
                                     <span class="lang-en">Inquiries Temporarily Paused</span>
                                     <span class="lang-zh">電子渠道維護中</span>
                                 </span>
-                                <span class="text-[10px] text-salty-500 leading-normal font-light">
+                                <span class="text-[10px] text-salty-slate leading-normal font-light">
                                     <span class="lang-en">Our direct booking systems are undergoing standard corporate setup.</span>
                                     <span class="lang-zh">系統目前配合正式公司註冊程序調整，暫停直接郵件。</span>
                                 </span>
@@ -897,7 +944,7 @@
                         </div>
                         
                         <!-- Response text timeline edits -->
-                        <div class="text-salty-800/80 italic text-[11px] leading-relaxed font-light">
+                        <div class="text-salty-slate italic text-[11px] leading-relaxed font-light">
                             <span>
                                 <span class="lang-en">Registration notices and structural changes will be updated soon.</span>
                                 <span class="lang-zh">本網頁及系統將於完成註冊程序後第一時間重啟。</span>
@@ -907,35 +954,35 @@
                 </div>
 
                 <!-- Form block -->
-                <div class="md:col-span-7 bg-white p-6 md:p-8 rounded-tr-[60px] rounded-bl-[60px] rounded-tl-[15px] rounded-br-[10px] border border-salty-200 shadow-sm transition-all duration-300 hover:shadow-md">
+                <div class="md:col-span-7 bg-white p-6 md:p-8 rounded-tr-[60px] rounded-bl-[60px] rounded-tl-[15px] rounded-br-[10px] border border-salty-green/10 shadow-sm">
                     <div id="form-feedback" class="hidden mb-6 p-4 rounded-xl text-xs font-bold transition duration-300"></div>
                     
-                    <form id="contact-form" class="space-y-4 text-xs font-bold uppercase tracking-wider text-salty-800">
+                    <form id="contact-form" class="space-y-4 text-xs font-bold uppercase tracking-wider text-salty-slate font-optima">
                         <div>
-                            <label class="block mb-2" for="name">
+                            <label class="block mb-2 text-[10px]" for="name">
                                 <span class="lang-en">Your Name</span>
                                 <span class="lang-zh">您的姓名</span>
                             </label>
-                            <input type="text" id="name" name="name" required disabled class="w-full p-3.5 rounded border border-salty-200 bg-salty-50/50 outline-none transition duration-300 text-sm text-salty-900 tracking-normal font-light cursor-not-allowed">
+                            <input type="text" id="name" name="name" required disabled class="w-full p-3.5 rounded-full border border-salty-green/10 bg-salty-100/50 outline-none transition duration-300 text-sm text-salty-darkgreen tracking-normal font-light cursor-not-allowed">
                         </div>
                         <div>
-                            <label class="block mb-2" for="email">
+                            <label class="block mb-2 text-[10px]" for="email">
                                 <span class="lang-en">Email Address</span>
                                 <span class="lang-zh">電子郵件地址</span>
                             </label>
-                            <input type="email" id="email" name="email" required disabled class="w-full p-3.5 rounded border border-salty-200 bg-salty-50/50 outline-none transition duration-300 text-sm text-salty-900 tracking-normal font-light cursor-not-allowed">
+                            <input type="email" id="email" name="email" required disabled class="w-full p-3.5 rounded-full border border-salty-green/10 bg-salty-100/50 outline-none transition duration-300 text-sm text-salty-darkgreen tracking-normal font-light cursor-not-allowed">
                         </div>
                         <div>
-                            <label class="block mb-2" for="message">
+                            <label class="block mb-2 text-[10px]" for="message">
                                 <span class="lang-en">Message or Inquiry</span>
-                                <span class="lang-zh">您的訊息或諮詢</span>
+                                <span class="lang-zh">您的訊息 or 諮詢</span>
                             </label>
-                            <textarea id="message" name="message" rows="4" required disabled class="w-full p-3.5 rounded border border-salty-200 bg-salty-50/50 outline-none transition duration-300 text-sm text-salty-900 tracking-normal font-light cursor-not-allowed"></textarea>
+                            <textarea id="message" name="message" rows="4" required disabled class="w-full p-3.5 rounded-2xl border border-salty-green/10 bg-salty-100/50 outline-none transition duration-300 text-sm text-salty-darkgreen tracking-normal font-light cursor-not-allowed"></textarea>
                         </div>
 
-                        <!-- Contact Form Safeguard Warning Alert Box -->
-                        <div class="p-4 bg-amber-50 border-l-4 border-amber-500 rounded-r-md text-salty-800 font-light normal-case tracking-normal text-[11px] leading-relaxed space-y-2">
-                            <div class="font-bold text-amber-800 text-xs flex items-center gap-1.5 uppercase tracking-wider">
+                        <!-- Contact Form Safeguard Warning Alert Box with vibrant orange saturation -->
+                        <div class="p-4 bg-salty-orange/15 border-l-4 border-salty-orange rounded-r-xl text-salty-slate font-light normal-case tracking-normal text-[11px] leading-relaxed space-y-2 shadow-sm">
+                            <div class="font-bold text-salty-orange text-xs flex items-center gap-1.5 uppercase tracking-wider font-optima">
                                 <span>⚠️ Important Notice / 緊急通知</span>
                             </div>
                             <div class="space-y-2">
@@ -944,7 +991,7 @@
                             </div>
                         </div>
 
-                        <button type="submit" id="submit-btn" class="w-full bg-salty-200/80 text-salty-500 py-4 rounded-tl-xl rounded-br-xl uppercase tracking-widest font-bold cursor-not-allowed" disabled>
+                        <button type="submit" id="submit-btn" class="w-full bg-salty-green/20 text-salty-green/60 py-4 rounded-full uppercase tracking-widest font-bold cursor-not-allowed" disabled>
                             <span class="lang-en">Submissions Temporarily Disabled</span>
                             <span class="lang-zh">聯絡渠道暫停使用</span>
                         </button>
@@ -957,38 +1004,38 @@
     </main>
 
     <!-- Footer Section -->
-    <footer class="bg-salty-100 text-salty-800 border-t border-salty-500/10 font-light">
+    <footer class="bg-salty-100 text-salty-slate border-t border-salty-green/10 font-light relative z-10">
         <div class="max-w-6xl mx-auto px-6 py-10 flex flex-col md:flex-row justify-between items-center text-xs gap-6">
             <div class="space-y-1 text-center md:text-left">
-                <span class="text-salty-900 font-bold tracking-wider block">SaltyTree Art Therapy</span>
+                <span class="text-salty-darkgreen font-bold tracking-wider block font-optima">SaltyTree Art Therapy</span>
             </div>
 
-            <!-- Bottom Legal Navigation Footer links -->
-            <div class="flex flex-col sm:flex-row gap-4 items-center">
-                <a href="#legal-center" class="border-grow hover:text-salty-900 tracking-wider uppercase text-[10px] text-salty-800 font-bold py-1">
+            <!-- Bottom Legal Navigation Footer links (with exact ordered links) -->
+            <div class="flex flex-col sm:flex-row gap-4 items-center font-optima text-[10px]">
+                <a href="#legal-center" class="border-grow hover:text-salty-teal tracking-wider uppercase font-bold py-1">
                     <span class="lang-en">Scope & Privacy</span>
                     <span class="lang-zh">服務範圍與隱私</span>
                 </a>
-                <span class="text-salty-200 hidden sm:inline">|</span>
-                <a href="#legal-center" onclick="expandLegalDisclaimer()" class="border-grow hover:text-salty-900 tracking-wider uppercase text-[10px] text-salty-800 font-bold py-1">
+                <span class="text-salty-green/20 hidden sm:inline">|</span>
+                <a href="#legal-center" onclick="expandLegalDisclaimer()" class="border-grow hover:text-salty-teal tracking-wider uppercase font-bold py-1">
                     Complete Disclaimer
                 </a>
-                <span class="text-salty-200 hidden sm:inline">|</span>
-                <a href="#legal-center" onclick="expandPrivacyPolicy()" class="border-grow hover:text-salty-900 tracking-wider uppercase text-[10px] text-salty-800 font-bold py-1">
+                <span class="text-salty-green/20 hidden sm:inline">|</span>
+                <a href="#legal-center" onclick="expandPrivacyPolicy()" class="border-grow hover:text-salty-teal tracking-wider uppercase font-bold py-1">
                     Privacy Policy
                 </a>
-                <span class="text-salty-200 hidden sm:inline">|</span>
-                <a href="https://anzacata.org/Sys/PublicProfile/96632131/7111800" target="_blank" rel="noopener noreferrer" class="border-grow hover:text-salty-900 tracking-wider uppercase text-[10px] text-salty-800 font-bold py-1">
+                <span class="text-salty-green/20 hidden sm:inline">|</span>
+                <a href="https://anzacata.org/Sys/PublicProfile/96632131/7111800" target="_blank" rel="noopener noreferrer" class="border-grow hover:text-salty-teal tracking-wider uppercase font-bold py-1">
                     ANZACATA AThR Directory
                 </a>
-                <span class="text-salty-200 hidden sm:inline">|</span>
-                <a href="https://www.hkaat.com/zh/find-an-art-therapist/chan%2C-yan-tsz-(beverly)" target="_blank" rel="noopener noreferrer" class="border-grow hover:text-salty-900 tracking-wider uppercase text-[10px] text-salty-800 font-bold py-1">
+                <span class="text-salty-green/20 hidden sm:inline">|</span>
+                <a href="https://www.hkaat.com/zh/find-an-art-therapist/chan%2C-yan-tsz-(beverly)" target="_blank" rel="noopener noreferrer" class="border-grow hover:text-salty-teal tracking-wider uppercase font-bold py-1">
                     HKAAT Profile
                 </a>
             </div>
         </div>
 
-        <div class="border-t border-salty-500/10 max-w-6xl mx-auto px-6 py-8 flex flex-col sm:flex-row justify-between items-center text-[10px] text-salty-500 gap-4 uppercase tracking-widest font-bold">
+        <div class="border-t border-salty-green/10 max-w-6xl mx-auto px-6 py-8 flex flex-col sm:flex-row justify-between items-center text-[10px] text-salty-slate/60 gap-4 uppercase tracking-widest font-bold font-optima">
             <span>&copy; 2026 SaltyTree Art Therapy. All rights reserved.</span>
             <span>
                 <span class="lang-en">Art Therapist Beverly Chan</span>
@@ -998,6 +1045,7 @@
     </footer>
 
     <script>
+        // Drawing prompts configuration
         const promptsEn = [
             "Draw a tree on coastal sand. Draw its deep roots navigating stones to reach nourishment.",
             "Recall a comfortable sensory memory. Draw only the colors, shapes, or textures of that space."
@@ -1016,19 +1064,23 @@
 
         function updatePromptDisplay() {
             const activeList = currentLang === 'en' ? promptsEn : promptsZh;
-            activePromptEl.classList.add('opacity-0');
-            
-            setTimeout(() => {
-                activePromptEl.textContent = activeList[currentPromptIndex];
-                activePromptEl.classList.remove('opacity-0');
-                activePromptEl.classList.add('transition-opacity', 'duration-300', 'opacity-100');
-            }, 200);
+            if (activePromptEl) {
+                activePromptEl.classList.add('opacity-0');
+                
+                setTimeout(() => {
+                    activePromptEl.textContent = activeList[currentPromptIndex];
+                    activePromptEl.classList.remove('opacity-0');
+                    activePromptEl.classList.add('transition-opacity', 'duration-300', 'opacity-100');
+                }, 200);
+            }
         }
 
-        generatePromptBtn.addEventListener('click', () => {
-            currentPromptIndex = currentPromptIndex === 0 ? 1 : 0;
-            updatePromptDisplay();
-        });
+        if (generatePromptBtn) {
+            generatePromptBtn.addEventListener('click', () => {
+                currentPromptIndex = currentPromptIndex === 0 ? 1 : 0;
+                updatePromptDisplay();
+            });
+        }
 
         // Breathing Circle Guide with theme phrases
         const breathingText = document.getElementById('breathing-text');
@@ -1066,14 +1118,14 @@
                 currentLang = 'zh';
                 document.body.classList.remove('lang-en-active');
                 document.body.classList.add('lang-zh-active');
-                langToggleBtn.querySelector('span').textContent = 'English';
-                langToggleBtnMobile.querySelector('span').textContent = 'EN';
+                if (langToggleBtn) langToggleBtn.querySelector('span').textContent = 'English';
+                if (langToggleBtnMobile) langToggleBtnMobile.querySelector('span').textContent = 'EN';
             } else {
                 currentLang = 'en';
                 document.body.classList.remove('lang-zh-active');
                 document.body.classList.add('lang-en-active');
-                langToggleBtn.querySelector('span').textContent = '繁體中文';
-                langToggleBtnMobile.querySelector('span').textContent = '繁';
+                if (langToggleBtn) langToggleBtn.querySelector('span').textContent = '繁體中文';
+                if (langToggleBtnMobile) langToggleBtnMobile.querySelector('span').textContent = '繁';
             }
             
             updatePromptDisplay();
@@ -1082,99 +1134,114 @@
             breathingInterval = setInterval(runBreathingGuide, 8000);
         }
 
-        langToggleBtn.addEventListener('click', toggleLanguage);
-        langToggleBtnMobile.addEventListener('click', toggleLanguage);
+        if (langToggleBtn) langToggleBtn.addEventListener('click', toggleLanguage);
+        if (langToggleBtnMobile) langToggleBtnMobile.addEventListener('click', toggleLanguage);
 
         // Disabled form submit handler
         const contactForm = document.getElementById('contact-form');
         const formFeedback = document.getElementById('form-feedback');
 
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            formFeedback.classList.remove('hidden', 'bg-emerald-50', 'text-emerald-800');
-            formFeedback.classList.add('bg-amber-50', 'text-amber-800', 'border', 'border-amber-200');
-            if (currentLang === 'en') {
-                formFeedback.innerHTML = `<p class="font-bold">Notice:</p><p class="mt-1">Digital messaging and intake bookings are temporarily suspended while SaltyTree undergoes corporate registration. Please check back soon.</p>`;
-            } else {
-                formFeedback.innerHTML = `<p class="font-bold">通知：</p><p class="mt-1">配合鹽樹（SaltyTree）目前正在辦理之正式公司註冊程序，本網站電子通訊渠道與預約服務暫停使用。敬請期待重啟。</p>`;
-            }
-        });
+        if (contactForm) {
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                if (formFeedback) {
+                    formFeedback.classList.remove('hidden', 'bg-emerald-50', 'text-emerald-800');
+                    formFeedback.classList.add('bg-amber-50', 'text-amber-800', 'border', 'border-amber-200');
+                    if (currentLang === 'en') {
+                        formFeedback.innerHTML = `<p class="font-bold font-optima">Notice:</p><p class="mt-1">Digital messaging and intake bookings are temporarily suspended while SaltyTree undergoes corporate registration. Please check back soon.</p>`;
+                    } else {
+                        formFeedback.innerHTML = `<p class="font-bold font-optima">通知：</p><p class="mt-1">配合鹽樹（SaltyTree）目前正在辦理之正式公司註冊程序，本網站電子通訊渠道與預約服務暫停使用。敬請期待重啟。</p>`;
+                    }
+                }
+            });
+        }
 
         // Mobile Menu drawers
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
 
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-
-        const navLinks = mobileMenu.querySelectorAll('a');
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
+        if (mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
             });
-        });
+
+            const navLinks = mobileMenu.querySelectorAll('a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+        }
 
         // Expanded legal center controls
         const legalExpandBtn = document.getElementById('legal-expand-btn');
         const legalContent = document.getElementById('legal-expanded-content');
 
-        legalExpandBtn.addEventListener('click', () => {
-            const isHidden = legalContent.classList.contains('hidden');
-            if (isHidden) {
-                legalContent.classList.remove('hidden');
-                legalExpandBtn.querySelector('.lang-en').textContent = 'Hide Complete Terms';
-                legalExpandBtn.querySelector('.lang-zh').textContent = '隱藏完整條款';
-            } else {
-                legalContent.classList.add('hidden');
-                legalExpandBtn.querySelector('.lang-en').textContent = 'Show Complete Terms';
-                legalExpandBtn.querySelector('.lang-zh').textContent = '顯示完整條款';
-            }
-        });
+        if (legalExpandBtn && legalContent) {
+            legalExpandBtn.addEventListener('click', () => {
+                const isHidden = legalContent.classList.contains('hidden');
+                if (isHidden) {
+                    legalContent.classList.remove('hidden');
+                    legalExpandBtn.querySelector('.lang-en').textContent = 'Hide Complete Terms';
+                    legalExpandBtn.querySelector('.lang-zh').textContent = '隱藏完整條款';
+                } else {
+                    legalContent.classList.add('hidden');
+                    legalExpandBtn.querySelector('.lang-en').textContent = 'Show Complete Terms';
+                    legalExpandBtn.querySelector('.lang-zh').textContent = '顯示完整條款';
+                }
+            });
+        }
 
         const privacyExpandBtn = document.getElementById('privacy-expand-btn');
         const privacyContent = document.getElementById('privacy-expanded-content');
 
-        privacyExpandBtn.addEventListener('click', () => {
-            const isHidden = privacyContent.classList.contains('hidden');
-            if (isHidden) {
-                privacyContent.classList.remove('hidden');
-                privacyExpandBtn.querySelector('.lang-en').textContent = 'Hide Privacy Policy';
-                privacyExpandBtn.querySelector('.lang-zh').textContent = '隱藏隱私政策';
-            } else {
-                privacyContent.classList.add('hidden');
-                privacyExpandBtn.querySelector('.lang-en').textContent = 'Show Privacy Policy';
-                privacyExpandBtn.querySelector('.lang-zh').textContent = '顯示隱私政策';
-            }
-        });
+        if (privacyExpandBtn && privacyContent) {
+            privacyExpandBtn.addEventListener('click', () => {
+                const isHidden = privacyContent.classList.contains('hidden');
+                if (isHidden) {
+                    privacyContent.classList.remove('hidden');
+                    privacyExpandBtn.querySelector('.lang-en').textContent = 'Hide Privacy Policy';
+                    privacyExpandBtn.querySelector('.lang-zh').textContent = '隱藏隱私政策';
+                } else {
+                    privacyContent.classList.add('hidden');
+                    privacyExpandBtn.querySelector('.lang-en').textContent = 'Show Privacy Policy';
+                    privacyExpandBtn.querySelector('.lang-zh').textContent = '顯示隱私政策';
+                }
+            });
+        }
 
         function expandLegalDisclaimer() {
-            legalContent.classList.remove('hidden');
-            document.getElementById('legal-expand-btn').querySelector('.lang-en').textContent = 'Hide Complete Terms';
-            document.getElementById('legal-expand-btn').querySelector('.lang-zh').textContent = '隱藏完整條款';
+            if (legalContent && legalExpandBtn) {
+                legalContent.classList.remove('hidden');
+                legalExpandBtn.querySelector('.lang-en').textContent = 'Hide Complete Terms';
+                legalExpandBtn.querySelector('.lang-zh').textContent = '隱藏完整條款';
+            }
         }
 
         function expandPrivacyPolicy() {
-            privacyContent.classList.remove('hidden');
-            document.getElementById('privacy-expand-btn').querySelector('.lang-en').textContent = 'Hide Privacy Policy';
-            document.getElementById('privacy-expand-btn').querySelector('.lang-zh').textContent = '隱藏隱私政策';
+            if (privacyContent && privacyExpandBtn) {
+                privacyContent.classList.remove('hidden');
+                privacyExpandBtn.querySelector('.lang-en').textContent = 'Hide Privacy Policy';
+                privacyExpandBtn.querySelector('.lang-zh').textContent = '隱藏隱私政策';
+            }
         }
 
-        // Interactive Spawner Logic with customized color selection
+        // Interactive Spawner Logic with exact Pantone color selection
         const container = document.getElementById('interactive-tree-container');
         const svg = document.getElementById('salty-tree-svg');
         const dynamicGroup = document.getElementById('dynamic-leaves-group');
 
+        // Leaf colors aligned with Pantone hex color definitions (Increased Saturation opacities)
         const leafColors = [
-            '#FFA500', // Sunny Warm Orange
-            '#20B2AA', // Quiet Ocean Sea Green
-            '#006400', // Deep Forest Green
-            '#FFD700', // Radiant Gold Highlight
-            '#fff9e6', // Pale Champagne Gold Tint
-            '#032c03'  // Shadow Pine Highlight
+            '#1EC1CB', // Coastal Water Teal
+            '#4D8B31', // Vibrant Leaf Green
+            '#FFC800', // Warm Sun Gold
+            '#FF8427', // Vibrant Spark Orange
+            '#FFFFFF'  // White Accent
         ];
 
         function addLeaf(x, y) {
+            if (!dynamicGroup) return;
             const colorIndex = Math.floor(Math.random() * leafColors.length);
             const color = leafColors[colorIndex];
             const radius = Math.random() * 4.5 + 4;
@@ -1184,7 +1251,7 @@
             circle.setAttribute("cy", y);
             circle.setAttribute("r", "0");
             circle.setAttribute("fill", color);
-            circle.setAttribute("opacity", (Math.random() * 0.2 + 0.75).toString());
+            circle.setAttribute("opacity", (Math.random() * 0.1 + 0.88).toString()); // More saturated opacity
             circle.setAttribute("class", "interactive-leaf");
             
             dynamicGroup.appendChild(circle);
@@ -1195,6 +1262,7 @@
         }
 
         function handleSpawningClick(event) {
+            if (!svg) return;
             const rect = svg.getBoundingClientRect();
             const clientX = event.clientX || (event.touches && event.touches[0].clientX);
             const clientY = event.clientY || (event.touches && event.touches[0].clientY);
@@ -1212,20 +1280,25 @@
             }
         }
 
-        container.addEventListener('click', handleSpawningClick);
-        container.addEventListener('touchstart', handleSpawningClick, { passive: true });
+        if (container) {
+            container.addEventListener('click', handleSpawningClick);
+            container.addEventListener('touchstart', handleSpawningClick, { passive: true });
+        }
 
         const resetTreeBtn = document.getElementById('reset-tree-btn');
-        resetTreeBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            dynamicGroup.innerHTML = '';
-        });
-        resetTreeBtn.addEventListener('touchstart', (e) => {
-            e.stopPropagation();
-            dynamicGroup.innerHTML = '';
-        });
+        if (resetTreeBtn) {
+            resetTreeBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                if (dynamicGroup) dynamicGroup.innerHTML = '';
+            });
+            resetTreeBtn.addEventListener('touchstart', (e) => {
+                e.stopPropagation();
+                if (dynamicGroup) dynamicGroup.innerHTML = '';
+            });
+        }
 
         function downloadArtwork() {
+            if (!svg) return;
             const clonedSvg = svg.cloneNode(true);
             const style = document.createElementNS("http://www.w3.org/2000/svg", "style");
             style.textContent = `
@@ -1254,42 +1327,40 @@
             document.body.removeChild(downloadLink);
         }
 
-        // Therapeutic Journey Visualizer State Configs with refined poetic configurations
+        // Therapeutic Journey Visualizer State Configs with saturated color values
         const journeyStates = {
             storm: {
                 stormOpacity: "0.95",
                 tableOpacity: "0.0",
                 sunbeamOpacity: "0.0",
                 circles: [
-                    // Scattered, turbulent positions matching overwhelming/unexplainable numbness and storm
-                    { cx: 60,  cy: 80,  r: 12, fill: "#324538", opacity: 0.8 },
-                    { cx: 160, cy: 190, r: 18, fill: "#20B2AA", opacity: 0.7 },
-                    { cx: 290, cy: 70,  r: 15, fill: "#032c03", opacity: 0.85 },
-                    { cx: 110, cy: 230, r: 14, fill: "#324538", opacity: 0.75 },
-                    { cx: 340, cy: 160, r: 22, fill: "#006400", opacity: 0.6 },
-                    { cx: 80,  cy: 160, r: 10, fill: "#20B2AA", opacity: 0.8 },
-                    { cx: 230, cy: 220, r: 16, fill: "#032c03", opacity: 0.8 },
-                    { cx: 210, cy: 70,  r: 13, fill: "#20B2AA", opacity: 0.7 },
-                    { cx: 140, cy: 100, r: 15, fill: "#006400", opacity: 0.65 },
-                    { cx: 270, cy: 130, r: 19, fill: "#324538", opacity: 0.75 }
+                    { cx: 60,  cy: 80,  r: 12, fill: "#4D8B31", opacity: 0.95 },
+                    { cx: 160, cy: 190, r: 18, fill: "#1EC1CB", opacity: 0.9 },
+                    { cx: 290, cy: 70,  r: 15, fill: "#2A521B", opacity: 0.95 },
+                    { cx: 110, cy: 230, r: 14, fill: "#4D8B31", opacity: 0.9 },
+                    { cx: 340, cy: 160, r: 22, fill: "#1EC1CB", opacity: 0.85 },
+                    { cx: 80,  cy: 160, r: 10, fill: "#1EC1CB", opacity: 0.95 },
+                    { cx: 230, cy: 220, r: 16, fill: "#2A521B", opacity: 0.9 },
+                    { cx: 210, cy: 70,  r: 13, fill: "#1EC1CB", opacity: 0.9 },
+                    { cx: 140, cy: 100, r: 15, fill: "#4D8B31", opacity: 0.85 },
+                    { cx: 270, cy: 130, r: 19, fill: "#2A521B", opacity: 0.9 }
                 ]
             },
             table: {
-                stormOpacity: "0.1",
+                stormOpacity: "0.15",
                 tableOpacity: "0.95",
                 sunbeamOpacity: "0.0",
                 circles: [
-                    // Neat layout aligned within the table canvas frame (resting safely as art)
-                    { cx: 100, cy: 110, r: 12, fill: "#20B2AA", opacity: 0.9 },
-                    { cx: 130, cy: 110, r: 12, fill: "#20B2AA", opacity: 0.9 },
-                    { cx: 160, cy: 110, r: 12, fill: "#006400", opacity: 0.9 },
-                    { cx: 190, cy: 110, r: 12, fill: "#006400", opacity: 0.9 },
-                    { cx: 220, cy: 110, r: 12, fill: "#FFA500", opacity: 0.9 },
-                    { cx: 250, cy: 110, r: 12, fill: "#FFA500", opacity: 0.9 },
-                    { cx: 280, cy: 110, r: 12, fill: "#FFD700", opacity: 0.9 },
-                    { cx: 150, cy: 140, r: 10, fill: "#324538", opacity: 0.8 },
-                    { cx: 200, cy: 140, r: 10, fill: "#324538", opacity: 0.8 },
-                    { cx: 250, cy: 140, r: 10, fill: "#324538", opacity: 0.8 }
+                    { cx: 100, cy: 110, r: 12, fill: "#1EC1CB", opacity: 0.95 },
+                    { cx: 130, cy: 110, r: 12, fill: "#1EC1CB", opacity: 0.95 },
+                    { cx: 160, cy: 110, r: 12, fill: "#4D8B31", opacity: 0.95 },
+                    { cx: 190, cy: 110, r: 12, fill: "#4D8B31", opacity: 0.95 },
+                    { cx: 220, cy: 110, r: 12, fill: "#FFC800", opacity: 0.95 },
+                    { cx: 250, cy: 110, r: 12, fill: "#FFC800", opacity: 0.95 },
+                    { cx: 280, cy: 110, r: 12, fill: "#FF8427", opacity: 0.95 },
+                    { cx: 150, cy: 140, r: 10, fill: "#2A521B", opacity: 0.9 },
+                    { cx: 200, cy: 140, r: 10, fill: "#2A521B", opacity: 0.9 },
+                    { cx: 250, cy: 140, r: 10, fill: "#2A521B", opacity: 0.9 }
                 ]
             },
             sunbeams: {
@@ -1297,27 +1368,31 @@
                 tableOpacity: "0.0",
                 sunbeamOpacity: "0.95",
                 circles: [
-                    // Nestled beautifully around the branches blooming like shining foliage
-                    { cx: 200, cy: 45,  r: 24, fill: "#FFD700", opacity: 0.95 }, 
-                    { cx: 195, cy: 90,  r: 14, fill: "#20B2AA", opacity: 0.85 },
-                    { cx: 145, cy: 120, r: 12, fill: "#006400", opacity: 0.9 },
-                    { cx: 255, cy: 105, r: 13, fill: "#FFA500", opacity: 0.9 },
-                    { cx: 165, cy: 135, r: 11, fill: "#FFD700", opacity: 0.85 },
-                    { cx: 235, cy: 115, r: 11, fill: "#FFA500", opacity: 0.85 },
-                    { cx: 180, cy: 110, r: 10, fill: "#006400", opacity: 0.9 },
-                    { cx: 215, cy: 120, r: 10, fill: "#20B2AA", opacity: 0.9 },
-                    { cx: 130, cy: 130, r: 9,  fill: "#FFD700", opacity: 0.8 },
-                    { cx: 270, cy: 115, r: 9,  fill: "#FFA500", opacity: 0.8 }
+                    { cx: 200, cy: 45,  r: 24, fill: "#FFC800", opacity: 0.95 }, 
+                    { cx: 195, cy: 90,  r: 14, fill: "#1EC1CB", opacity: 0.9 },
+                    { cx: 145, cy: 120, r: 12, fill: "#4D8B31", opacity: 0.95 },
+                    { cx: 255, cy: 105, r: 13, fill: "#FF8427", opacity: 0.95 },
+                    { cx: 165, cy: 135, r: 11, fill: "#FFC800", opacity: 0.9 },
+                    { cx: 235, cy: 115, r: 11, fill: "#FF8427", opacity: 0.9 },
+                    { cx: 180, cy: 110, r: 10, fill: "#4D8B31", opacity: 0.95 },
+                    { cx: 215, cy: 120, r: 10, fill: "#1EC1CB", opacity: 0.95 },
+                    { cx: 130, cy: 130, r: 9,  fill: "#FFC800", opacity: 0.9 },
+                    { cx: 270, cy: 115, r: 9,  fill: "#FF8427", opacity: 0.9 }
                 ]
             }
         };
 
         function setVisualizerState(stateName) {
             const state = journeyStates[stateName];
+            if (!state) return;
             
-            document.getElementById("journey-storm-lines").setAttribute("opacity", state.stormOpacity);
-            document.getElementById("journey-table-frame").setAttribute("opacity", state.tableOpacity);
-            document.getElementById("journey-sunbeam-lines").setAttribute("opacity", state.sunbeamOpacity);
+            const stormLines = document.getElementById("journey-storm-lines");
+            const tableFrame = document.getElementById("journey-table-frame");
+            const sunbeamLines = document.getElementById("journey-sunbeam-lines");
+
+            if (stormLines) stormLines.setAttribute("opacity", state.stormOpacity);
+            if (tableFrame) tableFrame.setAttribute("opacity", state.tableOpacity);
+            if (sunbeamLines) sunbeamLines.setAttribute("opacity", state.sunbeamOpacity);
 
             state.circles.forEach((cData, i) => {
                 const el = document.getElementById(`jc-${i}`);
@@ -1332,10 +1407,12 @@
 
             ['storm', 'table', 'sunbeams'].forEach((st, idx) => {
                 const btn = document.getElementById(`btn-step-${idx + 1}`);
-                if (st === stateName) {
-                    btn.className = "px-4 py-2 text-[10px] font-bold uppercase tracking-wider rounded-tl-md rounded-br-md border transition duration-300 bg-salty-900 text-salty-50 border-salty-900 hover:shadow-sm";
-                } else {
-                    btn.className = "px-4 py-2 text-[10px] font-bold uppercase tracking-wider rounded-tl-md rounded-br-md border transition duration-300 bg-white text-salty-800 border-salty-200 hover:border-salty-500 hover:bg-salty-50";
+                if (btn) {
+                    if (st === stateName) {
+                        btn.className = "px-5 py-2.5 text-[10px] font-bold uppercase tracking-wider rounded-full border transition duration-300 bg-salty-green text-white border-salty-green hover:shadow-md font-optima";
+                    } else {
+                        btn.className = "px-5 py-2.5 text-[10px] font-bold uppercase tracking-wider rounded-full border transition duration-300 bg-white text-salty-slate border-salty-green/20 hover:border-salty-teal hover:bg-salty-100 font-optima";
+                    }
                 }
             });
         }
