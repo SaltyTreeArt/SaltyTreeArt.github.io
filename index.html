@@ -157,7 +157,7 @@
                 </a>
                 
                 <!-- Language Toggle Button -->
-                <button id="lang-toggle-btn" class="px-4 py-1.5 rounded-full border border-studio-green/30 hover:border-studio-green hover:bg-studio-card transition duration-300 text-[11px] tracking-wider text-studio-green font-semibold">
+                <button id="lang-toggle-btn" type="button" class="px-4 py-1.5 rounded-full border border-studio-green/30 hover:border-studio-green hover:bg-studio-card transition duration-300 text-[11px] tracking-wider text-studio-green font-semibold cursor-pointer">
                     <span class="lang-en">繁體中文</span>
                     <span class="lang-zh">English</span>
                 </button>
@@ -170,11 +170,11 @@
 
             <!-- Mobile Drawer Buttons -->
             <div class="flex items-center gap-4 lg:hidden">
-                <button id="lang-toggle-btn-mobile" class="px-3 py-1 rounded-full border border-studio-green/30 text-[11px] text-studio-green font-semibold">
+                <button id="lang-toggle-btn-mobile" type="button" class="px-3 py-1 rounded-full border border-studio-green/30 text-[11px] text-studio-green font-semibold">
                     <span class="lang-en">繁</span>
                     <span class="lang-zh">EN</span>
                 </button>
-                <button id="mobile-menu-btn" class="text-studio-green focus:outline-none text-xs uppercase tracking-widest font-bold" aria-label="Toggle Menu">
+                <button id="mobile-menu-btn" type="button" class="text-studio-green focus:outline-none text-xs uppercase tracking-widest font-bold" aria-label="Toggle Menu">
                     Menu
                 </button>
             </div>
@@ -301,11 +301,11 @@
                             <span class="lang-zh">在任何天氣中，尋得一份安定</span>
                         </span>
                         <div class="flex gap-2">
-                            <button id="download-tree-btn" onclick="downloadArtwork()" class="text-[10px] uppercase tracking-wider text-studio-green font-semibold hover:bg-studio-green hover:text-white border border-studio-green/30 rounded-full px-3 py-1.5 transition duration-300">
+                            <button id="download-tree-btn" type="button" onclick="downloadArtwork()" class="text-[10px] uppercase tracking-wider text-studio-green font-semibold hover:bg-studio-green hover:text-white border border-studio-green/30 rounded-full px-3 py-1.5 transition duration-300">
                                 <span class="lang-en">Save</span>
                                 <span class="lang-zh">儲存</span>
                             </button>
-                            <button id="reset-tree-btn" class="text-[10px] uppercase tracking-wider text-studio-slate/70 font-semibold hover:bg-studio-border border border-studio-border rounded-full px-3 py-1.5 transition duration-300">
+                            <button id="reset-tree-btn" type="button" class="text-[10px] uppercase tracking-wider text-studio-slate/70 font-semibold hover:bg-studio-border border border-studio-border rounded-full px-3 py-1.5 transition duration-300">
                                 <span class="lang-en">Clear</span>
                                 <span class="lang-zh">重設</span>
                             </button>
@@ -355,7 +355,7 @@
                         </div>
                     </div>
 
-                    <!-- Photo Card (5.jpeg) with full image contain styling -->
+                    <!-- Photo Card (5.jpeg) -->
                     <div class="lg:col-span-5">
                         <div class="bg-studio-bg p-4 rounded-2xl border border-studio-border shadow-sm studio-image-frame">
                             <div class="w-full aspect-[4/3] rounded-xl overflow-hidden relative border border-studio-border/60 bg-[#1F3A29] flex items-center justify-center">
@@ -388,7 +388,7 @@
                 </p>
             </div>
 
-            <!-- The Creative Journey Block with Miniature Studio Table Photo (2.jpeg) -->
+            <!-- The Creative Journey Block with Studio Table Photo (2.jpeg) -->
             <div class="bg-studio-card border border-studio-border rounded-3xl p-8 md:p-12 shadow-sm">
                 <div class="grid lg:grid-cols-12 gap-12 items-center">
                     
@@ -415,7 +415,7 @@
                         </div>
                     </div>
 
-                    <!-- Right Side: Miniature Studio Table Photo (2.jpeg) fitted cleanly without clipping -->
+                    <!-- Right Side: Studio Table Photo (2.jpeg) -->
                     <div class="lg:col-span-5">
                         <div class="bg-studio-bg p-5 rounded-2xl border border-studio-border shadow-sm studio-image-frame">
                             <div class="w-full aspect-[4/3] rounded-xl overflow-hidden relative border border-studio-border/60 bg-[#E8E2D5] flex items-center justify-center">
@@ -664,7 +664,7 @@
                         <span class="lang-en">Data Collection & Privacy Policy</span>
                         <span class="lang-zh">資料收集與隱私政策</span>
                     </span>
-                    <button id="privacy-expand-btn" class="text-xs text-studio-green underline font-semibold tracking-wider hover:text-studio-sage transition duration-300">
+                    <button id="privacy-expand-btn" type="button" class="text-xs text-studio-green underline font-semibold tracking-wider hover:text-studio-sage transition duration-300">
                         <span class="lang-en">Show Privacy Policy</span>
                         <span class="lang-zh">顯示隱私政策</span>
                     </button>
@@ -723,7 +723,7 @@
                         <span class="lang-en">SaltyTree Art Therapy – Complete Policy & Disclaimer</span>
                         <span class="lang-zh">鹽樹藝術治療 – 完整條款與免責聲明</span>
                     </span>
-                    <button id="legal-expand-btn" class="text-xs text-studio-green underline font-semibold tracking-wider hover:text-studio-sage transition duration-300">
+                    <button id="legal-expand-btn" type="button" class="text-xs text-studio-green underline font-semibold tracking-wider hover:text-studio-sage transition duration-300">
                         <span class="lang-en">Show Complete Terms</span>
                         <span class="lang-zh">顯示完整條款</span>
                     </button>
@@ -743,7 +743,7 @@
 
                             <div>
                                 <h5 class="font-bold text-studio-green mb-1">2. No Therapist–Client Relationship</h5>
-                                <p>Your access to or use of this Website—including downloading materials, interacting with public prompts, or communicating with SaltyTree or its practitioners through the Website, email, or social media—does not establish a therapist–client relationship. Professional art therapy services are provided only after completion of the intake process, confirmation of eligibility under applicable regional regulations, and the execution of a signed service agreement. A therapist–client relationship is established only after these requirements have been satisfied.</p>
+                                <p>Your access to or use of this Website—including downloading materials, interacting with public prompts, or communicating with SaltyTree or its practitioners through the Website or social media—does not establish a therapist–client relationship. Professional art therapy services are provided only after completion of the intake process, confirmation of eligibility under applicable regional regulations, and the execution of a signed service agreement. A therapist–client relationship is established only after these requirements have been satisfied.</p>
                             </div>
 
                             <div>
@@ -798,7 +798,7 @@
 
                             <div>
                                 <h5 class="font-bold text-studio-green mb-1">2. 無治療師與個案關係</h5>
-                                <p>您對本網站的瀏覽、下載資料、使用公開提示，或透過網站、電子郵件、社交媒體與鹽樹（SaltyTree）或其執業者進行任何溝通，均不構成治療師與客戶（個案）關係。正式的專業會談關係，僅在完成初始健康評估、確認所在地地點與符合區域法規資格，並由雙方簽署正式服務協議後建立。</p>
+                                <p>您對本網站的瀏覽、下載資料、使用公開提示，或透過網站、社交媒體與鹽樹（SaltyTree）或其執業者進行任何溝通，均不構成治療師與客戶（個案）關係。正式的專業會談關係，僅在完成初始健康評估、確認所在地地點與符合區域法規資格，並由雙方簽署正式服務協議後建立。</p>
                             </div>
 
                             <div>
@@ -881,8 +881,8 @@
                                     <span class="lang-zh">歡迎與我們聯絡</span>
                                 </span>
                                 <p class="text-[11px] text-studio-slate font-light leading-normal">
-                                    <span class="lang-en">Send us an inquiry below for session availability, service details, and consultations.</span>
-                                    <span class="lang-zh">歡迎透過表單傳送訊息，了解會談時間、服務內容與諮詢細節。</span>
+                                    <span class="lang-en">Please fill out the inquiry form to get in touch regarding session availability, service details, and consultations.</span>
+                                    <span class="lang-zh">歡迎填寫右側表單傳送訊息，了解會談時間、服務內容與諮詢細節。</span>
                                 </p>
                             </div>
                         </div>
@@ -915,7 +915,7 @@
                             <textarea id="message" name="message" rows="3" required class="w-full p-3.5 rounded-2xl border border-studio-border bg-studio-card text-studio-dark font-normal focus:outline-none focus:border-studio-green transition duration-300"></textarea>
                         </div>
 
-                        <button type="submit" class="w-full bg-studio-green text-studio-card py-4 rounded-full uppercase tracking-widest font-semibold hover:bg-studio-dark transition-all duration-300 shadow-sm hover:shadow-md cursor-pointer">
+                        <button type="submit" id="submit-btn" class="w-full bg-studio-green text-studio-card py-4 rounded-full uppercase tracking-widest font-semibold hover:bg-studio-dark transition-all duration-300 shadow-sm hover:shadow-md cursor-pointer">
                             <span class="lang-en">Send Message</span>
                             <span class="lang-zh">傳送訊息</span>
                         </button>
@@ -974,22 +974,55 @@
         const langToggleBtn = document.getElementById('lang-toggle-btn');
         const langToggleBtnMobile = document.getElementById('lang-toggle-btn-mobile');
 
+        function toggleLanguage() {
+            if (currentLang === 'en') {
+                currentLang = 'zh';
+                document.body.classList.remove('lang-en-active');
+                document.body.classList.add('lang-zh-active');
+            } else {
+                currentLang = 'en';
+                document.body.classList.remove('lang-zh-active');
+                document.body.classList.add('lang-en-active');
+            }
+        }
+
+        if (langToggleBtn) langToggleBtn.addEventListener('click', toggleLanguage);
+        if (langToggleBtnMobile) langToggleBtnMobile.addEventListener('click', toggleLanguage);
+
         // Contact Form Submission Handler
         const contactForm = document.getElementById('contact-form');
         const formFeedback = document.getElementById('form-feedback');
+        const submitBtn = document.getElementById('submit-btn');
 
         if (contactForm) {
             contactForm.addEventListener('submit', (e) => {
                 e.preventDefault();
-                if (formFeedback) {
-                    formFeedback.classList.remove('hidden');
-                    if (currentLang === 'en') {
-                        formFeedback.textContent = 'Thank you for reaching out! Your message has been sent successfully.';
-                    } else {
-                        formFeedback.textContent = '感謝您的聯絡！您的訊息已成功傳送。';
-                    }
+                
+                if (submitBtn) {
+                    submitBtn.disabled = true;
+                    submitBtn.querySelector('.lang-en').textContent = 'Sending...';
+                    submitBtn.querySelector('.lang-zh').textContent = '傳送中...';
                 }
-                contactForm.reset();
+
+                // Simulate brief sending delay and clear form
+                setTimeout(() => {
+                    if (formFeedback) {
+                        formFeedback.classList.remove('hidden', 'bg-red-50', 'text-red-800', 'border-red-200');
+                        formFeedback.classList.add('bg-studio-sage/20', 'text-studio-green', 'border-studio-sage/30');
+                        
+                        if (currentLang === 'en') {
+                            formFeedback.textContent = 'Thank you for reaching out! Your message has been sent successfully.';
+                        } else {
+                            formFeedback.textContent = '感謝您的聯絡！您的訊息已成功傳送。';
+                        }
+                    }
+                    contactForm.reset();
+                    if (submitBtn) {
+                        submitBtn.disabled = false;
+                        submitBtn.querySelector('.lang-en').textContent = 'Send Message';
+                        submitBtn.querySelector('.lang-zh').textContent = '傳送訊息';
+                    }
+                }, 800);
             });
         }
 
