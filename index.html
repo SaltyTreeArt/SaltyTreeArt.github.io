@@ -5,30 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SaltyTree Art Therapy | Art Therapist Beverly Chan</title>
     
-    <!-- Google Fonts -->
+    <!-- Google Analytics tag -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7SC9BL7BYT"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-7SC9BL7BYT');
+    </script>
+
+    <!-- Google Fonts: Import LXGW WenKai, Cormorant Garamond, and Open Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=LXGW+WenKai&family=LXGW+WenKai+TC:wght@300;400;700&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=LXGW+WenKai+TC:wght@300;400;700&family=Open+Sans:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
 
-    <!-- Tailwind CSS CDN -->
+    <!-- Tailwind CSS with custom studio palette -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        salty: {
-                            50: '#FFFFFF',
-                            100: '#FFFDF9',     /* Warm Cream Base */
-                            200: '#FFF5EA',     /* Soft Pastel Cream */
-                            teal: '#1EC1CB',    /* Coastal Teal */
-                            green: '#4D8B31',   /* Leaf Green */
-                            yellow: '#FFC800',  /* Warm Sun Gold */
-                            orange: '#FF8427',  /* Spark Orange */
-                            pink: '#FF9FBD',    /* Cute Pastel Pink */
-                            purple: '#C8B6FF',  /* Soft Lavender */
-                            darkgreen: '#2A521B',
-                            slate: '#4F3E4D',   /* Cozy Dark Ink Slate */
+                        studio: {
+                            bg: '#F6F4EF',       /* Organic linen background */
+                            card: '#FCFBF8',     /* Soft warm off-white card background */
+                            cardhover: '#F2EFE8',/* Slightly deeper card on hover */
+                            border: '#DED8CC',   /* Natural beige border */
+                            dark: '#222A26',     /* Deep charcoal forest text */
+                            slate: '#36403A',    /* Body copy slate */
+                            green: '#2C4435',    /* Deep studio forest green */
+                            sage: '#4C6C58',     /* Mid-tone natural sage */
+                            teal: '#1EC1CB',     /* Coastal Water Teal accent */
+                            gold: '#C89354',     /* Earthy gold accent */
+                            terracotta: '#BF6643',/* Deep warm terracotta */
                         }
                     }
                 }
@@ -37,14 +46,15 @@
     </script>
     
     <style>
-        /* Typography */
-        h1, h2, h3, h4, h5, .font-optima {
-            font-family: 'Optima', 'LXGW WenKai TC', 'LXGW WenKai', 'Segoe UI', sans-serif !important;
-            font-weight: 400 !important;
+        /* Headings use Cormorant Garamond / Optima style with LXGW WenKai fallback */
+        h1, h2, h3, h4, h5, .font-serif-title {
+            font-family: 'Cormorant Garamond', 'Optima', 'LXGW WenKai TC', 'LXGW WenKai', Georgia, serif !important;
+            letter-spacing: -0.01em;
         }
         
+        /* Body copy uses Open Sans with LXGW WenKai fallback */
         body, p, span, button, a, label, textarea, input, .font-sans {
-            font-family: 'Open Sans', 'LXGW WenKai TC', 'LXGW WenKai', sans-serif !important;
+            font-family: 'Open Sans', 'LXGW WenKai TC', 'LXGW WenKai', 'Helvetica Neue', sans-serif !important;
             font-weight: 300 !important;
         }
         
@@ -52,72 +62,22 @@
             font-weight: 600 !important;
         }
 
-        /* Bilingual Display Toggle */
+        /* Bilingual Toggle Mechanics */
         body.lang-en-active .lang-zh { display: none !important; }
         body.lang-zh-active .lang-en { display: none !important; }
-
-        /* Background Pattern & Blobs */
-        body {
-            background-color: #FFF9F2;
-            color: #4F3E4D;
+        
+        /* Scroll-driven Reveal Animation */
+        .reveal-on-scroll {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal-on-scroll.active {
+            opacity: 1;
+            transform: translateY(0);
         }
 
-        .dot-pattern {
-            background-image: radial-gradient(circle, rgba(79, 62, 77, 0.08) 1.3px, transparent 1.3px);
-            background-size: 24px 24px;
-        }
-
-        /* Washi Tape Accent Decorators */
-        .washi-tape {
-            position: absolute;
-            width: 120px;
-            height: 28px;
-            top: -14px;
-            left: 50%;
-            transform: translateX(-50%) rotate(-1.5deg);
-            border-radius: 3px;
-            opacity: 0.85;
-            box-shadow: inset 0 0 0 1px rgba(0,0,0,0.05);
-            z-index: 20;
-            pointer-events: none;
-        }
-        .washi-tape-yellow { background: rgba(255, 215, 106, 0.75); }
-        .washi-tape-teal { background: rgba(155, 220, 245, 0.75); }
-        .washi-tape-pink { background: rgba(255, 159, 189, 0.75); }
-        .washi-tape-green { background: rgba(188, 230, 182, 0.75); }
-
-        /* Floating Stickers */
-        .sticker {
-            position: absolute;
-            padding: 8px 14px;
-            border-radius: 16px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            box-shadow: 0 8px 20px rgba(79, 62, 77, 0.08);
-            z-index: 25;
-            animation: stickerFloat 4s ease-in-out infinite alternate;
-            pointer-events: none;
-            border: 2px solid rgba(255,255,255,0.8);
-        }
-        .sticker.left-top { top: 12%; left: -15px; background: #E2F5DB; color: #2A521B; transform: rotate(-6deg); }
-        .sticker.right-top { top: 18%; right: -15px; background: #DDF3FA; color: #1EC1CB; transform: rotate(5deg); animation-delay: -1.5s; }
-        .sticker.right-bottom { bottom: 10%; right: -10px; background: #FFE8F0; color: #EF6F9F; transform: rotate(-4deg); animation-delay: -2.5s; }
-
-        @keyframes stickerFloat {
-            0% { transform: translateY(0px) rotate(-4deg); }
-            100% { transform: translateY(-8px) rotate(2deg); }
-        }
-
-        /* Interactive tree leaf hover & bloom effects */
-        .interactive-leaf {
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), r 0.5s ease;
-            transform-origin: center;
-            transform-box: fill-box;
-        }
-        .interactive-leaf:hover {
-            transform: scale(1.4);
-        }
-
+        /* Swaying animation for SaltyTree */
         @keyframes swayTree {
             0%, 100% { transform: rotate(0deg); }
             50% { transform: rotate(1.2deg); }
@@ -127,123 +87,114 @@
             animation: swayTree 8s infinite ease-in-out;
         }
 
-        /* Organic Background Drift Blobs */
-        @keyframes driftBlob {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            50% { transform: translate(20px, -25px) scale(1.08); }
+        /* Interactive tree leaf hover & bloom effects */
+        .interactive-leaf {
+            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), r 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.4s ease;
+            transform-origin: center;
+            transform-box: fill-box;
         }
-        .blob-bg {
-            animation: driftBlob 18s infinite ease-in-out alternate;
+        .interactive-leaf:hover {
+            transform: scale(1.35);
+            opacity: 1 !important;
         }
 
-        /* Link Underline Hover */
-        .border-grow {
+        /* Custom image frame hover effect */
+        .studio-image-frame {
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.6s ease;
+        }
+        .studio-image-frame:hover {
+            transform: scale(1.015);
+        }
+
+        /* Underline animation for links */
+        .link-hover-line {
             position: relative;
         }
-        .border-grow::after {
+        .link-hover-line::after {
             content: '';
             position: absolute;
             width: 100%;
             transform: scaleX(0);
-            height: 2px;
+            height: 1.5px;
             bottom: -2px;
             left: 0;
-            background-color: #1EC1CB;
+            background-color: #2C4435;
             transform-origin: bottom right;
-            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        .border-grow:hover::after {
+        .link-hover-line:hover::after {
             transform: scaleX(1);
             transform-origin: bottom left;
         }
     </style>
 </head>
-<body class="lang-en-active dot-pattern min-h-screen relative overflow-x-hidden antialiased">
-
-    <!-- Soft Pastel Background Blobs -->
-    <div class="fixed inset-0 overflow-hidden pointer-events-none z-0">
-        <div class="blob-bg absolute top-[-5%] left-[-5%] w-[40vw] h-[40vw] rounded-full bg-salty-yellow/25 filter blur-[90px]"></div>
-        <div class="blob-bg absolute top-[30%] right-[-8%] w-[45vw] h-[45vw] rounded-full bg-salty-teal/20 filter blur-[100px]" style="animation-delay: -4s;"></div>
-        <div class="blob-bg absolute bottom-[15%] left-[-10%] w-[50vw] h-[50vw] rounded-full bg-salty-pink/20 filter blur-[110px]" style="animation-delay: -8s;"></div>
-        <div class="blob-bg absolute bottom-[-5%] right-[-5%] w-[35vw] h-[35vw] rounded-full bg-salty-purple/20 filter blur-[90px]" style="animation-delay: -12s;"></div>
-    </div>
+<body class="lang-en-active text-studio-slate bg-studio-bg selection:bg-studio-sage/20 selection:text-studio-green overflow-x-hidden antialiased relative">
 
     <!-- Navigation Bar -->
-    <nav class="sticky top-0 z-50 bg-white/85 backdrop-blur-md border-b border-salty-slate/10 transition-all duration-300">
-        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-            
-            <!-- Brand Logo (Clean text only, yellow tree circle icon removed) -->
-            <a href="#" class="flex items-center group shrink-0">
-                <div class="flex flex-col">
-                    <span class="text-xl md:text-2xl font-bold tracking-tight text-salty-slate font-optima group-hover:text-salty-teal transition-colors">
-                        <span class="lang-en">SaltyTree Art Therapy</span>
-                        <span class="lang-zh">鹽樹藝術治療</span>
-                    </span>
-                </div>
+    <nav class="sticky top-0 z-50 bg-studio-bg/95 backdrop-blur-md border-b border-studio-border/60 transition-all duration-300">
+        <div class="max-w-6xl mx-auto px-6 py-5 flex justify-between items-center">
+            <!-- Brand Text -->
+            <a href="#" class="flex flex-col group shrink-0">
+                <span class="text-2xl md:text-3xl font-serif-title font-semibold tracking-tight text-studio-green transition-colors duration-300 hover:text-studio-sage">
+                    <span class="lang-en">SaltyTree Art Therapy</span>
+                    <span class="lang-zh">鹽樹藝術治療</span>
+                </span>
             </a>
 
             <!-- Desktop Links -->
-            <div class="hidden lg:flex items-center space-x-8 text-xs font-bold uppercase tracking-widest text-salty-slate font-optima">
-                <a href="#about-philosophy" class="border-grow hover:text-salty-teal transition">
+            <div class="hidden lg:flex items-center ml-auto lg:space-x-8 xl:space-x-10 text-xs uppercase tracking-widest text-studio-dark font-sans font-medium">
+                <a href="#about-philosophy" class="link-hover-line py-1 transition duration-300">
                     <span class="lang-en">ABOUT</span>
                     <span class="lang-zh">關於</span>
                 </a>
-                <a href="#services-explore" class="border-grow hover:text-salty-teal transition">
+                <a href="#services-explore" class="link-hover-line py-1 transition duration-300">
                     <span class="lang-en">Creativity and Arts</span>
                     <span class="lang-zh">創造力與藝術</span>
                 </a>
-                <a href="#drawing-prompts-section" class="border-grow hover:text-salty-teal transition">
-                    <span class="lang-en">Drawing Prompts</span>
-                    <span class="lang-zh">繪畫提案</span>
-                </a>
-                <a href="#about-beverly" class="border-grow hover:text-salty-teal transition">
+                <a href="#about-beverly" class="link-hover-line py-1 transition duration-300">
                     <span class="lang-en">Art Therapist</span>
                     <span class="lang-zh">藝術治療師</span>
                 </a>
                 
                 <!-- Language Toggle Button -->
-                <button id="lang-toggle-btn" class="px-4 py-2 rounded-full bg-salty-yellow/30 border-2 border-salty-slate/20 hover:border-salty-teal hover:bg-salty-yellow/60 transition text-[11px] font-bold text-salty-slate shadow-sm">
+                <button id="lang-toggle-btn" class="px-4 py-1.5 rounded-full border border-studio-green/30 hover:border-studio-green hover:bg-studio-card transition duration-300 text-[11px] tracking-wider text-studio-green font-semibold">
                     <span class="lang-en">繁體中文</span>
                     <span class="lang-zh">English</span>
                 </button>
 
-                <a href="#contact" class="bg-salty-green text-white px-5 py-2.5 rounded-full hover:bg-salty-darkgreen transition shadow-sm hover:shadow-md">
+                <a href="#contact" class="bg-studio-green text-studio-card px-6 py-2.5 rounded-full hover:bg-studio-dark transition-all duration-300 tracking-wider shrink-0 shadow-sm hover:shadow-md">
                     <span class="lang-en">Connect</span>
                     <span class="lang-zh">聯絡</span>
                 </a>
             </div>
 
-            <!-- Mobile Actions -->
-            <div class="flex items-center gap-3 lg:hidden">
-                <button id="lang-toggle-btn-mobile" class="px-3 py-1.5 rounded-full bg-salty-yellow/40 border border-salty-slate/20 text-[10px] text-salty-slate font-bold">
+            <!-- Mobile Drawer Buttons -->
+            <div class="flex items-center gap-4 lg:hidden">
+                <button id="lang-toggle-btn-mobile" class="px-3 py-1 rounded-full border border-studio-green/30 text-[11px] text-studio-green font-semibold">
                     <span class="lang-en">繁</span>
                     <span class="lang-zh">EN</span>
                 </button>
-                <button id="mobile-menu-btn" class="text-salty-slate focus:outline-none text-xs uppercase tracking-widest font-bold" aria-label="Toggle Menu">
-                    Menu ☰
+                <button id="mobile-menu-btn" class="text-studio-green focus:outline-none text-xs uppercase tracking-widest font-bold" aria-label="Toggle Menu">
+                    Menu
                 </button>
             </div>
         </div>
 
         <!-- Mobile Drawer Menu -->
-        <div id="mobile-menu" class="hidden lg:hidden bg-white/95 border-t border-salty-slate/10 px-6 py-6 space-y-4 text-xs font-bold uppercase tracking-widest">
-            <a href="#about-philosophy" class="block text-salty-slate hover:text-salty-teal py-1">
+        <div id="mobile-menu" class="hidden lg:hidden bg-studio-card border-t border-studio-border px-6 py-6 space-y-4 shadow-lg text-xs uppercase tracking-widest">
+            <a href="#about-philosophy" class="block text-studio-dark hover:text-studio-sage py-1">
                 <span class="lang-en">ABOUT</span>
                 <span class="lang-zh">關於</span>
             </a>
-            <a href="#services-explore" class="block text-salty-slate hover:text-salty-teal py-1">
+            <a href="#services-explore" class="block text-studio-dark hover:text-studio-sage py-1">
                 <span class="lang-en">Creativity and Arts</span>
                 <span class="lang-zh">創造力與藝術</span>
             </a>
-            <a href="#drawing-prompts-section" class="block text-salty-slate hover:text-salty-teal py-1">
-                <span class="lang-en">Drawing Prompts</span>
-                <span class="lang-zh">繪畫提案</span>
-            </a>
-            <a href="#about-beverly" class="block text-salty-slate hover:text-salty-teal py-1">
+            <a href="#about-beverly" class="block text-studio-dark hover:text-studio-sage py-1">
                 <span class="lang-en">Art Therapist</span>
                 <span class="lang-zh">藝術治療師</span>
             </a>
-            <a href="#contact" class="block text-center bg-salty-green text-white py-3 rounded-full shadow">
+            <a href="#contact" class="block text-center bg-studio-green text-white py-3 rounded-full shadow">
                 <span class="lang-en">Connect</span>
                 <span class="lang-zh">聯絡</span>
             </a>
@@ -251,673 +202,903 @@
     </nav>
 
     <!-- Hero Section -->
-    <header class="relative pt-10 pb-16 lg:pt-16 lg:pb-24 px-4 sm:px-6 z-10">
-        <div class="max-w-5xl mx-auto">
+    <header class="relative pt-12 pb-16 lg:pt-20 lg:pb-28 px-6 z-10 border-b border-studio-border/50">
+        <div class="max-w-6xl mx-auto grid lg:grid-cols-12 gap-12 items-center">
             
-            <div class="bg-white/90 backdrop-blur-md border-2 border-white rounded-[38px] p-6 sm:p-10 md:p-12 shadow-[0_20px_50px_rgba(79,62,77,0.08)] relative text-center">
-                
-                <!-- Washi Tape Decorator -->
-                <div class="washi-tape washi-tape-yellow" aria-hidden="true"></div>
-
-                <!-- Floating Stickers -->
-                <div class="sticker left-top hidden sm:block">🍃 deep roots</div>
-                <div class="sticker right-top hidden sm:block">🎨 art & heart</div>
-
-                <!-- Badge -->
-                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-salty-yellow/30 border border-salty-yellow/60 text-salty-slate text-xs font-bold uppercase tracking-wider mb-6 mt-2">
-                    <span class="w-2 h-2 rounded-full bg-salty-teal animate-pulse"></span>
-                    <span class="lang-en">Welcome to SaltyTree Art Therapy</span>
-                    <span class="lang-zh">歡迎來到鹽樹藝術治療</span>
+            <!-- Left Side: Narrative Hero Content -->
+            <div class="lg:col-span-7 space-y-8 text-left reveal-on-scroll">
+                <div class="space-y-3">
+                    <span class="text-studio-terracotta text-xs uppercase tracking-[0.25em] font-semibold block">
+                        <span class="lang-en">Art Therapy & Expressive Arts Practice</span>
+                        <span class="lang-zh">藝術治療與表達性藝術</span>
+                    </span>
+                    <h1 class="text-5xl md:text-6xl lg:text-7xl text-studio-green font-serif-title font-normal tracking-tight leading-none">
+                        SaltyTree
+                    </h1>
+                    <p class="text-2xl md:text-3xl text-studio-gold italic font-serif-title tracking-wide">
+                        <span class="lang-en">Finding Stability in Any Weather</span>
+                        <span class="lang-zh">在任何天氣中，尋得一份安定</span>
+                    </p>
                 </div>
-
-                <h1 class="text-4xl sm:text-5xl md:text-6xl text-salty-slate font-optima tracking-tight leading-tight max-w-3xl mx-auto mb-4">
-                    SaltyTree
-                </h1>
                 
-                <p class="text-xl sm:text-2xl text-salty-teal italic font-optima mb-8">
-                    <span class="lang-en">Finding Stability in Any Weather</span>
-                    <span class="lang-zh">在任何天氣中，尋得一份安定</span>
-                </p>
-
-                <!-- Hero Document Paragraphs -->
-                <div class="text-salty-slate text-base md:text-lg font-light leading-relaxed max-w-3xl mx-auto space-y-5 text-left bg-salty-100/80 p-6 sm:p-8 rounded-3xl border border-salty-slate/5 mb-10">
+                <!-- Main Header Paragraphs from Word Document -->
+                <div class="text-base md:text-lg text-studio-slate leading-relaxed space-y-6 max-w-xl font-light">
                     <p>
-                        <span class="lang-en">"SaltyTree" is a tree that knows how to stand firmly in any climate. This space is inspired by those trees that strive to survive amidst storms by anchoring their roots deep into the soil and breathing deeply, with resilience, through the changing of each season.</span>
-                        <span class="lang-zh">「鹽樹」是一棵懂得在任何氣候中，依然穩穩佇立的樹。這個空間的靈感源自那些在風暴中仍奮力生存的樹木，它們將根深深扎進土壤，在每個季節的變幻中，堅定地呼吸。</span>
+                        <span class="lang-en">"SaltyTree" is a tree that knows how to stand firmly in any climate. This space is inspired by those trees that strive to survive amidst storms by establishing stable foundational practices, with resilience, through fluctuating external conditions.</span>
+                        <span class="lang-zh">「鹽樹」是一棵懂得在任何氣候中，依然穩穩佇立的樹。這個空間的靈感源自那些在風暴中仍奮力生存的樹木，它們透過建立穩固的基礎實踐，在不斷變化的外部條件中展现出韌性。</span>
                     </p>
                     <p>
-                        <span class="lang-en">The storms we face are often unpredictable and relentless. Sometimes, out of a natural instinct for self-protection, we may choose to close off or need a bit of space to temporarily distance ourselves from the outside world. We honor these moments of longing for stillness; they are not signs of weakness, but your mind and body utilizing their deepest wisdom to gently protect you.</span>
-                        <span class="lang-zh">我們所面對的風暴，往往不可預測且連綿不斷。有時候，出於自我保護的本能，我們會選擇封閉或需要一點空間，暫時與外界保持距離。我們敬重這些渴望沉靜的時刻；那並非軟弱，而是你的身心正運用深層的智慧，溫柔地守護著你。</span>
+                        <span class="lang-en">Life challenges are often unpredictable and demanding. Sometimes, out of a natural instinct for self-protection, we may choose to close off or need a bit of space to establish personal boundaries. We recognize these choices, as they are not signs of weakness, but adaptive responses that serve to protect our well-being.</span>
+                        <span class="lang-zh">生命的挑戰往往不可預測且艱鉅。有時候，出於自我保護的本能，我們會選擇封閉或需要一點空間來建立個人邊界。我們理解並認同這些選擇，因為那並非軟弱，而是守護身心安適的適應性回應。</span>
                     </p>
                     <p>
-                        <span class="lang-en">Here, there is no so-called "right" way to express yourself. We are partners co-creating this creative space with you, and you are the most profound expert on your own life. We view your expertise as the compass guiding this journey, allowing you to unfold naturally at your own pace.</span>
-                        <span class="lang-zh">在這裡，沒有所謂「正確」的表達方式。我們是與你共創創意空間的夥伴，而你，才是自身生命中最深刻的專家。我們將這份專業視為引導旅程的指南針，讓你依循自己的步調，自然綻放。</span>
+                        <span class="lang-en">Here, there is no single standardized method for personal expression. Your experiences, perspectives, and choices are valued in the creation of this space. Feel free to express yourself openly and according to your preferred timeframe.</span>
+                        <span class="lang-zh">在這裡，沒有單一標準化的個人表達方式。在這個共創的空間裡，您的經驗、觀點與選擇都備受珍視。請安心依循您最舒適的步調與時間，自由地表達自我。</span>
                     </p>
                 </div>
 
-                <!-- Interactive SaltyTree Canvas Card -->
-                <div class="max-w-md mx-auto bg-white p-5 rounded-3xl border-2 border-salty-teal/20 shadow-sm relative text-left">
+                <div class="pt-2 flex flex-wrap gap-4 text-xs font-semibold uppercase tracking-widest font-sans">
+                    <a href="#contact" class="bg-studio-green text-studio-card px-8 py-4 rounded-full hover:bg-studio-dark hover:shadow-lg transition-all duration-300">
+                        <span class="lang-en">Connect With Us</span>
+                        <span class="lang-zh">與我們聯絡</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Right Side: SaltyTree Signature Interactive Artwork -->
+            <div class="lg:col-span-5 flex flex-col items-center reveal-on-scroll">
+                <div class="w-full bg-studio-card p-5 md:p-6 rounded-2xl border border-studio-border shadow-sm studio-image-frame relative select-none">
+                    
                     <div class="flex justify-between items-center mb-3">
-                        <span class="text-[11px] font-bold uppercase tracking-wider text-salty-teal font-optima">
-                            <span class="lang-en">Interactive Art Space • Tap canvas to bloom leaves</span>
-                            <span class="lang-zh">互動藝術空間 • 輕觸畫布讓葉子綻放</span>
+                        <span class="text-[11px] font-serif-title italic text-studio-green font-medium">
+                            <span class="lang-en">SaltyTree Interactive Artwork</span>
+                            <span class="lang-zh">鹽樹互動創作空間</span>
+                        </span>
+                        <span class="text-[9px] uppercase tracking-widest text-studio-terracotta font-sans font-semibold">
+                            <span class="lang-en">Tap tree to bloom</span>
+                            <span class="lang-zh">輕觸讓葉片綻放</span>
                         </span>
                     </div>
 
-                    <div id="interactive-tree-container" class="w-full aspect-square bg-gradient-to-b from-salty-100 to-white rounded-2xl border border-salty-slate/10 overflow-hidden cursor-crosshair relative select-none">
+                    <!-- SaltyTree SVG Canvas -->
+                    <div id="interactive-tree-container" class="relative w-full aspect-square bg-studio-bg rounded-xl border border-studio-border/60 overflow-hidden cursor-crosshair">
                         <svg id="salty-tree-svg" class="w-full h-full" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                            <!-- Background Sands & Ocean Tides -->
-                            <path d="M 10,168 C 60,162 140,172 190,166" fill="none" stroke="#1EC1CB" stroke-width="1.5" stroke-linecap="round" opacity="0.35" />
-                            <path d="M 5,175 C 55,171 135,178 195,173" fill="none" stroke="#1EC1CB" stroke-width="1" stroke-dasharray="2,2" opacity="0.25" />
+                            <!-- Background Coastal Tide Lines -->
+                            <path d="M 20,165 C 60,160 140,170 180,165" fill="none" stroke="#1EC1CB" stroke-width="1.5" stroke-linecap="round" opacity="0.35" />
+                            <path d="M 10,172 C 50,169 130,175 190,171" fill="none" stroke="#1EC1CB" stroke-width="1" stroke-dasharray="2,2" opacity="0.25" />
                             
-                            <!-- Swaying SaltyTree Group -->
+                            <!-- Swaying Tree Group -->
                             <g class="swaying-tree">
-                                <!-- Deep Roots -->
-                                <path d="M 92,166 C 80,173 65,176 48,174" fill="none" stroke="#4D8B31" stroke-width="2.5" stroke-linecap="round"/>
-                                <path d="M 102,166 C 115,171 132,175 152,172" fill="none" stroke="#4D8B31" stroke-width="2.5" stroke-linecap="round"/>
+                                <!-- Roots -->
+                                <path d="M 92,165 C 80,172 65,175 50,173" fill="none" stroke="#2C4435" stroke-width="2.5" stroke-linecap="round"/>
+                                <path d="M 102,165 C 115,170 130,174 148,171" fill="none" stroke="#2C4435" stroke-width="2.5" stroke-linecap="round"/>
 
-                                <!-- Windswept Trunk -->
-                                <path d="M 97,166 C 93,130 108,100 86,65 C 83,60 79,55 76,52" fill="none" stroke="#4D8B31" stroke-width="3.2" stroke-linecap="round"/>
+                                <!-- Trunk -->
+                                <path d="M 97,165 C 93,130 108,100 86,65 C 83,60 79,55 76,52" fill="none" stroke="#2C4435" stroke-width="3" stroke-linecap="round"/>
                                 
-                                <!-- Main Branches -->
-                                <path d="M 88,95 C 68,85 58,68 51,58" fill="none" stroke="#4D8B31" stroke-width="2" stroke-linecap="round"/>
-                                <path d="M 92,80 C 112,75 127,65 137,58" fill="none" stroke="#4D8B31" stroke-width="2" stroke-linecap="round"/>
-                                <path d="M 85,115 C 68,120 53,110 41,102" fill="none" stroke="#4D8B31" stroke-width="1.5" stroke-linecap="round"/>
+                                <!-- Branches -->
+                                <path d="M 88,95 C 68,85 58,68 51,58" fill="none" stroke="#2C4435" stroke-width="2" stroke-linecap="round"/>
+                                <path d="M 92,80 C 112,75 127,65 137,58" fill="none" stroke="#2C4435" stroke-width="2" stroke-linecap="round"/>
+                                <path d="M 85,115 C 68,120 53,110 41,102" fill="none" stroke="#2C4435" stroke-width="1.5" stroke-linecap="round"/>
 
-                                <!-- Initial Pre-seeded Leaves -->
-                                <circle class="interactive-leaf" cx="76" cy="52" r="7" fill="#FFC800" opacity="0.85" />
-                                <circle class="interactive-leaf" cx="51" cy="58" r="6" fill="#1EC1CB" opacity="0.8" />
-                                <circle class="interactive-leaf" cx="137" cy="58" r="8" fill="#4D8B31" opacity="0.75" />
-                                <circle class="interactive-leaf" cx="41" cy="102" r="5.5" fill="#FF8427" opacity="0.8" />
-                                <circle class="interactive-leaf" cx="110" cy="75" r="6.5" fill="#FF9FBD" opacity="0.85" />
+                                <!-- Default Seeded Leaves -->
+                                <circle class="interactive-leaf" cx="76" cy="52" r="7" fill="#C89354" opacity="0.88" />
+                                <circle class="interactive-leaf" cx="51" cy="58" r="6" fill="#1EC1CB" opacity="0.85" />
+                                <circle class="interactive-leaf" cx="137" cy="58" r="8" fill="#2C4435" opacity="0.8" />
+                                <circle class="interactive-leaf" cx="41" cy="102" r="5.5" fill="#BF6643" opacity="0.85" />
+                                <circle class="interactive-leaf" cx="110" cy="75" r="6.5" fill="#4C6C58" opacity="0.85" />
                                 
+                                <!-- Dynamic Leaves Group -->
                                 <g id="dynamic-leaves-group"></g>
                             </g>
                         </svg>
                     </div>
 
-                    <!-- Canvas Controls -->
-                    <div class="mt-4 flex justify-between items-center">
-                        <span class="text-[10px] text-salty-slate/60 italic font-optima">
-                            <span class="lang-en">Create your unique tree</span>
-                            <span class="lang-zh">創造屬於您的樹</span>
+                    <!-- Action Toolbar -->
+                    <div class="mt-4 flex justify-between items-center text-xs">
+                        <span class="text-[11px] text-studio-dark/70 italic font-serif-title">
+                            <span class="lang-en">Finding Stability in Any Weather</span>
+                            <span class="lang-zh">在任何天氣中，尋得一份安定</span>
                         </span>
                         <div class="flex gap-2">
-                            <button id="download-tree-btn" onclick="downloadArtwork()" class="text-[10px] font-bold uppercase tracking-wider text-salty-darkgreen hover:bg-salty-teal hover:text-white border border-salty-slate/15 rounded-full px-3.5 py-1.5 transition bg-salty-100 font-optima">
-                                <span class="lang-en">Save SVG</span>
-                                <span class="lang-zh">儲存 SVG</span>
+                            <button id="download-tree-btn" onclick="downloadArtwork()" class="text-[10px] uppercase tracking-wider text-studio-green font-semibold hover:bg-studio-green hover:text-white border border-studio-green/30 rounded-full px-3 py-1.5 transition duration-300">
+                                <span class="lang-en">Save</span>
+                                <span class="lang-zh">儲存</span>
                             </button>
-                            <button id="reset-tree-btn" class="text-[10px] font-bold uppercase tracking-wider text-salty-slate/60 hover:text-salty-darkgreen border border-salty-slate/15 rounded-full px-3.5 py-1.5 transition bg-salty-100 font-optima">
+                            <button id="reset-tree-btn" class="text-[10px] uppercase tracking-wider text-studio-slate/70 font-semibold hover:bg-studio-border border border-studio-border rounded-full px-3 py-1.5 transition duration-300">
                                 <span class="lang-en">Clear</span>
                                 <span class="lang-zh">重設</span>
                             </button>
                         </div>
                     </div>
-                </div>
 
+                </div>
             </div>
+
         </div>
     </header>
 
-    <!-- MAIN CONTENT AREA -->
-    <main class="max-w-5xl mx-auto px-4 sm:px-6 py-10 space-y-16 relative z-10">
+    <main class="max-w-6xl mx-auto px-6 py-16 lg:py-24 space-y-28 relative z-10">
 
-        <!-- SECTION 1: THE SALTYTREE STORY -->
-        <section id="about-philosophy" class="scroll-mt-24 relative">
-            <div class="bg-white/80 border border-salty-slate/10 rounded-[32px] p-8 sm:p-10 shadow-sm relative">
-                <div class="washi-tape washi-tape-teal" aria-hidden="true"></div>
-                
-                <div class="text-salty-teal font-bold tracking-[0.2em] text-[10px] uppercase mb-3 font-optima">
-                    <span class="lang-en">The SaltyTree Story</span>
-                    <span class="lang-zh">鹽樹的故事</span>
-                </div>
-                
-                <h2 class="text-2xl sm:text-3xl text-salty-slate font-optima mb-6">
-                    <span class="lang-en">Transforming Salt-Laden Ground</span>
-                    <span class="lang-zh">轉化鹹灼土地的生命力</span>
-                </h2>
-
-                <div class="text-salty-slate leading-relaxed font-light text-base space-y-5">
-                    <p>
-                        <span class="lang-en">At SaltyTree, we explore, discover, and reconnect with that sense of wonder, creativity, and resilience together. The name SaltyTree speaks of a tree that finds its way within a specific landscape, transforming a harsh, salt-laden ground into a unique expression of life.</span>
-                        <span class="lang-zh">在鹽樹，我們一同探索、發掘並重新連結那份驚奇感、創造力與韌性。鹽樹的名字，訴說著一棵在特定地景中尋得出口的樹，它將嚴酷且充滿鹽分的土地，轉化為獨一無二的生命展現。</span>
-                    </p>
+        <!-- About Section ("The SaltyTree Story") with 5.jpeg -->
+        <section id="about-philosophy" class="scroll-mt-24 max-w-5xl mx-auto reveal-on-scroll">
+            <div class="bg-studio-card p-8 md:p-14 rounded-3xl border border-studio-border shadow-sm space-y-8">
+                <div class="grid lg:grid-cols-12 gap-8 items-center">
                     
-                    <div class="p-6 bg-salty-200/60 rounded-2xl border-l-4 border-salty-teal italic text-salty-slate my-6">
-                        <span class="lang-en">Yet, we also deeply know that no tree can grow isolated from the ecosystem; our growth is always shaped by the environment and soil we inhabit. But please remember, you are never the burdens you carry. In art therapy, we do not view ourselves or each other as the weight itself.</span>
-                        <span class="lang-zh">然而，我們也深知沒有一棵樹能孤立於生態之外；我們的成長總受到所處環境與土壤的形塑。但請記得，你永遠不等於你所背負的重擔。在藝術治療中，我們不將自己或彼此視為重量本身。</span>
+                    <div class="lg:col-span-7 space-y-6">
+                        <div class="space-y-2">
+                            <span class="text-studio-terracotta font-semibold tracking-[0.25em] text-xs uppercase block">
+                                <span class="lang-en">Our Story</span>
+                                <span class="lang-zh">我們的故事</span>
+                            </span>
+                            <h2 class="text-3xl md:text-5xl text-studio-green font-serif-title">
+                                <span class="lang-en">The SaltyTree Story</span>
+                                <span class="lang-zh">鹽樹的故事</span>
+                            </h2>
+                        </div>
+                        
+                        <div class="space-y-6 text-studio-slate leading-relaxed font-light text-base md:text-lg">
+                            <p>
+                                <span class="lang-en">At SaltyTree, we explore, discover, and celebrate creativity and resilience together. The name SaltyTree speaks of a tree that finds its way within a specific landscape, transforming a harsh, salt-laden ground into an established tree.</span>
+                                <span class="lang-zh">在鹽樹，我們一同探索、發掘並慶祝那份創造力與韌性。鹽樹的名字，訴說著一棵在特定地景中尋得出口的樹，它將嚴酷且充滿鹽分的土地，轉化為穩固佇立的樹木。</span>
+                            </p>
+                            
+                            <p class="italic text-studio-green border-l-2 border-studio-gold pl-6 py-2 text-lg md:text-xl font-serif-title my-6 bg-studio-bg/60 rounded-r-xl">
+                                <span class="lang-en">Yet, we also deeply know that no tree can grow isolated from the ecosystem; our growth is always shaped by the environment and soil we inhabit. But please remember, you are never the burdens you carry. In art therapy, personal identity remains distinct from individual hardships.</span>
+                                <span class="lang-zh">然而，我們也深知沒有一棵樹能孤立於生態之外；我們的成長總受到所處環境與土壤的形塑。但請記得，你永遠不等於你所背負的重擔。在藝術治療中，個人身份始終獨立於個人的困境之外。</span>
+                            </p>
+                            
+                            <p>
+                                <span class="lang-en">When external challenges bring worry, anger, or fear, whether born from personal hardships or the pressures of systemic injustice and the outside world, these emotions are natural responses to difficult circumstances. We are dedicated to providing a supportive space where you can explore and express your experiences through creative expression, regardless of the scale of the environment.</span>
+                                <span class="lang-zh">當外部挑戰帶來憂慮、憤怒或恐懼時，無論這份沉重源於個人的生命困境，或是來自外部世界與體制的壓力，這些情緒都是面對艱難處境時的自然反應。我們致力於提供一個支持性的空間，讓您能透過創造性表達來探索並抒發您的經驗，無論外部環境如何。</span>
+                            </p>
+                        </div>
                     </div>
 
-                    <p>
-                        <span class="lang-en">When external challenges bring worry, anger, or fear—whether born from personal hardships or the compression of systemic injustice and the outside world—these emotions are merely clouds and rain passing through the climate of the soul. We are dedicated to walking alongside you, helping you find a place to anchor yourself through creative expression, however small or temporary that space may be.</span>
-                        <span class="lang-zh">當外部挑戰帶來憂慮、憤怒或恐懼時—無論這份沉重源於個人的生命課題，或是外界不公與體制的擠壓—這些情緒都只是心靈氣候中飄過的雲雨。我們致力於陪伴你在當下的天氣中，透過創造性表達，找到一個能安身立命的位置，哪怕那個空間再微小、再短暫。</span>
-                    </p>
+                    <!-- Photo Card (5.jpeg) with full image contain styling -->
+                    <div class="lg:col-span-5">
+                        <div class="bg-studio-bg p-4 rounded-2xl border border-studio-border shadow-sm studio-image-frame">
+                            <div class="w-full aspect-[4/3] rounded-xl overflow-hidden relative border border-studio-border/60 bg-[#1F3A29] flex items-center justify-center">
+                                <img src="5.jpeg" 
+                                     alt="SaltyTree Artwork" 
+                                     class="w-full h-full object-contain rounded-xl"
+                                     onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/SaltyTreeArt/SaltyTreeArt.github.io/main/5.jpeg';" />
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </section>
 
-        <!-- SECTION 2: CREATIVITY & ARTS (SERVICES) -->
-        <section id="services-explore" class="scroll-mt-24 space-y-10">
-            
+        <!-- Experiencing Art Therapy & Creative Journey Section -->
+        <section id="services-explore" class="scroll-mt-24 space-y-12 reveal-on-scroll">
             <div class="max-w-3xl">
-                <div class="text-salty-teal font-bold tracking-[0.2em] text-[10px] uppercase mb-2 font-optima">
-                    <span class="lang-en">Creativity and Arts</span>
-                    <span class="lang-zh">創造力與藝術</span>
-                </div>
-                <h2 class="text-3xl md:text-4xl text-salty-slate font-optima leading-tight mb-4">
+                <span class="text-studio-terracotta font-semibold tracking-[0.25em] text-xs uppercase mb-3 block">
+                    <span class="lang-en">Experiencing Art Therapy</span>
+                    <span class="lang-zh">親歷藝術治療</span>
+                </span>
+                <h2 class="text-3xl md:text-5xl text-studio-green font-serif-title leading-tight mb-6">
                     <span class="lang-en">Experiencing Art Therapy</span>
                     <span class="lang-zh">親歷藝術治療</span>
                 </h2>
-                <div class="text-salty-slate font-light text-base leading-relaxed space-y-4">
-                    <p>
-                        <span class="lang-en">Art therapy blends visual art, creative writing, and poetry to help individuals process complex emotions. The focus rests entirely on the creative process and symbolic meaning rather than artistic skill. This multi-sensory approach allows individuals to creatively express life challenges, manage anxiety, and foster self-awareness in a format distinct from traditional talk therapy.</span>
-                        <span class="lang-zh">藝術治療融合視覺藝術、創意寫作與詩歌，協助個人梳理複雜的情感。焦點完全落在創作過程與象徵意義，而非藝術技巧。這種多感官的方法讓人們能以相異於傳統談話治療的形式，創造性地表達生命挑戰、管理焦慮並培養自我覺察。</span>
-                    </p>
-                    <p>
-                        <span class="lang-en">Even when environments feel restrictive or spaces are shared, art therapy provides a quiet sanctuary to reflect and reconnect with peace. Open to all skill levels and with all creative backgrounds welcome, we meet you exactly as you are as we explore creative expression anchored in grace and faith.</span>
-                        <span class="lang-zh">即便環境感到受限或空間共享，藝術治療依舊能提供一片寧靜的避風港，供人反思並重新找回平靜。我們歡迎所有技巧程度與創作背景的人，以最真實的姿態與您相遇，在恩典與信仰中探索創造性表達。</span>
-                    </p>
-                </div>
-            </div>
-
-            <!-- Creative Journey Text Card -->
-            <div class="bg-white/80 p-6 md:p-10 rounded-[36px] border border-salty-slate/10 shadow-sm relative">
-                <div class="washi-tape washi-tape-green" aria-hidden="true"></div>
-                
-                <span class="text-[10px] uppercase tracking-[0.2em] font-bold text-salty-teal font-optima block mb-3">
-                    <span class="lang-en">The Creative Journey</span>
-                    <span class="lang-zh">創作旅程探索</span>
-                </span>
-                
-                <div class="text-salty-slate leading-relaxed font-light text-xs md:text-sm space-y-3">
-                    <p class="font-bold text-salty-darkgreen">
-                        <span class="lang-en">We offer diverse and adaptable channels of expression, walking with you as you externalize and reshape your inner landscape. We respect the reality of your circumstances, ensuring that you can create with privacy and a sense of safety under any environment, allowing your feeling and expression to receive the fullest respect and validation.</span>
-                        <span class="lang-zh">我們提供多元且彈性的表達管道，陪伴你將內在風景具象化並重新形塑。我們尊重你所處的現實，確保你在任何環境下，都能在隱私與安全感中創作，讓你的感受與表達得到最充分的尊重與肯定。</span>
-                    </p>
-                    <p>
-                        <span class="lang-en">Through color, line, shape, and texture, we give visible, tangible form to those complex feelings that are hard to put into words. Together, we bring your inner weather, as well as your connection to the outside world, into a dialogue with the art materials. Whether the final creation is built up, layered, dismantled, or simply serves as a pure sensory release, you can allow the creative process to carry that weight.</span>
-                        <span class="lang-zh">透過色彩、線條、形狀與質地，我們將那些難以言喻的複雜感受賦予可見且具體的形狀。我們會一同將你內在的天氣，以及你與外在世界的連結，帶入媒材的對話中。無論創作最終是被構築、堆疊、拆解，或是僅僅是單純的感官抒發，你都能透過這個歷程，讓這份創造去承載那些重量。</span>
-                    </p>
-                    <p class="font-bold text-salty-darkgreen">
-                        <span class="lang-en">This journey centers on your inner strengths, deeply anchored in honoring and accepting your unique pace of expression. We are your partners, willing to support you through those heavy and reflective moments, assisting you to reconnect with your inherent power, and helping you find the state you need most in your current season—whether that is a space to regain tranquility, a permission to fully rest, or a newfound sense of vitality, voice, and internal power.</span>
-                        <span class="lang-zh">這趟旅程以你的內在優勢為核心，深深錨定於敬重並接納你個人的表達步調。我們是你的夥伴，願意與你共度那些沉重與沉思的時刻，協助你重新連結與生俱來的力量，找回你在當前季節最需要的狀態—無論是重獲平靜的空間、全然休息的允許，或是重拾活力、發聲與內在力量的契機。</span>
-                    </p>
-                </div>
-            </div>
-
-            <!-- Service Offerings Cards -->
-            <div class="grid md:grid-cols-3 gap-6 pt-4">
-                
-                <!-- Individual Support -->
-                <div class="bg-white p-6 rounded-3xl border border-salty-slate/10 shadow-sm relative hover:shadow-md transition">
-                    <div class="w-10 h-10 rounded-2xl bg-salty-teal/15 flex items-center justify-center text-lg mb-4">🌱</div>
-                    <h3 class="text-lg font-bold text-salty-slate font-optima mb-1">
-                        <span class="lang-en">Individual Support</span>
-                        <span class="lang-zh">個人支援</span>
-                    </h3>
-                    <div class="text-[10px] font-bold uppercase tracking-wider text-salty-teal font-optima mb-3">Online / In-Person</div>
-                    <p class="text-xs text-salty-slate/80 leading-relaxed font-light">
-                        <span class="lang-en">A private, professional therapeutic space to explore your unique inner landscape. Through a thoughtful, clinically backed choice of art materials, dedicated dialogue, and a Christ-centered, trauma-informed approach, I walk alongside you whether you are weathering a heavy season or looking to safely nourish your roots within a secure therapeutic framework.</span>
-                        <span class="lang-zh">一個專屬的專業支持空間，用以探索您獨特的內在風景。透過精心挑選的藝術媒材、專屬對話以及以基督為中心、具創傷知情的方向，無論您正經歷沉重的季節，抑或希望在安全的專業支持框架內滋養根基，我都將與您並肩同行。</span>
-                    </p>
-                </div>
-
-                <!-- Workshops and Groups -->
-                <div class="bg-white p-6 rounded-3xl border border-salty-slate/10 shadow-sm relative hover:shadow-md transition">
-                    <div class="w-10 h-10 rounded-2xl bg-salty-yellow/30 flex items-center justify-center text-lg mb-4">🤝</div>
-                    <h3 class="text-lg font-bold text-salty-slate font-optima mb-1">
-                        <span class="lang-en">Workshops and Groups</span>
-                        <span class="lang-zh">工作坊及小組</span>
-                    </h3>
-                    <div class="text-[10px] font-bold uppercase tracking-wider text-salty-teal font-optima mb-3">Online / In-Person</div>
-                    <p class="text-xs text-salty-slate/80 leading-relaxed font-light">
-                        <span class="lang-en">A structured therapeutic space to explore your inner landscape alongside a supportive community. Through guided art-making and reflective dialogue, we navigate diverse emotional and spiritual climates together, using creative expression within a grounded professional framework to foster insight, mutual validation, and collective resilience.</span>
-                        <span class="lang-zh">一個結構化的專業支持空間，讓您在支持性的社群中探索內在風景。透過引導式的藝術創作和反思對話，共同面對不同的情緒與心靈氣候，並在穩固的框架中運用創造性表達來建立洞察力與集體韌性。</span>
-                    </p>
-                </div>
-
-                <!-- Open Studio -->
-                <div class="bg-white p-6 rounded-3xl border border-salty-slate/10 shadow-sm relative hover:shadow-md transition">
-                    <div class="w-10 h-10 rounded-2xl bg-salty-pink/30 flex items-center justify-center text-lg mb-4">🎨</div>
-                    <h3 class="text-lg font-bold text-salty-slate font-optima mb-1">
-                        <span class="lang-en">Open Studio</span>
-                        <span class="lang-zh">開放工作室</span>
-                    </h3>
-                    <div class="text-[10px] font-bold uppercase tracking-wider text-salty-teal font-optima mb-3">In-Person</div>
-                    <p class="text-xs text-salty-slate/80 leading-relaxed font-light">
-                        <span class="lang-en">A held, quiet clearing to gently release heavy burdens under professional presence. This session provides the freedom of self-directed creation, allowing your curiosity and innate creativity to bloom, whether you choose to work independently or rest within a quiet, supportive community circle.</span>
-                        <span class="lang-zh">一個受專業陪伴、寧靜且承載的空間，在專業人員的支持下，溫和地卸下沉重的負擔。此會談提供自主創作的自由，不論您選擇獨立創作還是留在安靜的社群圈中休養，都能讓您的好奇心自由綻放。</span>
-                    </p>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- SECTION 3: INSPIRED DRAWING PROMPTS -->
-        <section id="drawing-prompts-section" class="bg-gradient-to-tr from-salty-teal/15 via-salty-100 to-salty-yellow/15 rounded-[36px] border border-salty-slate/10 p-6 md:p-10 relative overflow-hidden">
-            <div class="max-w-3xl mx-auto">
-                <div class="bg-white rounded-[28px] p-6 md:p-8 border border-salty-slate/10 shadow-sm relative">
-                    <div class="washi-tape washi-tape-pink" aria-hidden="true"></div>
-                    
-                    <h3 class="text-xl md:text-2xl font-bold text-salty-slate mb-2 font-optima text-center">
-                        <span class="lang-en">Inspired Drawing Prompts</span>
-                        <span class="lang-zh">啟發心靈的繪畫提案</span>
-                    </h3>
-                    <p class="text-xs text-salty-slate/70 mb-5 leading-relaxed font-light text-center">
-                        <span class="lang-en">Need a moment to express? Click below to toggle between drawing prompts curated to inspire calm, exploration, or sensory connection.</span>
-                        <span class="lang-zh">需要一個抒發的契機嗎？點擊下方按鈕以切換畫題，旨在引導平靜、自我探索或感官連結。</span>
-                    </p>
-                    
-                    <div id="prompt-container" class="bg-salty-100 border border-salty-slate/10 p-6 rounded-2xl min-h-[90px] flex items-center justify-center text-center">
-                        <p id="active-prompt" class="italic text-salty-slate text-sm md:text-base leading-relaxed font-light font-optima transition-opacity duration-300">
-                            <span class="lang-en">Draw a tree on coastal sand. Draw its deep roots navigating stones to reach nourishment.</span>
-                            <span class="lang-zh">在海岸沙灘上畫一棵樹。描繪它深扎的根系如何穿過頑石汲取養分。</span>
-                        </p>
-                    </div>
-
-                    <div class="mt-5 flex justify-center">
-                        <button id="generate-prompt-btn" class="bg-salty-green text-white px-6 py-2.5 rounded-full hover:bg-salty-darkgreen transition text-[11px] font-bold uppercase tracking-wider font-optima shadow-sm">
-                            <span class="lang-en">New Prompt</span>
-                            <span class="lang-zh">切換畫題</span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- SECTION 4: ART THERAPIST BEVERLY CHAN -->
-        <section id="about-beverly" class="scroll-mt-24 bg-white/80 rounded-[36px] border border-salty-slate/10 p-6 md:p-10 shadow-sm relative">
-            <div class="washi-tape washi-tape-yellow" aria-hidden="true"></div>
-            
-            <div class="max-w-4xl mx-auto space-y-8">
-                <div>
-                    <span class="text-salty-teal font-bold tracking-[0.2em] text-[10px] uppercase font-optima block mb-1">
-                        <span class="lang-en">Art Therapist</span>
-                        <span class="lang-zh">藝術治療師</span>
-                    </span>
-                    <h2 class="text-2xl sm:text-3xl text-salty-slate font-optima">
-                        <span class="lang-en">Hello, and welcome. I am Beverly Chan.</span>
-                        <span class="lang-zh">你好，歡迎。我是陳欣慈 (Beverly)。</span>
-                    </h2>
-                </div>
-
-                <div class="text-salty-slate leading-relaxed font-light text-sm sm:text-base space-y-4">
-                    <p>
-                        <span class="lang-en">I am an art therapist, a Christian artist, and a graduate of the Vancouver Art Therapy Institute. Throughout my journey, I have supported individuals from diverse backgrounds—including those navigating learning differences, health challenges, cognitive changes, and personal loss. Over time, I have come to see how each person’s story holds the power to grow, to connect, and to influence others.</span>
-                        <span class="lang-zh">我是一位藝術治療師、基督徒藝術家，畢業於溫哥華藝術治療學校（Vancouver Art Therapy Institute）。在我的執業歷程中，我曾支援來自不同背景的人士—包括面對學習差異、健康挑戰、認知變化以及經歷個人喪失的個案。隨著時間的推移，我深切看見每個人的故事都擁有成長、連結及影響他人的力量。</span>
-                    </p>
-                    <p>
-                        <span class="lang-en">In my sessions, I aim to offer a welcoming space that facilitates artmaking through a person-centered, strengths-based approach. I believe art therapy can be a meaningful gift for many, as small acts of artmaking open space to communicate, reflect, and invite resilience.</span>
-                        <span class="lang-zh">在我的治療會談中，我提供一個包容溫暖的空間，以人為本和優勢導向的哲學來促進藝術創作。我深信藝術治療是送給許多人的珍貴禮物，因為微小的藝術創作行為能為溝通、反思與召喚韌性騰出空間。</span>
-                    </p>
-                </div>
-
-                <!-- Practice Framework -->
-                <div class="pt-6 border-t border-salty-slate/10 space-y-4">
-                    <h3 class="text-xl font-bold text-salty-slate font-optima">
-                        <span class="lang-en">My Practice Framework</span>
-                        <span class="lang-zh">我的專業實踐框架</span>
-                    </h3>
-                    <p class="text-xs sm:text-sm text-salty-slate/80 font-light leading-relaxed">
-                        <span class="lang-en">In this work, I define professionalism as maintaining a responsive, ethical, and structured framework for growth. Inspired by the resilience of coastal ecosystems that stand firm against storms, my practice uses nature as a symbolic metaphor for therapeutic containment, adaptive pacing, and environmental awareness:</span>
-                        <span class="lang-zh">在工作之中，我將「專業」定義為維持一個具回應力、合乎倫理且結構化的成長框架。受抵抗風暴的海岸生態系統所啟發，我的實踐以自然為象徵隱喻，用於專業承載、彈性步伐及環境覺察：</span>
-                    </p>
-
-                    <div class="grid sm:grid-cols-3 gap-4 pt-2">
-                        <!-- Pillar 1 -->
-                        <div class="bg-salty-100 p-4 rounded-2xl border border-salty-slate/5 space-y-2">
-                            <div class="text-lg">🦀</div>
-                            <strong class="text-xs font-bold text-salty-slate font-optima block">
-                                <span class="lang-en">Empathy & Boundaries</span>
-                                <span class="lang-zh">同理與邊界</span>
-                            </strong>
-                            <p class="text-[11px] text-salty-slate/80 leading-relaxed font-light">
-                                <span class="lang-en">Maintaining a balance between deep empathy and therapeutic containment under God’s care.</span>
-                                <span class="lang-zh">在深切同理與專業承載之間維持至關重要的平衡。</span>
-                            </p>
-                        </div>
-                        <!-- Pillar 2 -->
-                        <div class="bg-salty-100 p-4 rounded-2xl border border-salty-slate/5 space-y-2">
-                            <div class="text-lg">🌊</div>
-                            <strong class="text-xs font-bold text-salty-slate font-optima block">
-                                <span class="lang-en">Adaptive Support</span>
-                                <span class="lang-zh">彈性支援</span>
-                            </strong>
-                            <p class="text-[11px] text-salty-slate/80 leading-relaxed font-light">
-                                <span class="lang-en">Continuously adjusting my approach to honor your unique pace and life seasons.</span>
-                                <span class="lang-zh">持續調整方式以敬重您獨特的步調與生命季節。</span>
-                            </p>
-                        </div>
-                        <!-- Pillar 3 -->
-                        <div class="bg-salty-100 p-4 rounded-2xl border border-salty-slate/5 space-y-2">
-                            <div class="text-lg">💧</div>
-                            <strong class="text-xs font-bold text-salty-slate font-optima block">
-                                <span class="lang-en">Sensitivity & Awareness</span>
-                                <span class="lang-zh">敏感度與覺察</span>
-                            </strong>
-                            <p class="text-[11px] text-salty-slate/80 leading-relaxed font-light">
-                                <span class="lang-en">Remaining deeply attuned to spiritual, cultural, and environmental contexts.</span>
-                                <span class="lang-zh">敏銳覺察包含心靈、文化與環境在內的脈絡背景。</span>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- ALL 5 QUALIFICATIONS & CREDENTIALS GRID (Registered Arts Therapist as Primary Large Card) -->
-                <div class="pt-6 border-t border-salty-slate/10 space-y-3">
-                    <h3 class="text-xl font-bold text-salty-slate font-optima">
-                        <span class="lang-en">Qualifications & Academic Background</span>
-                        <span class="lang-zh">專業資質與學術背景</span>
-                    </h3>
-
-                    <div class="grid sm:grid-cols-2 gap-3 text-xs">
-                        <!-- 1. Registered Arts Therapist (AThR) - Primary Featured Card -->
-                        <div class="bg-salty-yellow/20 p-4 rounded-2xl border border-salty-yellow/50 sm:col-span-2 hover:bg-salty-yellow/30 transition shadow-sm">
-                            <strong class="font-optima block font-bold text-salty-slate text-sm sm:text-base">
-                                <span class="lang-en">Registered Arts Therapist (AThR)</span>
-                                <span class="lang-zh">註冊藝術治療師 (AThR)</span>
-                            </strong>
-                            <span class="text-xs text-salty-slate/80 block mt-0.5">
-                                <span class="lang-en">ANZACATA Professional Directory</span>
-                                <span class="lang-zh">ANZACATA 專業名錄註冊會員</span>
-                            </span>
-                        </div>
-
-                        <!-- 2. Art Therapist (DVATI) -->
-                        <div class="bg-salty-teal/15 p-3.5 rounded-2xl border border-salty-teal/30 hover:bg-salty-teal/25 transition">
-                            <strong class="font-optima block font-bold text-salty-slate text-xs sm:text-sm">
-                                <span class="lang-en">Art Therapist (DVATI)</span>
-                                <span class="lang-zh">藝術治療師 (DVATI)</span>
-                            </strong>
-                            <span class="text-[11px] text-salty-slate/75 block mt-0.5">
-                                <span class="lang-en">Vancouver Art Therapy Institute (Canada)</span>
-                                <span class="lang-zh">加拿大溫哥華藝術治療學校</span>
-                            </span>
-                        </div>
-
-                        <!-- 3. MA in School and Community Psychology -->
-                        <div class="bg-salty-pink/20 p-3.5 rounded-2xl border border-salty-pink/40 hover:bg-salty-pink/30 transition">
-                            <strong class="font-optima block font-bold text-salty-slate text-xs sm:text-sm">
-                                <span class="lang-en">MA in School & Community Psychology</span>
-                                <span class="lang-zh">學校與社區心理學碩士</span>
-                            </strong>
-                            <span class="text-[11px] text-salty-slate/75 block mt-0.5">
-                                <span class="lang-en">Applied psychology, community services, child & youth care</span>
-                                <span class="lang-zh">具備應用心理學、社區服務及學校環境兒童與青少年服務背景</span>
-                            </span>
-                        </div>
-
-                        <!-- 4. Postgraduate Diploma in Education (PGDE) -->
-                        <div class="bg-salty-green/15 p-3.5 rounded-2xl border border-salty-green/30 hover:bg-salty-green/25 transition">
-                            <strong class="font-optima block font-bold text-salty-slate text-xs sm:text-sm">
-                                <span class="lang-en">Postgraduate Diploma in Education (PGDE)</span>
-                                <span class="lang-zh">學位教師教育文憑 (PGDE)</span>
-                            </strong>
-                            <span class="text-[11px] text-salty-slate/75 block mt-0.5">
-                                <span class="lang-en">Specialized in early childhood education, care & development</span>
-                                <span class="lang-zh">專修幼兒教育、照護與發展領域知識</span>
-                            </span>
-                        </div>
-
-                        <!-- 5. BA in Graphic Design (Hons) -->
-                        <div class="bg-salty-purple/20 p-3.5 rounded-2xl border border-salty-purple/40 hover:bg-salty-purple/30 transition">
-                            <strong class="font-optima block font-bold text-salty-slate text-xs sm:text-sm">
-                                <span class="lang-en">BA in Graphic Design (Hons)</span>
-                                <span class="lang-zh">平面設計文學士 (榮譽)</span>
-                            </strong>
-                            <span class="text-[11px] text-salty-slate/75 block mt-0.5">
-                                <span class="lang-en">Background in visual design, creative communication & symbolism</span>
-                                <span class="lang-zh">具備視覺設計與傳播背景</span>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- SECTION 5: LEGAL & POLICY CENTER -->
-        <section id="legal-center" class="scroll-mt-24 space-y-6">
-            
-            <!-- Privacy Policy Box (Full English & Chinese) -->
-            <div class="bg-white p-6 rounded-3xl border border-salty-slate/10 shadow-sm">
-                <div class="flex justify-between items-center cursor-pointer" onclick="togglePrivacyDrawer()">
-                    <span class="text-xs font-bold uppercase tracking-wider text-salty-teal font-optima">
-                        <span class="lang-en">Data Collection & Privacy Policy</span>
-                        <span class="lang-zh">資料收集與隱私政策</span>
-                    </span>
-                    <button id="privacy-toggle-btn" class="text-xs text-salty-slate underline font-bold">Show / 展開</button>
-                </div>
-                <div id="privacy-drawer" class="hidden mt-4 pt-4 border-t border-salty-slate/10 text-xs text-salty-slate/80 leading-relaxed space-y-3 font-light">
-                    <!-- English Version -->
-                    <div class="lang-en space-y-2">
-                        <p>SaltyTree collects personal information, health intake data, and digital artwork solely to provide professional art therapy and wellness services.</p>
-                        <p>Telehealth sessions are conducted using encrypted video conferencing software (such as Zoom). To ensure privacy, therapeutic sessions are never recorded, and session data is not stored within the video platform.</p>
-                        <p>In compliance with international data privacy frameworks—including the Hong Kong Personal Data (Privacy) Ordinance (PDPO), the Australian Privacy Act, the New Zealand Privacy Act, the Singapore Personal Data Protection Act (PDPA), and the Canadian Personal Information Protection and Electronic Documents Act (PIPEDA)—all sensitive health data and client-created artwork is processed and stored using secure, encrypted systems.</p>
-                        <p>We do not store therapeutic records or intake assessments on public web servers or standard email servers. You retain the right to access, correct, or request the deletion of your personal data at any time, subject to statutory healthcare record retention laws in your local jurisdiction.</p>
-                    </div>
-
-                    <!-- Chinese Version -->
-                    <div class="lang-zh space-y-2">
-                        <p>鹽樹（SaltyTree）收集個人資料、健康評估數據及數位藝術作品，純粹用於提供專業藝術治療與身心安適服務。</p>
-                        <p>遠距視訊會談使用加密視訊會議軟體（例如 Zoom）進行。為了保障隱私，專業會談絕不錄音或錄影，且會談數據不會儲存於視訊平台中。</p>
-                        <p>為了符合國際數據隱私框架——包括香港《個人資料（私隱）條例》（PDPO）、澳洲《隱私法》、紐西蘭《隱私法》、新加坡《個人資料保護法》（PDPA）以及加拿大《個人資訊保護與電子文件法》（PIPEDA）——所有敏感性健康數據及個案創作之藝術作品均使用安全且加密的系統進行處理與儲存。</p>
-                        <p>我們不會在公開的網頁伺服器或標準電子郵件伺服器上儲存專業紀錄或個案評估資料。在符合您當地法定健康紀錄保存期限的規範下，您有權隨時查閱、更正或要求刪除您的個人資料。</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Practice Notice Box (Full English & Chinese) -->
-            <div class="bg-salty-200/80 p-6 rounded-3xl border border-salty-slate/10 text-xs text-salty-slate leading-relaxed space-y-2">
-                <div class="text-[10px] font-bold uppercase tracking-wider text-salty-slate font-optima">
-                    <span class="lang-en">Practice Notice & Regional Scope</span>
-                    <span class="lang-zh">執業須知與服務範圍</span>
-                </div>
-                
-                <p class="lang-en">SaltyTree is an arts therapy and wellness practice currently undergoing formal corporate registration. All professional art therapy services are delivered exclusively by a Registered Arts Therapist (AThR). Due to professional registration boundaries and international telehealth regulations, formal therapeutic sessions are strictly restricted to residents of Australia, New Zealand, Singapore, Hong Kong SAR, and select Canadian provinces (British Columbia, Alberta, Saskatchewan, and Manitoba).</p>
-                <p class="lang-zh">鹽樹（SaltyTree）為目前正在辦理正式公司註冊程序之藝術治療與身心安適工作室。本工作室所有專業藝術治療服務均由註冊藝術治療師（AThR）親自提供。受限於專業註冊邊界及國際遠距醫療法規，正式的專業會談服務僅限於居住在澳洲、紐西蘭、新加坡、香港特別行政區，以及加拿大指定省份（不列顛哥倫比亞省、亞伯達省、薩斯喀徹溫省和曼尼托巴省）的居民。</p>
-
-                <p class="font-bold text-salty-orange">
-                    <span class="lang-en">SaltyTree is not a crisis center. If you are experiencing a mental health emergency, please immediately contact your local emergency response team or regional crisis helpline.</span>
-                    <span class="lang-zh">鹽樹並非緊急求助或危機干預中心。若您正經歷急性心理健康危機，請立即聯絡您當地的緊急救援團隊或區域危機求助熱線。</span>
+                <p class="text-studio-slate font-light text-base md:text-lg leading-relaxed">
+                    <span class="lang-en">Art therapy blends visual art, creative writing, and poetry to help individuals process complex emotions. The focus rests entirely on the creative process and symbolic meaning rather than artistic skill. This multi-sensory approach allows individuals to creatively express life challenges, manage anxiety, and encourage personal growth in a format distinct from traditional talk therapy. Art therapy provides a quiet sanctuary to evaluate and process experiences. Open to all skill levels and with all creative backgrounds welcome, everyone is welcome to practice and explore creative expression anchored in individual dignity and purpose.</span>
+                    <span class="lang-zh">藝術治療結合了視覺藝術、創意寫作與詩歌，陪伴個人梳理與處理複雜的情緒。焦點完全放在創作過程與象徵意義上，而非藝術技巧本身。這種多感官的方法讓人們能以不同於傳統談話治療的形式，創造性地表達生命挑戰、管理焦慮，並促進個人成長。藝術治療提供了一個寧靜的避風港來審視與整合經驗。我們歡迎所有創作背景與能力層級的人士，在個體尊嚴與目標的基礎上，共同實踐與探索創造性表達。</span>
                 </p>
             </div>
 
-            <!-- Complete Policies & Disclaimer Drawer (Full 10 Points EN & ZH) -->
-            <div class="bg-white p-6 rounded-3xl border border-salty-slate/10 shadow-sm">
-                <div class="flex justify-between items-center cursor-pointer" onclick="toggleLegalDrawer()">
-                    <span class="text-xs font-bold uppercase tracking-wider text-salty-teal font-optima">
-                        <span class="lang-en">Complete Policies & General Disclaimer (10 Points)</span>
-                        <span class="lang-zh">完整條款與免責聲明 (十項條款)</span>
-                    </span>
-                    <button id="legal-toggle-btn" class="text-xs text-salty-slate underline font-bold">Show / 展開</button>
-                </div>
-                <div id="legal-drawer" class="hidden mt-4 pt-4 border-t border-salty-slate/10 text-[11px] text-salty-slate/80 leading-relaxed space-y-4 font-light max-h-96 overflow-y-auto pr-2">
+            <!-- The Creative Journey Block with Miniature Studio Table Photo (2.jpeg) -->
+            <div class="bg-studio-card border border-studio-border rounded-3xl p-8 md:p-12 shadow-sm">
+                <div class="grid lg:grid-cols-12 gap-12 items-center">
                     
-                    <!-- English 10 Points -->
-                    <div class="lang-en space-y-3">
-                        <p><strong>1. Informational and Educational Purposes Only:</strong> The public content provided on this Site, including text, graphics, public art prompts, images, exercises, and blog posts, is for general informational and educational purposes only. All website content is the intellectual property of SaltyTree and is protected under Hong Kong copyright laws; it may not be reproduced, redistributed, or used commercially without express written consent.</p>
-                        <p><strong>2. No Therapist-Client Relationship:</strong> Your access to or use of this Site—including downloading materials, interacting with public prompts, or communicating with SaltyTree or its practitioners via website contact forms, emails, or social media—does not establish a formal therapist-client relationship. Professional art therapy services are provided only after a formal intake and signed service agreement. A formal therapeutic relationship protected by professional art therapy frameworks is only established after an initial health intake assessment is completed, location and eligibility under regional regulations are verified, and a formal therapeutic service agreement is mutually signed.</p>
-                        <p><strong>3. Not a Substitute for Mental Health Treatment:</strong> The public resources on this Site are not a substitute for professional therapeutic advice, individualized psychotherapy, medical counseling, or psychiatric treatment. Art Therapy is a supportive, therapeutic modality and does not replace medical, psychiatric, or neuropsychological treatment. Always seek the advice of a qualified, locally licensed mental health provider or physician regarding any severe psychological symptoms or medical conditions.</p>
-                        <p><strong>4. Assumption of Risk and Personal Responsibility:</strong> Engaging with creative arts and emotional topics can sometimes bring up intense feelings or memories. By using the art prompts or exercises on this Site, you voluntarily assume all risks associated with such activities. SaltyTree is not responsible or liable for any emotional distress resulting from your independent use of our digital content.</p>
-                        <p><strong>5. Telehealth Technology & Connection Failures:</strong> SaltyTree utilizes digital third-party video software, booking engines, and internet infrastructure to deliver online services. The client acknowledges that digital transmissions are subject to connection drops, software latency, server downtime, and technical interruptions beyond our control. SaltyTree is not liable for any logistical delays, session disruptions, or secondary distress resulting from sudden software or network failures.</p>
-                        <p><strong>6. Cybersecurity & Data Breach Inherent Risk:</strong> While SaltyTree coordinates with healthcare-compliant practice management systems to safeguard your records, no digital transmission over the internet or cloud storage network can be guaranteed 100% secure. By completing forms, uploading files, or transmitting data through this platform or email channels, you voluntarily acknowledge the inherent security risks of web-based communications and agree that SaltyTree cannot be held liable for unauthorized third-party interceptions or cyber breaches that occur outside our immediate local systems.</p>
-                        <p><strong>7. Anti-Bypassing of Geo-Blocking Mechanics:</strong> SaltyTree enforces geo-blocking systems to comply with structural cross-border telehealth boundaries. Accessing our booking systems or sessions through a Virtual Private Network (VPN), proxy server, or falsified address declaration to bypass these automated geographical limits constitutes a direct breach of contract. Clients who intentionally mask their true physical location during services agree to indemnify and hold SaltyTree harmless from any ensuing regulatory actions or legal non-compliance penalties.</p>
-                        <p><strong>8. Website Analytics and Tracking:</strong> This Site automatically collects standard, non-identifiable technical data (such as your IP address, browser type, and cookies) purely for website optimization and traffic analytics. We do not use these technical data to identify individual visitors, nor do we share it with third parties for marketing purposes.</p>
-                        <p><strong>9. Governing Law & Jurisdiction:</strong> These Terms and your use of this Site shall be governed by and construed in accordance with the laws of the Hong Kong Special Administrative Region (HKSAR), without regard to its conflict of law principles. Any legal action or proceeding related to this Site or our services shall be brought exclusively in a court of competent jurisdiction in Hong Kong.</p>
-                        <p><strong>10. Compliance with Local Laws & Severability:</strong> SaltyTree operates internationally but does not warrant that its services comply with the local statutory requirements of every global jurisdiction. If local telehealth, counseling, or corporate laws change in your region rendering our services non-compliant, SaltyTree reserves the right to immediately modify, restrict, or terminate your access to our services without liability. If any provision of these terms is found to be unlawful or unenforceable under local law, that specific provision shall be severed, and the remaining terms shall continue in full force and effect.</p>
+                    <!-- Left Side: Updated Paragraphs for The Creative Journey -->
+                    <div class="lg:col-span-7 space-y-6">
+                        <span class="text-xs uppercase tracking-[0.25em] font-semibold text-studio-terracotta block">
+                            <span class="lang-en">The Creative Journey</span>
+                            <span class="lang-zh">創作歷程</span>
+                        </span>
+                        
+                        <div class="text-studio-slate leading-relaxed font-light text-sm md:text-base space-y-5">
+                            <p class="text-studio-green font-medium">
+                                <span class="lang-en">Diverse and flexible channels of expression are available, designed to support you as you externalize and reshape your experiences through the creative process. We provide a structured space where you can create with privacy and safety, ensuring that your creative output receives full respect and professional acknowledgment.</span>
+                                <span class="lang-zh">我們提供多元且彈性的表達管道，旨在支持您透過創作歷程將內在經驗具象化並重新形塑。我們提供結構化的空間，讓您可以在隱私與安全感中進行創作，確保您的作品獲得充分的尊重與專業認可。</span>
+                            </p>
+                            <p>
+                                <span class="lang-en">Through color, line, shape, and texture, we help you give visible form to complex ideas that are difficult to put into words. This approach engages your experiences and your relationship with the outside world through art materials. Whether your work involves building, layering, dismantling, or simply processing difficult emotions, the creative process offers tangible opportunities for exploration and expression.</span>
+                                <span class="lang-zh">透過色彩、線條、形狀與質地，我們協助您將那些難以用言語表達的複雜想法賦予可見的形狀。這種方法透過藝術媒材觸及您的經驗以及您與外在世界的連結。無論您的創作包含建構、堆疊、拆解，抑或僅僅是抒發沉重的感受，創作歷程都提供了切實的探索與表達契機。</span>
+                            </p>
+                            <p class="text-studio-green font-medium">
+                                <span class="lang-en">This process centers on your strengths while honoring your individual pace. We provide active partnership and guidance through goal-oriented sessions, focusing on helping you identify your skills and find practical tools to move forward—whether that means developing strategies to regain focus, gaining clarity on your next steps, or fostering a renewed sense of vitality, voice, and confidence.</span>
+                                <span class="lang-zh">這個歷程以您的優勢為核心，同時敬重您個人的步調。我們在目標導向的會談中提供積極的夥伴關聯與引導，著重於協助您辨識自身的技能，並尋得邁步向前的實用工具——無論那是建立重新聚焦的策略、明確下一步的思路，抑或是重拾活力、發聲與自信。</span>
+                            </p>
+                        </div>
                     </div>
 
-                    <!-- Chinese 10 Points -->
-                    <div class="lang-zh space-y-3">
-                        <p><strong>1. 僅供資訊與教育目的：</strong>本網站提供之所有公開內容，包括文字、圖表、公開藝術提示、圖片、練習及部落格文章，僅供一般資訊與教育目的使用。本網站之所有內容均屬鹽樹之知識產權，並受香港版權法保護；未經明確書面許可，不得進行複製、重新分發或用於商業用途。</p>
-                        <p><strong>2. 無治療師與個案關係：</strong>您對本網站的瀏覽、下載資料、使用公開提示，或透過網站聯絡表單、電子郵件、社交媒體與鹽樹（SaltyTree）及其執業者進行任何溝通，均不構成正式的治療師與客戶（個案）關係。正式且受保護的專業會談關係（受 AThR 專業倫理框架規範），僅在完成初始健康評估、確認所在地地點與符合區域法規資格，並由雙方共同簽署正式的專業服務協議後，方始建立。</p>
-                        <p><strong>3. 不可替代心理健康治療：</strong>本網站之公開資源不可替代專業的藝術會談建議、個別化心理諮商、醫療諮商或精神科治療。專業藝術諮商為支持性輔助方式，並不能完全取代醫藥、精神科或神經心理學的臨床治療。若有任何嚴重的心理症狀或醫療狀況，請務必尋求合格且具備當地執照的心理健康照護人員或醫生的專業建議。</p>
-                        <p><strong>4. 風險承擔與個人責任：</strong>參與創意藝術與情感探索有時可能會引發強烈的情緒或記憶。當您使用本網站的藝術提示或練習時，即代表您自願承擔與此類活動相關的所有風險。對於您獨立使用本網站數位內容所導致的任何情緒困擾，鹽樹不承擔任何法律責任。</p>
-                        <p><strong>5. 遠距傳輸技術與連線中斷免責 (IT 安全條款)：</strong>鹽樹利用數位第三方視訊軟體、預約引擎及網路基礎設施來提供線上服務。個案理解並同意，數位傳輸可能會遇到連線中斷、軟體延遲、伺服器停機以及超出控制範圍的技術干擾。鹽樹對於因突發軟體或網路故障而導致的任何行程延誤、會談中斷或衍生之情緒困擾，概不承擔任何法律責任。</p>
-                        <p><strong>6. 網路安全與資料洩漏之固有風險 (IT 安全條款)：</strong>儘管鹽樹與符合醫療合規性的執業管理系統合作以保護您的紀錄，但沒有任何透過網際網路或雲端儲存網路的數位傳輸能被保證百分之百安全。透過本平台或電子郵件管道填寫表格、上傳檔案或傳輸資料，即代表您自願承認網路通訊的固有安全風險，並同意鹽樹對於在我們直接本地系統之外發生的未經授權之第三方攔截或網路入侵，概不承擔任何法律責任。</p>
-                        <p><strong>7. 禁止繞過地理阻擋機制 (IT 安全條款)：</strong>鹽樹實施地理阻擋系統以符合跨境遠距服務邊界之規定。凡透過虛擬私人網路（VPN）、代理伺服器或虛假地址宣告來繞過這些自動化地理限制以存取我們的預約系統或參與會談，皆構成直接違約。若個案在接受服務期間故意隱瞞其真實物理位置，即同意使鹽樹免受任何隨之而來的法規行動或法律不合規處罰，並承擔相關賠償責任。</p>
-                        <p><strong>8. 網站數據分析與追蹤（Cookies 與 IP 地址）：</strong>本網站會自動收集標準的、非識別性的技術數據（例如您的 IP 地址、瀏覽器類型和 Cookies），此行為純粹用於網站優化與流量統計分析。我們不會使用這些技術數據來識別個人訪客，亦不會將其分享給第三方用於行銷目的。</p>
-                        <p><strong>9. 準據法與管轄權：</strong>本條款及您對本網站的使用，均以中華人民共和國香港特別行政區（香港特區）之法律為準據法，並依其解釋，不適用其法律衝突原則。任何與本網站或我們服務相關的法律訴訟或程序，均應專屬管轄於香港特別行政區具有管轄權之法院。</p>
-                        <p><strong>10. 符合當地法律與條款可分性：</strong>鹽樹（SaltyTree）於國際間運營，但並不保證其服務完全符合全球所有司法管轄區的當地法定要求。若您所在地區的遠距服務、諮商或公司法規發生變更，導致我們的服務不再合規，鹽樹保留立即修改、限制或終止您使用我們服務的權利，且不承擔任何法律責任。若本條款之任何規定在當地法律下被認定為違法或不可執行，該特定規定應予割裂，其餘條款仍應具有完全之效力。</p>
+                    <!-- Right Side: Miniature Studio Table Photo (2.jpeg) fitted cleanly without clipping -->
+                    <div class="lg:col-span-5">
+                        <div class="bg-studio-bg p-5 rounded-2xl border border-studio-border shadow-sm studio-image-frame">
+                            <div class="w-full aspect-[4/3] rounded-xl overflow-hidden relative border border-studio-border/60 bg-[#E8E2D5] flex items-center justify-center">
+                                <img src="2.jpeg" 
+                                     alt="The Studio Table" 
+                                     class="w-full h-full object-contain rounded-xl"
+                                     onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/SaltyTreeArt/SaltyTreeArt.github.io/main/2.jpeg';" />
+                            </div>
+                        </div>
                     </div>
 
                 </div>
             </div>
 
+            <!-- 3 Core Services Cards -->
+            <div class="grid md:grid-cols-3 gap-8 pt-4">
+                
+                <!-- Service 1: Individual Support -->
+                <div class="bg-studio-card p-8 rounded-2xl border border-studio-border shadow-sm hover:border-studio-sage transition duration-300 flex flex-col justify-between space-y-6">
+                    <div class="space-y-4">
+                        <span class="text-[10px] text-studio-terracotta font-semibold uppercase tracking-widest block">
+                            <span class="lang-en">Online / In-Person</span>
+                            <span class="lang-zh">線上 / 實體</span>
+                        </span>
+                        <h3 class="text-2xl font-serif-title font-normal text-studio-green">
+                            <span class="lang-en">Individual Support</span>
+                            <span class="lang-zh">個人支援</span>
+                        </h3>
+                        <p class="text-studio-slate text-sm font-light leading-relaxed">
+                            <span class="lang-en">A private therapeutic space to explore your experiences through creative expression. Through a thoughtful choice of art materials and dedicated dialogue, support is provided whether the goal is navigating a challenging season, building measurable resilience, or expanding personal potential within a secure therapeutic framework.</span>
+                            <span class="lang-zh">一個專屬的專業支持空間，透過創造性表達來探索您的經驗。透過精心挑选的藝術媒材與專屬對話，無論目標是度過艱難的季節、建立可衡量的韌性，還是在安全的專業框架內拓展個人潛能，我們都將提供全力支持。</span>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Service 2: Workshops and Groups -->
+                <div class="bg-studio-card p-8 rounded-2xl border border-studio-border shadow-sm hover:border-studio-sage transition duration-300 flex flex-col justify-between space-y-6">
+                    <div class="space-y-4">
+                        <span class="text-[10px] text-studio-terracotta font-semibold uppercase tracking-widest block">
+                            <span class="lang-en">Online / In-Person</span>
+                            <span class="lang-zh">線上 / 實體</span>
+                        </span>
+                        <h3 class="text-2xl font-serif-title font-normal text-studio-green">
+                            <span class="lang-en">Workshops and Groups</span>
+                            <span class="lang-zh">工作坊及小組</span>
+                        </h3>
+                        <p class="text-studio-slate text-sm font-light leading-relaxed">
+                            <span class="lang-en">A structured therapeutic space to explore your experiences alongside a supportive community. Through guided art-making and reflective dialogue, participants address diverse emotional experiences to use creative expression within a grounded therapeutic framework to foster concrete insight, peer connection, and practical resilience.</span>
+                            <span class="lang-zh">一個結構化的專業支持空間，讓您在支持性的社群中探索您的經驗。透過引導式的藝術創作和反思對話，參與者共同面對多元的情緒體驗，在穩固的框架中運用創造性表達，培養具體的洞察力、同儕連結與實用韌性。</span>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Service 3: Open Studio -->
+                <div class="bg-studio-card p-8 rounded-2xl border border-studio-border shadow-sm hover:border-studio-sage transition duration-300 flex flex-col justify-between space-y-6">
+                    <div class="space-y-4">
+                        <span class="text-[10px] text-studio-terracotta font-semibold uppercase tracking-widest block">
+                            <span class="lang-en">In-Person</span>
+                            <span class="lang-zh">實體</span>
+                        </span>
+                        <h3 class="text-2xl font-serif-title font-normal text-studio-green">
+                            <span class="lang-en">Open Studio</span>
+                            <span class="lang-zh">開放工作室</span>
+                        </h3>
+                        <p class="text-studio-slate text-sm font-light leading-relaxed">
+                            <span class="lang-en">A welcoming creative space to process and address difficult experiences with professional support available. This session provides the freedom of self-directed creation, allowing your creativity to unfold whether you choose to work independently or create alongside a quiet community.</span>
+                            <span class="lang-zh">一個溫馨且包容的創作空間，在專業人員的支持下，梳理與處理困境。此會談提供自主創作的自由，不論您選擇獨立創作，抑或是留在安靜的社群圈中一同創作，都能讓您的創造力自在綻放。</span>
+                        </p>
+                    </div>
+                </div>
+
+            </div>
         </section>
 
-        <!-- SECTION 6: CONTACT & CONNECT -->
-        <section id="contact" class="scroll-mt-24">
-            <div class="bg-white/90 rounded-[38px] border-2 border-white p-6 sm:p-10 shadow-[0_15px_40px_rgba(79,62,77,0.06)] relative">
-                <div class="washi-tape washi-tape-yellow" aria-hidden="true"></div>
-
-                <div class="max-w-2xl mx-auto space-y-6">
-                    <div class="text-center">
-                        <span class="text-salty-teal font-bold tracking-[0.2em] text-[10px] uppercase font-optima block mb-1">
-                            <span class="lang-en">Connect</span>
-                            <span class="lang-zh">建立連結</span>
+        <!-- Art Therapist Profile & Practice Framework -->
+        <section id="about-beverly" class="scroll-mt-24 max-w-5xl mx-auto py-6 border-t border-studio-border reveal-on-scroll">
+            <div class="grid lg:grid-cols-12 gap-12 items-start">
+                
+                <!-- Main Bio and Practice Framework -->
+                <div class="lg:col-span-7 space-y-8">
+                    <div>
+                        <span class="text-studio-terracotta font-semibold tracking-[0.25em] text-xs uppercase block mb-2">
+                            <span class="lang-en">Art Therapist Profile</span>
+                            <span class="lang-zh">藝術治療師簡介</span>
                         </span>
-                        <h2 class="text-3xl font-bold text-salty-slate font-optima">
-                            <span class="lang-en">Get in Touch</span>
-                            <span class="lang-zh">聯絡我們</span>
+                        <h2 class="text-3xl md:text-4xl text-studio-green font-serif-title">
+                            <span class="lang-en">Art Therapist Beverly Chan</span>
+                            <span class="lang-zh">藝術治療師 陳欣慈</span>
                         </h2>
-                        <p class="text-xs text-salty-slate/70 mt-2 font-light">
-                            <span class="lang-en">Let's explore how artmaking can create a supportive space for your growth.</span>
-                            <span class="lang-zh">讓我們一同探索藝術創作如何為您的成長建立支持性空間。</span>
+                    </div>
+                    
+                    <div class="space-y-6 text-studio-slate leading-relaxed font-light text-base md:text-lg">
+                        <p class="italic text-studio-green font-serif-title text-xl">
+                            <span class="lang-en">Hello, and welcome. I am Beverly Chan.</span>
+                            <span class="lang-zh">你好，歡迎。我是陳欣慈 (Beverly)。</span>
+                        </p>
+                        <p>
+                            <span class="lang-en">I am an art therapist, a Christian artist, and a graduate of the Vancouver Art Therapy Institute. Throughout my journey, I have supported individuals from diverse backgrounds, including those navigating learning differences, health challenges, the emotional adjustments surrounding changes in memory and cognition, and experiences of personal loss. Over time, I have come to see how each person’s story holds the power to grow, to connect, and to influence others.</span>
+                            <span class="lang-zh">我是一位藝術治療師、基督徒藝術家，畢業於溫哥華藝術治療學校（Vancouver Art Therapy Institute）。在我的執業歷程中，我曾支援來自不同背景的人士，包括面對學習差異、健康挑戰、圍繞記憶與認知變化的情緒適應，以及經歷個人喪失的個案。隨著時間的推移，我深切看見每個人的故事都擁有成長、連結及影響他人的力量。</span>
+                        </p>
+                        <p>
+                            <span class="lang-en">In my sessions, I aim to offer a welcoming space that facilitates artmaking through a person-centred, strengths-based philosophy. I believe art therapy can be a meaningful gift for many, as small acts of artmaking create opportunities to communicate, explore experiences, and foster resilience.</span>
+                            <span class="lang-zh">在我的治療會談中，我提供一個包容溫暖的空間，以人為本和優勢導向的哲學來促進藝術創作。我深信藝術治療是送給許多人的珍貴禮物，因為微小的藝術創作行為能為溝通、探索經驗與召喚韌性創造契機。</span>
                         </p>
                     </div>
 
-                    <form id="contact-form" class="space-y-4 text-xs font-bold uppercase tracking-wider font-optima text-salty-slate">
+                    <!-- Practice Framework Block -->
+                    <div class="pt-8 border-t border-studio-border space-y-6">
+                        <h3 class="text-2xl font-serif-title text-studio-green">
+                            <span class="lang-en">My Practice Framework</span>
+                            <span class="lang-zh">我的專業實踐框架</span>
+                        </h3>
+                        <p class="text-sm md:text-base text-studio-slate font-light leading-relaxed">
+                            <span class="lang-en">In this work, I define professionalism as the act of maintaining a responsive, ethical, and structured framework for support and growth. Much like a resilient coastal ecosystem that stands firm against storms, I look to the interconnectedness of our shared environment to inform my professional values. Inspired by crabs, this framework outlines my approach to therapeutic containment, adaptive practice, and contextual awareness:</span>
+                            <span class="lang-zh">在工作之中，我將「專業」定義為維持一個具回應力、合乎倫理且結構化的支持與成長框架。就像一個能抵抗風暴的堅韌海岸生態系統，我依循我們共享環境的相互連結來塑造我的專業價值。受到螃蟹的啟發，此框架概述了我對於專業承載、彈性實踐及環境覺察的方法：</span>
+                        </p>
+
+                        <div class="space-y-6 pt-2">
+                            
+                            <!-- Pillar 1 -->
+                            <div class="bg-studio-card p-6 rounded-2xl border border-studio-border space-y-2">
+                                <h4 class="font-serif-title font-semibold text-studio-green text-lg">
+                                    <span class="lang-en">Empathy & Boundaries (The Claws & The Waves)</span>
+                                    <span class="lang-zh">同理與邊界（雙螯與波浪）</span>
+                                </h4>
+                                <p class="text-xs md:text-sm text-studio-slate font-light leading-relaxed">
+                                    <span class="lang-en">Where two claws make contact, the imagery captures the protective nature inherent in new encounters. While waves symbolize the dynamic nature of relationships, the intersecting blue lines represent the complex emotions exchanged in our interactions. My intention is to maintain a vital balance between empathy and therapeutic containment, ensuring a secure, structured space where your experiences and emotions can be explored.</span>
+                                    <span class="lang-zh">在雙螯接觸的意象中，捕捉了新相遇中固有的保護本能。波浪象徵關係中的動態變化，而交織的藍色線條代表互動中交流的複雜情緒。我的目標是在同理與專業承載之間維持至關重要的平衡，確保建立一個安全且結構化的空間，讓您的經驗與情緒能得到深刻探索。</span>
+                                </p>
+                            </div>
+
+                            <!-- Pillar 2 -->
+                            <div class="bg-studio-card p-6 rounded-2xl border border-studio-border space-y-2">
+                                <h4 class="font-serif-title font-semibold text-studio-green text-lg">
+                                    <span class="lang-en">Adaptive Support (Flexibility & Responsiveness)</span>
+                                    <span class="lang-zh">彈性支援（靈活與回應）</span>
+                                </h4>
+                                <p class="text-xs md:text-sm text-studio-slate font-light leading-relaxed">
+                                    <span class="lang-en">Reflected in the flexibility of the crab, this framework mirrors the changing conditions of the sea. Rather than applying a rigid, one-size-fits-all formula, I adapt my approach to your individual needs, lived experiences, and circumstances while maintaining a consistent therapeutic framework.</span>
+                                    <span class="lang-zh">正如螃蟹的靈活性所展現，此框架映照出海洋多變的環境。我不會套用死板、一成不變的公式，而是根據您個人的需求、生命經驗與處境來調整我的方法，同時始終維持穩固一致的治療框架。</span>
+                                </p>
+                            </div>
+
+                            <!-- Pillar 3 -->
+                            <div class="bg-studio-card p-6 rounded-2xl border border-studio-border space-y-2">
+                                <h4 class="font-serif-title font-semibold text-studio-green text-lg">
+                                    <span class="lang-en">Sensitivity & Awareness (The Ripple Effect)</span>
+                                    <span class="lang-zh">敏感度與覺察（漣漪效應）</span>
+                                </h4>
+                                <p class="text-xs md:text-sm text-studio-slate font-light leading-relaxed">
+                                    <span class="lang-en">Where a crab rests at a ripple, subtle blue lines trace the invisible currents of the surrounding environment. This symbolizes an awareness of the context each person brings into the therapeutic space. Just as a coastal ecosystem is shaped by the conditions around it, I strive to remain responsive to the systemic factors, environments, cultures, and diverse backgrounds that influence the lives of those I support.</span>
+                                    <span class="lang-zh">當螃蟹停歇在漣漪之處，細微的藍色線條描繪出周圍環境隱形的洋流。這象徵著對每個人帶入治療空間之脈絡與背景的敏銳覺察。正如海岸生態系統受其周遭條件的形塑，我努力對影響我所支持者生命的系統性因素、環境、文化及多元背景保持深切的回應力。</span>
+                                </p>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Languages Offered -->
+                    <div class="pt-4 space-y-2">
+                        <span class="text-[10px] font-semibold uppercase tracking-widest text-studio-terracotta block">
+                            <span class="lang-en">Languages Offered</span>
+                            <span class="lang-zh">提供服務語言</span>
+                        </span>
+                        <div class="inline-block bg-studio-card px-5 py-2 rounded-full border border-studio-border text-xs text-studio-dark font-medium">
+                            <span class="lang-en">English and Chinese</span>
+                            <span class="lang-zh">英文及中文</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Professional Credentials Card -->
+                <div class="lg:col-span-5 bg-studio-card p-8 rounded-3xl border border-studio-border shadow-sm space-y-6">
+                    <span class="text-[10px] uppercase tracking-widest text-studio-terracotta font-semibold block border-b border-studio-border pb-3">
+                        <span class="lang-en">Credentials & Registrations</span>
+                        <span class="lang-zh">專業資質與註冊認證</span>
+                    </span>
+
+                    <div class="space-y-4 text-xs text-studio-slate leading-snug">
+                        
+                        <div class="p-3 bg-studio-bg/60 rounded-xl border border-studio-border/60">
+                            <h5 class="font-serif-title font-bold text-studio-green text-base">
+                                <span class="lang-en">Registered Arts Therapist (AThR)</span>
+                                <span class="lang-zh">註冊藝術治療師 (AThR)</span>
+                            </h5>
+                            <p class="text-studio-gold font-semibold text-[10px] uppercase tracking-wider mt-1">ANZACATA Professional Directory</p>
+                        </div>
+                        
+                        <div class="p-3 bg-studio-bg/60 rounded-xl border border-studio-border/60">
+                            <h5 class="font-serif-title font-bold text-studio-green text-base">
+                                <span class="lang-en">Art Therapist (DVATI)</span>
+                                <span class="lang-zh">藝術治療師 (DVATI)</span>
+                            </h5>
+                            <p class="text-studio-gold font-semibold text-[10px] uppercase tracking-wider mt-1">
+                                <span class="lang-en">Credentialed professional, Vancouver Art Therapy Institute (Canada)</span>
+                                <span class="lang-zh">專業資質，加拿大溫哥華藝術治療學校</span>
+                            </p>
+                        </div>
+                        
+                        <div class="p-3 bg-studio-bg/60 rounded-xl border border-studio-border/60">
+                            <h5 class="font-serif-title font-bold text-studio-green text-base">
+                                <span class="lang-en">MA in School and Community Psychology</span>
+                                <span class="lang-zh">學校與社區心理學碩士</span>
+                            </h5>
+                            <p class="text-studio-gold font-semibold text-[10px] uppercase tracking-wider mt-1">
+                                <span class="lang-en">Applied psychology, community services, and youth support</span>
+                                <span class="lang-zh">具備應用心理學、社區服務及青少年支援背景</span>
+                            </p>
+                        </div>
+
+                        <div class="p-3 bg-studio-bg/60 rounded-xl border border-studio-border/60">
+                            <h5 class="font-serif-title font-bold text-studio-green text-base">
+                                <span class="lang-en">Postgraduate Diploma in Education (PGDE)</span>
+                                <span class="lang-zh">學位教師教育文憑 (PGDE)</span>
+                            </h5>
+                            <p class="text-studio-gold font-semibold text-[10px] uppercase tracking-wider mt-1">
+                                <span class="lang-en">Specialized knowledge in early childhood education & care</span>
+                                <span class="lang-zh">專修幼兒教育與發展領域知識</span>
+                            </p>
+                        </div>
+                        
+                        <div class="p-3 bg-studio-bg/60 rounded-xl border border-studio-border/60">
+                            <h5 class="font-serif-title font-bold text-studio-green text-base">
+                                <span class="lang-en">BA in Graphic Design (Hons)</span>
+                                <span class="lang-zh">平面設計文學士 (榮譽)</span>
+                            </h5>
+                            <p class="text-studio-gold font-semibold text-[10px] uppercase tracking-wider mt-1">
+                                <span class="lang-en">Visual design and communications background</span>
+                                <span class="lang-zh">具備視覺設計與傳播背景</span>
+                            </p>
+                        </div>
+                        
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- LEGAL / SCOPE / POLICIES SECTION -->
+        <section id="legal-center" class="scroll-mt-24 space-y-10 border-t border-b border-studio-border py-16 reveal-on-scroll relative">
+            
+            <!-- SECTION 1: Privacy Policy Drawer -->
+            <div class="space-y-4">
+                <div class="flex justify-between items-center">
+                    <span class="text-xs uppercase tracking-[0.25em] font-semibold text-studio-terracotta">
+                        <span class="lang-en">Data Collection & Privacy Policy</span>
+                        <span class="lang-zh">資料收集與隱私政策</span>
+                    </span>
+                    <button id="privacy-expand-btn" class="text-xs text-studio-green underline font-semibold tracking-wider hover:text-studio-sage transition duration-300">
+                        <span class="lang-en">Show Privacy Policy</span>
+                        <span class="lang-zh">顯示隱私政策</span>
+                    </button>
+                </div>
+
+                <div id="privacy-expanded-content" class="hidden space-y-6 bg-studio-card border border-studio-border p-8 rounded-2xl text-xs font-light">
+                    <div class="grid md:grid-cols-2 gap-8">
+                        
+                        <div class="space-y-3 text-studio-slate leading-relaxed">
+                            <h4 class="font-serif-title font-bold text-studio-green text-sm">Data Collection & Privacy Policy</h4>
+                            <p>SaltyTree collects personal information, health intake data, and digital artwork solely to provide professional art therapy and wellness services.</p>
+                            <p>Telehealth sessions are conducted using encrypted video conferencing software (such as Zoom). To ensure privacy, therapeutic sessions are never recorded, and session data is not stored within the video platform.</p>
+                            <p>In compliance with international data privacy frameworks—including the Hong Kong Personal Data (Privacy) Ordinance (PDPO), the Australian Privacy Act, the New Zealand Privacy Act, the Singapore Personal Data Protection Act (PDPA), and the Canadian Personal Information Protection and Electronic Documents Act (PIPEDA)—all sensitive health data and client-created artwork is processed and stored using secure, encrypted systems.</p>
+                            <p>We do not store therapeutic records or intake assessments on public web servers or standard email servers. You retain the right to access, correct, or request the deletion of your personal data at any time, subject to statutory healthcare record retention laws in your local jurisdiction.</p>
+                        </div>
+
+                        <div class="space-y-3 text-studio-slate leading-relaxed">
+                            <h4 class="font-serif-title font-bold text-studio-green text-sm">資料收集與隱私政策</h4>
+                            <p>鹽樹（SaltyTree）收集個人資料、健康評估數據及數位藝術作品，純粹用於提供專業藝術治療與身心安適服務。</p>
+                            <p>遠距視訊會談使用加密視訊會議軟體（例如 Zoom）進行。為了保障隱私，專業會談絕不錄音或錄影，且會談數據不會儲存於視訊平台中。</p>
+                            <p>為了符合國際數據隱私框架——包括香港《個人資料（私隱）條例》（PDPO）、澳洲《隱私法》、紐西蘭《隱私法》、新加坡《個人資料保護法》（PDPA）以及加拿大《個人資訊保護與電子文件法》（PIPEDA）——所有敏感性健康數據及個案創作之藝術作品均使用安全且加密的系統進行處理與儲存。</p>
+                            <p>我們不會在公開的網頁伺服器或標準電子郵件伺服器上儲存專業紀錄或個案評估資料。在符合您當地法定健康紀錄保存期限的規範下，您有權隨時查閱、更正或要求刪除您的個人資料。</p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION 2: Practice Notice & Geographic Scope -->
+            <div class="space-y-4">
+                <div class="lang-en space-y-3">
+                    <span class="text-xs uppercase tracking-[0.25em] font-semibold text-studio-terracotta block">
+                        Practice Notice
+                    </span>
+                    <div class="bg-studio-card p-6 md:p-8 rounded-2xl border border-studio-border text-sm leading-relaxed text-studio-slate space-y-3">
+                        <p>SaltyTree is an arts therapy and wellness practice currently undergoing formal corporate registration. All professional art therapy services are delivered exclusively by a Registered Arts Therapist (AThR). Due to professional registration boundaries and international telehealth regulations, formal therapeutic sessions are strictly restricted to residents of Australia, New Zealand, Singapore, Hong Kong SAR, and select Canadian provinces (British Columbia, Alberta, Saskatchewan, and Manitoba).</p>
+                        <p class="font-bold text-studio-terracotta">SaltyTree is not a crisis center. If you are experiencing a mental health emergency, please immediately contact your local emergency response team or regional crisis helpline.</p>
+                    </div>
+                </div>
+                
+                <div class="lang-zh space-y-3">
+                    <span class="text-xs uppercase tracking-[0.25em] font-semibold text-studio-terracotta block">
+                        執業須知與服務範圍
+                    </span>
+                    <div class="bg-studio-card p-6 md:p-8 rounded-2xl border border-studio-border text-sm leading-relaxed text-studio-slate space-y-3">
+                        <p>鹽樹（SaltyTree）為目前正在辦理正式公司註冊程序之藝術治療與身心安適工作室。本工作室所有專業藝術治療服務均由註冊藝術治療師（AThR）親自提供。受限於專業註冊邊界及國際遠距醫療法規，正式的專業會談服務僅限於居住在澳洲、紐西蘭、新加坡、香港特別行政區，以及加拿大指定省份（不列顛哥倫比亞省、亞伯達省、薩斯徹溫省和曼尼托巴省）的居民。</p>
+                        <p class="font-bold text-studio-terracotta">鹽樹並非緊急求助或危機干預中心。若您正經歷急性心理健康危機，請立即聯絡您當地的緊急救援團隊或區域危機求助熱線。</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION 3: Complete 10-Point Legal Policy & Disclaimer -->
+            <div class="space-y-4">
+                <div class="flex justify-between items-center">
+                    <span class="text-xs uppercase tracking-[0.25em] font-semibold text-studio-terracotta">
+                        <span class="lang-en">SaltyTree Art Therapy – Complete Policy & Disclaimer</span>
+                        <span class="lang-zh">鹽樹藝術治療 – 完整條款與免責聲明</span>
+                    </span>
+                    <button id="legal-expand-btn" class="text-xs text-studio-green underline font-semibold tracking-wider hover:text-studio-sage transition duration-300">
+                        <span class="lang-en">Show Complete Terms</span>
+                        <span class="lang-zh">顯示完整條款</span>
+                    </button>
+                </div>
+
+                <div id="legal-expanded-content" class="hidden bg-studio-card border border-studio-border p-8 rounded-2xl text-xs font-light">
+                    <div class="grid md:grid-cols-2 gap-8 h-[480px] overflow-y-auto pr-2">
+                        
+                        <!-- English 10 Points -->
+                        <div class="space-y-5 text-studio-slate pr-4 border-r border-studio-border leading-relaxed">
+                            <h4 class="font-serif-title font-bold text-studio-green text-sm pb-2 border-b border-studio-border">Complete Policies & General Disclaimer</h4>
+                            
+                            <div>
+                                <h5 class="font-bold text-studio-green mb-1">1. Informational and Educational Purposes Only</h5>
+                                <p>The public content provided on this Website, including text, graphics, public art prompts, images, exercises, and blog posts, is provided for general informational and educational purposes only. All content on this Website is the intellectual property of SaltyTree and is protected under the copyright laws of the Hong Kong Special Administrative Region. No content may be reproduced, redistributed, or used for commercial purposes without the prior written consent of SaltyTree.</p>
+                            </div>
+
+                            <div>
+                                <h5 class="font-bold text-studio-green mb-1">2. No Therapist–Client Relationship</h5>
+                                <p>Your access to or use of this Website—including downloading materials, interacting with public prompts, or communicating with SaltyTree or its practitioners through the Website, email, or social media—does not establish a therapist–client relationship. Professional art therapy services are provided only after completion of the intake process, confirmation of eligibility under applicable regional regulations, and the execution of a signed service agreement. A therapist–client relationship is established only after these requirements have been satisfied.</p>
+                            </div>
+
+                            <div>
+                                <h5 class="font-bold text-studio-green mb-1">3. Not a Substitute for Mental Health Treatment</h5>
+                                <p>The public resources available on this Website are not a substitute for professional therapeutic advice, individualized psychotherapy, medical advice, or psychiatric treatment. Art therapy services are intended to complement, not replace, appropriate medical, psychiatric, psychological, or neuropsychological care. Always seek the advice of a qualified, locally licensed mental health professional or physician regarding severe psychological symptoms or medical conditions.</p>
+                            </div>
+
+                            <div>
+                                <h5 class="font-bold text-studio-green mb-1">4. Assumption of Risk and Personal Responsibility</h5>
+                                <p>Engaging in creative arts activities and exploring emotional topics may evoke strong emotions or memories. By voluntarily using the art prompts, exercises, or other public resources available on this Website, you acknowledge and accept the inherent risks associated with such activities. SaltyTree is not liable for any loss, injury, or emotional distress arising from the independent use of publicly available Website content.</p>
+                            </div>
+
+                            <div>
+                                <h5 class="font-bold text-studio-green mb-1">5. Telehealth Technology & Connection Interruptions</h5>
+                                <p>SaltyTree utilizes third-party digital platforms, video conferencing software, online booking systems, and internet infrastructure to provide online art therapy services. While reasonable efforts are made to maintain reliable services, digital communications may be affected by connection interruptions, software errors, hardware failures, server downtime, or other technical issues beyond our reasonable control. SaltyTree is not responsible for delays, interruptions, or cancellations resulting from such technical issues.</p>
+                            </div>
+
+                            <div>
+                                <h5 class="font-bold text-studio-green mb-1">6. Cybersecurity & Data Security</h5>
+                                <p>SaltyTree uses reasonable administrative, technical, and organizational safeguards, including secure practice management systems where appropriate, to protect client information. However, no method of electronic transmission over the internet or electronic storage system can be guaranteed to be completely secure. By submitting information through this Website or via electronic communication, you acknowledge the inherent security risks associated with internet-based communications.</p>
+                            </div>
+
+                            <div>
+                                <h5 class="font-bold text-studio-green mb-1">7. Geographic Eligibility & Cross-Border Services</h5>
+                                <p>SaltyTree provides professional art therapy services only in jurisdictions where services can be offered in accordance with applicable professional registration requirements and relevant laws. Clients are responsible for providing accurate information regarding their identity and physical location when accessing services. SaltyTree reserves the right to decline, suspend, or terminate services where eligibility cannot be verified.</p>
+                            </div>
+
+                            <div>
+                                <h5 class="font-bold text-studio-green mb-1">8. Website Analytics, Cookies & Technical Information</h5>
+                                <p>This Website automatically collects standard technical information, including IP addresses, browser type, device information, and cookies, to support Website functionality, security, performance monitoring, and analytics. SaltyTree does not sell client information or personal information collected through the Website for marketing purposes.</p>
+                            </div>
+
+                            <div>
+                                <h5 class="font-bold text-studio-green mb-1">9. Governing Law & Jurisdiction</h5>
+                                <p>These Terms and your use of this Website shall be governed by and construed in accordance with the laws of the Hong Kong Special Administrative Region, without regard to its conflict of law principles. Any dispute arising out of or relating to this Website shall be subject to the exclusive jurisdiction of the courts of HKSAR.</p>
+                            </div>
+
+                            <div>
+                                <h5 class="font-bold text-studio-green mb-1">10. Compliance with Local Laws & Severability</h5>
+                                <p>SaltyTree operates internationally but does not represent or warrant that its Website or art therapy services comply with the legal requirements of every jurisdiction. SaltyTree reserves the right to modify or restrict services to comply with applicable laws. If any provision is found invalid, remaining terms shall remain in full force.</p>
+                            </div>
+                        </div>
+
+                        <!-- Chinese 10 Points -->
+                        <div class="space-y-5 text-studio-slate pr-2 leading-relaxed">
+                            <h4 class="font-serif-title font-bold text-studio-green text-sm pb-2 border-b border-studio-border">完整條款與免責聲明</h4>
+                            
+                            <div>
+                                <h5 class="font-bold text-studio-green mb-1">1. 僅供資訊與教育目的</h5>
+                                <p>本網站提供之所有公開內容，包括文字、圖表、公開藝術提示、圖片、練習及部落格文章，僅供一般資訊與教育目的使用。本網站之所有內容均屬鹽樹之知識產權，並受香港特別行政區版權法保護；未經明確書面許可，不得進行複製、重新分發或用於商業用途。</p>
+                            </div>
+
+                            <div>
+                                <h5 class="font-bold text-studio-green mb-1">2. 無治療師與個案關係</h5>
+                                <p>您對本網站的瀏覽、下載資料、使用公開提示，或透過網站、電子郵件、社交媒體與鹽樹（SaltyTree）或其執業者進行任何溝通，均不構成治療師與客戶（個案）關係。正式的專業會談關係，僅在完成初始健康評估、確認所在地地點與符合區域法規資格，並由雙方簽署正式服務協議後建立。</p>
+                            </div>
+
+                            <div>
+                                <h5 class="font-bold text-studio-green mb-1">3. 不可替代心理健康治療</h5>
+                                <p>本網站之公開資源不可替代專業的藝術會談建議、個別化心理諮商、醫療諮商或精神科治療。專業藝術諮商旨在補充而非替代適當的醫療、精神科、心理學或神經心理學照護。若有任何嚴重的心理症狀，請務必尋求當地合格心理健康專業人員或醫師的建議。</p>
+                            </div>
+
+                            <div>
+                                <h5 class="font-bold text-studio-green mb-1">4. 風險承擔與個人責任</h5>
+                                <p>參與創意藝術活動與探索情緒議題可能會引發強烈的情緒或記憶。當您使用本網站的藝術提示或練習時，即代表您承認並接受與此類活動相關的固有風險。對於您獨立使用本網站內容所導致的任何損失或情緒困擾，鹽樹概不承擔責任。</p>
+                            </div>
+
+                            <div>
+                                <h5 class="font-bold text-studio-green mb-1">5. 遠距傳輸技術與連線中斷</h5>
+                                <p>鹽樹利用第三方數位平台、視訊會議軟體、線上預約系統及網路基礎設施提供線上服務。數位通訊可能會遇到連線中斷、軟體錯誤、硬體故障或超出合理控制範圍的技術問題。鹽樹對於因技術問題導致的任何延誤或中斷概不負責。</p>
+                            </div>
+
+                            <div>
+                                <h5 class="font-bold text-studio-green mb-1">6. 網路安全與資料安全</h5>
+                                <p>鹽樹採取合理的管理、技術與組織性安全措施保護客戶資訊。然而，任何透過網際網路的電子傳輸或電子儲存系統都無法保證百分之百安全。透過本網站傳輸資料，即代表您承認網路通訊的固有安全風險。</p>
+                            </div>
+
+                            <div>
+                                <h5 class="font-bold text-studio-green mb-1">7. 地理適用資格與跨境服務</h5>
+                                <p>鹽樹僅在符合專業註冊要求及相關法律之司法管轄區提供專業藝術治療服務。客戶有責任在接受服務時提供關於其身份及物理位置的準確資訊。鹽樹保留在無法核實資格時拒絕或終止服務的權利。</p>
+                            </div>
+
+                            <div>
+                                <h5 class="font-bold text-studio-green mb-1">8. 網站數據分析、Cookies 與技術資訊</h5>
+                                <p>本網站會自動收集標準技術資訊（如 IP 地址、瀏覽器類型、設備資訊和 Cookies），以支援網站功能、安全性與性能監控。鹽樹不會將收集的個人資訊出售用於行銷目的。</p>
+                            </div>
+
+                            <div>
+                                <h5 class="font-bold text-studio-green mb-1">9. 準據法與管轄權</h5>
+                                <p>本條款及您對本網站的使用，均以中華人民共和國香港特別行政區法律為準據法，並依其解釋。任何與本網站相關的爭議，均應專屬管轄於香港特別行政區法院。</p>
+                            </div>
+
+                            <div>
+                                <h5 class="font-bold text-studio-green mb-1">10. 符合當地法律與條款可分性</h5>
+                                <p>鹽樹於國際間運營，但並不保證其服務符合所有司法管轄區的法定要求。鹽樹保留修改或限制服務以符合適用法律的權利。若本條款之任何規定被認定為無效，其餘規定仍應具有完全效力。</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="scroll-mt-24 max-w-4xl mx-auto reveal-on-scroll relative">
+            <div class="bg-studio-card border border-studio-border rounded-3xl p-8 md:p-12 grid md:grid-cols-12 gap-12 items-start font-sans">
+                
+                <!-- Contact Details -->
+                <div class="md:col-span-5 space-y-6">
+                    <div>
+                        <span class="text-studio-terracotta font-semibold uppercase tracking-[0.2em] text-[10px] block mb-2">
+                            <span class="lang-en">Connect</span>
+                            <span class="lang-zh">建立連結</span>
+                        </span>
+                        <h2 class="text-3xl font-serif-title text-studio-green">
+                            <span class="lang-en">Get in Touch</span>
+                            <span class="lang-zh">聯絡我們</span>
+                        </h2>
+                    </div>
+                    <p class="text-studio-slate text-sm font-light leading-relaxed">
+                        <span class="lang-en">Let's explore how artmaking can create a supportive space for your growth.</span>
+                        <span class="lang-zh">讓我們一同探索藝術創作如何為您的成長建立支持性空間。</span>
+                    </p>
+
+                    <div class="space-y-4 pt-2 text-xs">
+                        <div class="bg-studio-bg p-5 rounded-2xl border border-studio-border space-y-2">
+                            <span class="text-[10px] font-semibold text-studio-terracotta block uppercase tracking-wider">
+                                <span class="lang-en">Direct Inquiries</span>
+                                <span class="lang-zh">直接諮詢</span>
+                            </span>
+                            <div class="space-y-1">
+                                <span class="font-bold text-studio-green font-serif-title text-sm block">
+                                    <span class="lang-en">We Welcome Your Message</span>
+                                    <span class="lang-zh">歡迎與我們聯絡</span>
+                                </span>
+                                <p class="text-[11px] text-studio-slate font-light leading-normal">
+                                    <span class="lang-en">Send us an inquiry below for session availability, service details, and consultations.</span>
+                                    <span class="lang-zh">歡迎透過表單傳送訊息，了解會談時間、服務內容與諮詢細節。</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form Block -->
+                <div class="md:col-span-7 bg-studio-bg p-6 md:p-8 rounded-2xl border border-studio-border">
+                    <div id="form-feedback" class="hidden mb-4 p-4 rounded-xl text-xs font-semibold bg-studio-sage/20 text-studio-green border border-studio-sage/30"></div>
+                    <form id="contact-form" class="space-y-4 text-xs font-semibold uppercase tracking-wider text-studio-slate">
                         <div>
-                            <label class="block mb-1 text-[10px]" for="name">
+                            <label class="block mb-2 text-[10px]" for="name">
                                 <span class="lang-en">Your Name</span>
                                 <span class="lang-zh">您的姓名</span>
                             </label>
-                            <input type="text" id="name" required class="w-full p-3.5 rounded-full border border-salty-slate/15 bg-salty-100 outline-none focus:border-salty-teal text-sm text-salty-slate font-sans tracking-normal font-light">
+                            <input type="text" id="name" name="name" required class="w-full p-3.5 rounded-full border border-studio-border bg-studio-card text-studio-dark font-normal focus:outline-none focus:border-studio-green transition duration-300">
                         </div>
                         <div>
-                            <label class="block mb-1 text-[10px]" for="email">
+                            <label class="block mb-2 text-[10px]" for="email">
                                 <span class="lang-en">Email Address</span>
                                 <span class="lang-zh">電子郵件地址</span>
                             </label>
-                            <input type="email" id="email" required class="w-full p-3.5 rounded-full border border-salty-slate/15 bg-salty-100 outline-none focus:border-salty-teal text-sm text-salty-slate font-sans tracking-normal font-light">
+                            <input type="email" id="email" name="email" required class="w-full p-3.5 rounded-full border border-studio-border bg-studio-card text-studio-dark font-normal focus:outline-none focus:border-studio-green transition duration-300">
                         </div>
                         <div>
-                            <label class="block mb-1 text-[10px]" for="message">
+                            <label class="block mb-2 text-[10px]" for="message">
                                 <span class="lang-en">Message or Inquiry</span>
                                 <span class="lang-zh">您的訊息或諮詢</span>
                             </label>
-                            <textarea id="message" rows="4" required class="w-full p-3.5 rounded-2xl border border-salty-slate/15 bg-salty-100 outline-none focus:border-salty-teal text-sm text-salty-slate font-sans tracking-normal font-light"></textarea>
+                            <textarea id="message" name="message" rows="3" required class="w-full p-3.5 rounded-2xl border border-studio-border bg-studio-card text-studio-dark font-normal focus:outline-none focus:border-studio-green transition duration-300"></textarea>
                         </div>
 
-                        <!-- Emergency Warning Alert -->
-                        <div class="p-4 bg-salty-orange/10 border-l-4 border-salty-orange rounded-r-xl text-salty-slate font-light normal-case tracking-normal text-[11px] leading-relaxed space-y-1">
-                            <strong class="font-bold text-salty-orange block text-xs">⚠️ Important Notice / 緊急通知</strong>
-                            <p class="lang-en">This contact form is for general business and booking inquiries only and is not monitored 24/7. SaltyTree does not provide crisis intervention. If you are experiencing a mental health emergency, please contact your local emergency services immediately.</p>
-                            <p class="lang-zh">本聯絡表單僅供一般業務與預約諮詢使用，非全天候監控。鹽樹不提供危機干預。若您正經歷緊急狀況，請立即聯絡當地緊急救援服務。</p>
-                        </div>
-
-                        <div id="form-feedback" class="hidden p-3 rounded-xl text-xs text-center font-bold"></div>
-
-                        <button type="submit" id="submit-btn" class="w-full bg-salty-green text-white py-3.5 rounded-full uppercase tracking-widest font-bold hover:bg-salty-darkgreen transition shadow-sm font-optima text-xs">
+                        <button type="submit" class="w-full bg-studio-green text-studio-card py-4 rounded-full uppercase tracking-widest font-semibold hover:bg-studio-dark transition-all duration-300 shadow-sm hover:shadow-md cursor-pointer">
                             <span class="lang-en">Send Message</span>
-                            <span class="lang-zh">發送訊息</span>
+                            <span class="lang-zh">傳送訊息</span>
                         </button>
                     </form>
                 </div>
+
             </div>
         </section>
 
     </main>
 
     <!-- Footer Section -->
-    <footer class="bg-white/80 border-t border-salty-slate/10 mt-20 text-salty-slate font-light text-xs relative z-10">
-        <div class="max-w-5xl mx-auto px-6 py-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-center sm:text-left">
-            <div>
-                <strong class="font-bold font-optima block">SaltyTree Art Therapy</strong>
-                <span class="text-[11px] text-salty-slate/70">Art Therapist Beverly Chan (AThR)</span>
+    <footer class="bg-studio-card text-studio-slate border-t border-studio-border font-light relative z-10 font-sans">
+        <div class="max-w-6xl mx-auto px-6 py-10 flex flex-col md:flex-row justify-between items-center text-xs gap-6">
+            <div class="space-y-1 text-center md:text-left">
+                <span class="text-studio-green font-bold tracking-wider block font-serif-title text-base">SaltyTree Art Therapy</span>
+                <p class="text-[11px] text-studio-slate/80 leading-relaxed pt-1 max-w-md">
+                    <span class="lang-en">Services are subject to our <a href="#legal-center" onclick="expandLegalDisclaimer()" class="text-studio-green hover:underline font-semibold">Complete Policy & Disclaimer</a> and regional eligibility frameworks.</span>
+                    <span class="lang-zh">服務受我們的 <a href="#legal-center" onclick="expandLegalDisclaimer()" class="text-studio-green hover:underline font-semibold">完整條款與免責聲明</a> 及地區適用資格框架約束。</span>
+                </p>
             </div>
-            <div class="flex gap-4 font-optima text-[10px] uppercase font-bold tracking-wider">
-                <a href="https://anzacata.org/Sys/PublicProfile/96632131/7111800" target="_blank" rel="noopener" class="hover:text-salty-teal">ANZACATA Profile</a>
-                <span>|</span>
-                <a href="https://www.hkaat.com/zh/find-an-art-therapist/chan%2C-yan-tsz-(beverly)" target="_blank" rel="noopener" class="hover:text-salty-teal">HKAAT Profile</a>
+
+            <!-- Footer Navigation Links -->
+            <div class="flex flex-wrap gap-4 items-center font-sans text-[11px]">
+                <a href="#legal-center" onclick="expandPrivacyPolicy()" class="link-hover-line tracking-wider uppercase font-medium py-1">
+                    Privacy Policy
+                </a>
+                <span class="text-studio-border">|</span>
+                <a href="#legal-center" onclick="expandLegalDisclaimer()" class="link-hover-line tracking-wider uppercase font-medium py-1">
+                    Complete Disclaimer
+                </a>
+                <span class="text-studio-border">|</span>
+                <a href="https://anzacata.org/Sys/PublicProfile/96632131/7111800" target="_blank" rel="noopener noreferrer" class="link-hover-line tracking-wider uppercase font-medium py-1">
+                    ANZACATA Directory
+                </a>
+                <span class="text-studio-border">|</span>
+                <a href="https://www.hkaat.com/zh/find-an-art-therapist/chan%2C-yan-tsz-(beverly)" target="_blank" rel="noopener noreferrer" class="link-hover-line tracking-wider uppercase font-medium py-1">
+                    HKAAT Profile
+                </a>
             </div>
         </div>
-        <div class="border-t border-salty-slate/10 text-center py-4 text-[10px] text-salty-slate/60 font-optima uppercase tracking-widest">
-            &copy; 2026 SaltyTree Art Therapy. All rights reserved.
+
+        <div class="border-t border-studio-border max-w-6xl mx-auto px-6 py-6 flex flex-col sm:flex-row justify-between items-center text-[10px] text-studio-slate/70 gap-3 uppercase tracking-widest font-medium">
+            <span>&copy; 2026 SaltyTree Art Therapy. All rights reserved.</span>
+            <span>
+                <span class="lang-en">Art Therapist Beverly Chan</span>
+                <span class="lang-zh">藝術治療師陳欣慈</span>
+            </span>
         </div>
     </footer>
 
     <script>
-        // Bilingual Toggle Logic
+        // Language State Toggle Logic
         let currentLang = 'en';
+
         const langToggleBtn = document.getElementById('lang-toggle-btn');
         const langToggleBtnMobile = document.getElementById('lang-toggle-btn-mobile');
 
-        function toggleLanguage() {
-            if (currentLang === 'en') {
-                currentLang = 'zh';
-                document.body.classList.remove('lang-en-active');
-                document.body.classList.add('lang-zh-active');
-                if (langToggleBtn) langToggleBtn.querySelector('span').textContent = 'English';
-                if (langToggleBtnMobile) langToggleBtnMobile.querySelector('span').textContent = 'EN';
-            } else {
-                currentLang = 'en';
-                document.body.classList.remove('lang-zh-active');
-                document.body.classList.add('lang-en-active');
-                if (langToggleBtn) langToggleBtn.querySelector('span').textContent = '繁體中文';
-                if (langToggleBtnMobile) langToggleBtnMobile.querySelector('span').textContent = '繁';
-            }
-            updatePromptDisplay();
-        }
+        // Contact Form Submission Handler
+        const contactForm = document.getElementById('contact-form');
+        const formFeedback = document.getElementById('form-feedback');
 
-        if (langToggleBtn) langToggleBtn.addEventListener('click', toggleLanguage);
-        if (langToggleBtnMobile) langToggleBtnMobile.addEventListener('click', toggleLanguage);
-
-        // Inspired Drawing Prompts Handler
-        const promptsEn = [
-            "Draw a tree on coastal sand. Draw its deep roots navigating stones to reach nourishment.",
-            "Recall a comfortable sensory memory. Draw only the colors, shapes, or textures of that space."
-        ];
-        const promptsZh = [
-            "在海岸沙灘上畫一棵樹。描繪它深扎的根系如何穿過頑石汲取養分。",
-            "回想一段舒適的感官記憶。僅畫出那個空間的色彩、形狀或紋理。"
-        ];
-        let currentPromptIndex = 0;
-
-        const activePromptEl = document.getElementById('active-prompt');
-        const generatePromptBtn = document.getElementById('generate-prompt-btn');
-
-        function updatePromptDisplay() {
-            const list = currentLang === 'en' ? promptsEn : promptsZh;
-            if (activePromptEl) {
-                activePromptEl.classList.add('opacity-0');
-                setTimeout(() => {
-                    activePromptEl.textContent = list[currentPromptIndex];
-                    activePromptEl.classList.remove('opacity-0');
-                }, 200);
-            }
-        }
-
-        if (generatePromptBtn) {
-            generatePromptBtn.addEventListener('click', () => {
-                currentPromptIndex = currentPromptIndex === 0 ? 1 : 0;
-                updatePromptDisplay();
+        if (contactForm) {
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                if (formFeedback) {
+                    formFeedback.classList.remove('hidden');
+                    if (currentLang === 'en') {
+                        formFeedback.textContent = 'Thank you for reaching out! Your message has been sent successfully.';
+                    } else {
+                        formFeedback.textContent = '感謝您的聯絡！您的訊息已成功傳送。';
+                    }
+                }
+                contactForm.reset();
             });
         }
 
-        // Interactive Canvas Leaf Spawner Logic
+        // Mobile Menu Drawer Handler
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        if (mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            const navLinks = mobileMenu.querySelectorAll('a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+        }
+
+        // Expandable Policy Drawers Handler
+        const legalExpandBtn = document.getElementById('legal-expand-btn');
+        const legalContent = document.getElementById('legal-expanded-content');
+
+        if (legalExpandBtn && legalContent) {
+            legalExpandBtn.addEventListener('click', () => {
+                const isHidden = legalContent.classList.contains('hidden');
+                if (isHidden) {
+                    legalContent.classList.remove('hidden');
+                    legalExpandBtn.querySelector('.lang-en').textContent = 'Hide Complete Terms';
+                    legalExpandBtn.querySelector('.lang-zh').textContent = '隱藏完整條款';
+                } else {
+                    legalContent.classList.add('hidden');
+                    legalExpandBtn.querySelector('.lang-en').textContent = 'Show Complete Terms';
+                    legalExpandBtn.querySelector('.lang-zh').textContent = '顯示完整條款';
+                }
+            });
+        }
+
+        const privacyExpandBtn = document.getElementById('privacy-expand-btn');
+        const privacyContent = document.getElementById('privacy-expanded-content');
+
+        if (privacyExpandBtn && privacyContent) {
+            privacyExpandBtn.addEventListener('click', () => {
+                const isHidden = privacyContent.classList.contains('hidden');
+                if (isHidden) {
+                    privacyContent.classList.remove('hidden');
+                    privacyExpandBtn.querySelector('.lang-en').textContent = 'Hide Privacy Policy';
+                    privacyExpandBtn.querySelector('.lang-zh').textContent = '隱藏隱私政策';
+                } else {
+                    privacyContent.classList.add('hidden');
+                    privacyExpandBtn.querySelector('.lang-en').textContent = 'Show Privacy Policy';
+                    privacyExpandBtn.querySelector('.lang-zh').textContent = '顯示隱私政策';
+                }
+            });
+        }
+
+        function expandLegalDisclaimer() {
+            if (legalContent && legalExpandBtn) {
+                legalContent.classList.remove('hidden');
+                legalExpandBtn.querySelector('.lang-en').textContent = 'Hide Complete Terms';
+                legalExpandBtn.querySelector('.lang-zh').textContent = '隱藏完整條款';
+            }
+        }
+
+        function expandPrivacyPolicy() {
+            if (privacyContent && privacyExpandBtn) {
+                privacyContent.classList.remove('hidden');
+                privacyExpandBtn.querySelector('.lang-en').textContent = 'Hide Privacy Policy';
+                privacyExpandBtn.querySelector('.lang-zh').textContent = '隱藏隱私政策';
+            }
+        }
+
+        // Scroll Observer for Smooth Reveals
+        function initScrollObserver() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    }
+                });
+            }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+            document.querySelectorAll('.reveal-on-scroll').forEach(el => {
+                observer.observe(el);
+            });
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            initScrollObserver();
+        });
+
+        // Interactive SaltyTree Leaf Blooming Mechanics
         const container = document.getElementById('interactive-tree-container');
         const svg = document.getElementById('salty-tree-svg');
         const dynamicGroup = document.getElementById('dynamic-leaves-group');
-        const resetTreeBtn = document.getElementById('reset-tree-btn');
 
-        const leafColors = ['#1EC1CB', '#4D8B31', '#FFC800', '#FF8427', '#FF9FBD'];
+        const studioLeafColors = [
+            '#1EC1CB', // Coastal Water Teal
+            '#2C4435', // Studio Forest Green
+            '#4C6C58', // Studio Sage
+            '#C89354', // Studio Earthy Gold
+            '#BF6643'  // Studio Terracotta
+        ];
 
         function addLeaf(x, y) {
             if (!dynamicGroup) return;
-            const color = leafColors[Math.floor(Math.random() * leafColors.length)];
+            const colorIndex = Math.floor(Math.random() * studioLeafColors.length);
+            const color = studioLeafColors[colorIndex];
             const radius = Math.random() * 4.5 + 4;
             
             const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
@@ -925,7 +1106,7 @@
             circle.setAttribute("cy", y);
             circle.setAttribute("r", "0");
             circle.setAttribute("fill", color);
-            circle.setAttribute("opacity", "0.85");
+            circle.setAttribute("opacity", (Math.random() * 0.1 + 0.85).toString());
             circle.setAttribute("class", "interactive-leaf");
             
             dynamicGroup.appendChild(circle);
@@ -949,7 +1130,7 @@
             const projectedX = (relativeX / rect.width) * 200;
             const projectedY = (relativeY / rect.height) * 200;
 
-            if (projectedY < 162) {
+            if (projectedY < 160) {
                 addLeaf(projectedX, projectedY);
             }
         }
@@ -959,8 +1140,13 @@
             container.addEventListener('touchstart', handleSpawningClick, { passive: true });
         }
 
+        const resetTreeBtn = document.getElementById('reset-tree-btn');
         if (resetTreeBtn) {
             resetTreeBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                if (dynamicGroup) dynamicGroup.innerHTML = '';
+            });
+            resetTreeBtn.addEventListener('touchstart', (e) => {
                 e.stopPropagation();
                 if (dynamicGroup) dynamicGroup.innerHTML = '';
             });
@@ -969,67 +1155,31 @@
         function downloadArtwork() {
             if (!svg) return;
             const clonedSvg = svg.cloneNode(true);
+            const style = document.createElementNS("http://www.w3.org/2000/svg", "style");
+            style.textContent = `
+                .swaying-tree { transform-origin: bottom center; }
+                .interactive-leaf { transform-origin: center; transform-box: fill-box; transition: transform 0.5s ease; }
+            `;
+            clonedSvg.insertBefore(style, clonedSvg.firstChild);
+            
             const serializer = new XMLSerializer();
             let source = serializer.serializeToString(clonedSvg);
             
             if (!source.match(/^<svg[^>]+xmlns="http:\/\/www\.w3\.org\/2000\/svg"/)) {
                 source = source.replace(/^<svg/, '<svg xmlns="http://www.w3.org/2000/svg"');
             }
+            if (!source.match(/^<svg[^>]+xmlns:xlink="http:\/\/www\.w3\.org\/1999\/xlink"/)) {
+                source = source.replace(/^<svg/, '<svg xmlns:xlink="http://www.w3.org/1999/xlink"');
+            }
             
             const url = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(source);
+            
             const downloadLink = document.createElement("a");
             downloadLink.href = url;
-            downloadLink.download = "my-saltytree-artwork.svg";
+            downloadLink.download = "saltytree-artwork.svg";
             document.body.appendChild(downloadLink);
             downloadLink.click();
             document.body.removeChild(downloadLink);
-        }
-
-        // Contact Form Submission Handler
-        const contactForm = document.getElementById('contact-form');
-        const formFeedback = document.getElementById('form-feedback');
-
-        if (contactForm) {
-            contactForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-                if (formFeedback) {
-                    formFeedback.classList.remove('hidden');
-                    formFeedback.className = "p-3 rounded-xl text-xs text-center font-bold bg-emerald-100 text-emerald-800";
-                    formFeedback.textContent = currentLang === 'en' 
-                        ? "Thank you for reaching out! We have received your message and will respond shortly."
-                        : "感謝您的聯絡！我們已收到您的訊息，將儘快回覆您。";
-                    contactForm.reset();
-                }
-            });
-        }
-
-        // Mobile Menu Drawer
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-
-        if (mobileMenuBtn && mobileMenu) {
-            mobileMenuBtn.addEventListener('click', () => {
-                mobileMenu.classList.toggle('hidden');
-            });
-        }
-
-        // Legal & Privacy Drawer Controls
-        function togglePrivacyDrawer() {
-            const drawer = document.getElementById('privacy-drawer');
-            const btn = document.getElementById('privacy-toggle-btn');
-            if (drawer) {
-                drawer.classList.toggle('hidden');
-                btn.textContent = drawer.classList.contains('hidden') ? 'Show / 展開' : 'Hide / 隱藏';
-            }
-        }
-
-        function toggleLegalDrawer() {
-            const drawer = document.getElementById('legal-drawer');
-            const btn = document.getElementById('legal-toggle-btn');
-            if (drawer) {
-                drawer.classList.toggle('hidden');
-                btn.textContent = drawer.classList.contains('hidden') ? 'Show / 展開' : 'Hide / 隱藏';
-            }
         }
     </script>
 </body>
